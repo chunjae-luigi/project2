@@ -7,28 +7,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>장바구니 목록</title>
+    <title>장바구니 결제</title>
     <%@ include file="../common.jsp"%>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
 </head>
 
 <body>
 <%@ include file="../header.jsp"%>
 <div class="container contents">
-    <h2 class="page_title text-center">장바구니</h2>
+    <h2 class="page_title text-center">장바구니 결제</h2>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb justify-content-end">
             <li class="breadcrumb-item"><a href="${rootPath }">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">장바구니</li>
+            <li class="breadcrumb-item active" aria-current="page">장바구니 결제</li>
         </ol>
     </nav>
 
     <div class="container">
         <div class="box_wrap">
-            <form action="" method="post">
+
             <table class="table" id="tb1">
                 <thead>
                 <tr>
-                    <th></th>
                     <th>번호</th>
                     <th>상품 이름</th>
                     <th>상품 가격</th>
@@ -40,18 +40,30 @@
                 <c:forEach var="cartVO" items="${cartVOList}" varStatus="status">
                 <tr>
                     <td><input type="checkbox" name="cartCheck" value="${cartVO.cart.cart_no}"></td>
-                    <td>${status.count}</td>
                     <td>${cartVO.product.title}</td>
                     <td>${cartVO.product.price}</td>
                     <td>${cartVO.cart.amount}</td>
-                    <td>${cartVO.product.price*cartVO.cart.amount}</td>
+                    <td class="product_price">${cartVO.product.price*cartVO.cart.amount}</td>
                 </tr>
                 </c:forEach>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td>총계</td>
+                        <td colspan="4" id="total"></td>
+                    </tr>
+                </tfoot>
             </table>
-                <input class="btn btn-primary" type="submit" value="장바구니 삭제" onclick="deleteButton()">
-                <input class="btn btn-primary" type="submit" value="장바구니 결제" onclick="payButton()">
-            </form>
+
+            <nav aria-label="Page navigation example" id="page-nation1">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -59,11 +71,14 @@
 </body>
 </html>
 
+
+
 <script>
-    function deleteButton(){
-        $("form").attr("action", "${rootPath}/CartDelete.do");
-    }
-    function payButton(){
-        $("form").attr("action", "${rootPath}/CartPay.do");
-    }
+    $(document).ready(function(){
+        let total = 0;
+        $(".product_price").each(function(){
+            total = total + parseInt($(this).text());
+        })
+        $("#total").text(total+" 원");
+    })
 </script>
