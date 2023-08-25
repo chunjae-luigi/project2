@@ -26,7 +26,7 @@ public class MultiPattern {
 
   // 출고 처리. 트랜잭션이 필요하다.
   public int outstock(Payment payment, Delivery delivery, Cart cart){
-    int pay_no = 0;
+    int payNo = 0;
     conn = db.connect();
     String sql = "";
     try {
@@ -53,9 +53,18 @@ public class MultiPattern {
       pstmt.setInt(3, payment.getPayPrice());
       cnt += pstmt.executeUpdate();
 
+      // 출고, 결제 시 결제 번호 반환
+      sql = "select payNo from payment order by payNo desc limit 1";
+      pstmt = conn.prepareStatement(sql);
+      rs = pstmt.executeQuery();
+
+      if(rs.next()){
+        payNo = rs.getInt("payNo");
+      }
+
       sql = "insert into delivery(payNo, memId, address, tel, name, state) values (?, ?, ?, ?, ?, 0)";
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, delivery.getPayNo());
+      pstmt.setInt(1, payNo);
       pstmt.setString(2, delivery.getMemId());
       pstmt.setString(3, delivery.getAddress());
       pstmt.setString(4, delivery.getTel());
@@ -68,14 +77,6 @@ public class MultiPattern {
       pstmt.setInt(1, cart.getCartNo());
       cnt += pstmt.executeUpdate();
 
-      // 출고, 결제 시 결제 번호 반환
-      sql = "select payNo from payment order by payNo desc limit 1";
-      pstmt = conn.prepareStatement(sql);
-      rs = pstmt.executeQuery();
-
-      if(rs.next()){
-        pay_no = rs.getInt("payNo");
-      }
 
       conn.commit();
       conn.setAutoCommit(true);
@@ -88,7 +89,7 @@ public class MultiPattern {
 
       throw new RuntimeException(e);
     }
-    return pay_no;
+    return payNo;
   }
 
   public int outstockProduct(Payment payment, Delivery delivery){
@@ -119,23 +120,23 @@ public class MultiPattern {
       pstmt.setInt(3, payment.getPayPrice());
       cnt += pstmt.executeUpdate();
 
-      sql = "insert into delivery(payNo, memId, address, tel, name, state) values (?, ?, ?, ?, ?, 0)";
-      pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, delivery.getPayNo());
-      pstmt.setString(2, delivery.getMemId());
-      pstmt.setString(3, delivery.getAddress());
-      pstmt.setString(4, delivery.getTel());
-      pstmt.setString(5, delivery.getName());
-      cnt += pstmt.executeUpdate();
-
       // 출고, 결제 시 결제 번호 반환
       sql = "select payNo from payment order by payNo desc limit 1";
       pstmt = conn.prepareStatement(sql);
       rs = pstmt.executeQuery();
 
       if(rs.next()){
-        payNo = rs.getInt("pay_no");
+        payNo = rs.getInt("payNo");
       }
+
+      sql = "insert into delivery(payNo, memId, address, tel, name, state) values (?, ?, ?, ?, ?, 0)";
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setInt(1, payNo);
+      pstmt.setString(2, delivery.getMemId());
+      pstmt.setString(3, delivery.getAddress());
+      pstmt.setString(4, delivery.getTel());
+      pstmt.setString(5, delivery.getName());
+      cnt += pstmt.executeUpdate();
 
       conn.commit();
       conn.setAutoCommit(true);

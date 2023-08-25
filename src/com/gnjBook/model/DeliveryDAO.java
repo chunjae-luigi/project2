@@ -82,7 +82,7 @@ public class DeliveryDAO {
 
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, delivery.getPay_no());
+      pstmt.setInt(1, delivery.getPayNo());
       pstmt.setString(2, delivery.getMemId());
       pstmt.setString(3, delivery.getName());
       pstmt.setString(4, delivery.getTel());
@@ -115,7 +115,7 @@ public class DeliveryDAO {
 
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, delivery.getPay_no());
+      pstmt.setInt(1, delivery.getPayNo());
       pstmt.setString(2, delivery.getMemId());
       pstmt.setString(3, delivery.getName());
       pstmt.setString(4, delivery.getTel());
@@ -215,19 +215,23 @@ public class DeliveryDAO {
   }
 
   // 특정 회원이 결제한 내역의 배송 리스트
-  public Delivery getPayDeliveryList(int pay_no){
+  public Delivery getPayDeliveryList(int payNo){
     conn = db.connect();
     Delivery delivery = new Delivery();
     String sql = "select * from delivery where payNo=?";
 
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, pay_no);
+      pstmt.setInt(1, payNo);
       rs = pstmt.executeQuery();
 
       while(rs.next()){
         String etd = sdf.format(rs.getDate("etd"));
-        String eta = sdf.format(rs.getDate("eta"));
+        String eta = "";
+        if(rs.getDate("eta")!=null){
+          eta = sdf.format(rs.getDate("eta"));
+        }
+
 
         delivery = new Delivery(rs.getInt("dno"), rs.getInt("payNo"), rs.getString("memId"), rs.getString("name"), rs.getString("tel"), rs.getString("address"), rs.getString("dcom"), rs.getString("dtel"), rs.getInt("state"), etd, eta, rs.getString("dcode"));
       }

@@ -29,7 +29,8 @@ public class CartAddCtrl extends HttpServlet {
     Cart cart = new Cart();
     cart.setMemId(id);
     cart.setAmount(Integer.parseInt(request.getParameter("amount")));
-    cart.setProNo(Integer.parseInt(request.getParameter("pro_no")));
+    cart.setProNo(Integer.parseInt(request.getParameter("proNo")));
+    System.out.println(cart.getProNo());
     dao.addCart(cart);
 
     String path = request.getContextPath();

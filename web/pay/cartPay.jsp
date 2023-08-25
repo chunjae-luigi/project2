@@ -41,7 +41,7 @@
                 <tr>
                     <td>${status.count}</td>
                     <td>
-                        <input type="checkbox" name="cartCheck" value="${cartVO.cart.cart_no}" hidden="true" checked>
+                        <input type="checkbox" name="cartCheck" value="${cartVO.cart.cartNo}" hidden="true" checked>
                             ${cartVO.product.title}
                     </td>
                     <td>${cartVO.product.price}</td>

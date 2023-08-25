@@ -28,8 +28,6 @@ public class BookListCtrl extends HttpServlet {
             bookList = dao.getCategoryProduct(category);
         }
 
-        System.out.println(bookList.get(0).getCategoryId());
-
         request.setAttribute("bookList", bookList);
 
         RequestDispatcher view = request.getRequestDispatcher("/product/bookList.jsp");
