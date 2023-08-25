@@ -33,7 +33,7 @@ public class CartListCtrl extends HttpServlet {
         for(Cart c: cartList){
             CartVO cvo = new CartVO();
             cvo.setCart(c);
-            cvo.setProduct(productDAO.getProduct(c.getPro_no()));
+            cvo.setProduct(productDAO.getProduct(c.getProNo()));
             cartVOList.add(cvo);
         }
 

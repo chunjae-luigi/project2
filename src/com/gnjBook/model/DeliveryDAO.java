@@ -78,12 +78,12 @@ public class DeliveryDAO {
 
     conn = db.connect();
 
-    String sql = "insert into delivery(pay_no, mem_id, name, tel, address, mem_tel, dcom, dtel, state, eta, dcode) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    String sql = "insert into delivery(pay_no, memId, name, tel, address, dcom, dtel, state, eta, dcode, dno) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setInt(1, delivery.getPay_no());
-      pstmt.setString(2, delivery.getMem_id());
+      pstmt.setString(2, delivery.getMemId());
       pstmt.setString(3, delivery.getName());
       pstmt.setString(4, delivery.getTel());
       pstmt.setString(5, delivery.getAddress());
@@ -111,12 +111,12 @@ public class DeliveryDAO {
     int cnt = 0;
 
     conn = db.connect();
-    String sql = "update delivery set pay_no=?, mem_id=?, name=?,  tel=?, address=?, dcom=?, dtel=?, state=?, eta=?, dcode=? where dno=?";
+    String sql = "update delivery set pay_no=?, memId=?, name=?,  tel=?, address=?, dcom=?, dtel=?, state=?, eta=?, dcode=? where dno=?";
 
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setInt(1, delivery.getPay_no());
-      pstmt.setString(2, delivery.getMem_id());
+      pstmt.setString(2, delivery.getMemId());
       pstmt.setString(3, delivery.getName());
       pstmt.setString(4, delivery.getTel());
       pstmt.setString(5, delivery.getAddress());
@@ -218,7 +218,7 @@ public class DeliveryDAO {
   public Delivery getPayDeliveryList(int pay_no){
     conn = db.connect();
     Delivery delivery = new Delivery();
-    String sql = "select * from delivery where pay_no=?";
+    String sql = "select * from delivery where payNo=?";
 
     try {
       pstmt = conn.prepareStatement(sql);
@@ -229,7 +229,7 @@ public class DeliveryDAO {
         String etd = sdf.format(rs.getDate("etd"));
         String eta = sdf.format(rs.getDate("eta"));
 
-        delivery = new Delivery(rs.getInt("dno"), rs.getInt("pay_no"), rs.getString("mem_id"), rs.getString("name"), rs.getString("tel"), rs.getString("address"), rs.getString("dcom"), rs.getString("dtel"), rs.getInt("state"), etd, eta, rs.getString("dcode"));
+        delivery = new Delivery(rs.getInt("dno"), rs.getInt("payNo"), rs.getString("memId"), rs.getString("name"), rs.getString("tel"), rs.getString("address"), rs.getString("dcom"), rs.getString("dtel"), rs.getInt("state"), etd, eta, rs.getString("dcode"));
       }
 
     } catch (Exception e) {

@@ -1,10 +1,10 @@
 package com.gnjBook.dto;
 
 public class Payment {
-  private int pay_no;
-  private String mem_id;
-  private int pro_no;
-  private int pay_price;
+  private int payNo;
+  private String memId;
+  private int proNo;
+  private int payPrice;
   private int amount = 1;
   private String method;
   private String pcom;
@@ -14,11 +14,11 @@ public class Payment {
   public Payment() {
   }
 
-  public Payment(int pay_no, String mem_id, int pro_no, int pay_price, int amount, String method, String pcom, String paccount, int dno) {
-    this.pay_no = pay_no;
-    this.mem_id = mem_id;
-    this.pro_no = pro_no;
-    this.pay_price = pay_price;
+  public Payment(int payNo, String memId, int proNo, int payPrice, int amount, String method, String pcom, String paccount, int dno) {
+    this.payNo = payNo;
+    this.memId = memId;
+    this.proNo = proNo;
+    this.payPrice = payPrice;
     this.amount = amount;
     this.method = method;
     this.pcom = pcom;
@@ -26,36 +26,36 @@ public class Payment {
     this.dno = dno;
   }
 
-  public int getPay_no() {
-    return pay_no;
+  public int getPayNo() {
+    return payNo;
   }
 
-  public void setPay_no(int pay_no) {
-    this.pay_no = pay_no;
+  public void setPayNo(int payNo) {
+    this.payNo = payNo;
   }
 
-  public String getMem_id() {
-    return mem_id;
+  public String getMemId() {
+    return memId;
   }
 
-  public void setMem_id(String mem_id) {
-    this.mem_id = mem_id;
+  public void setMemId(String memId) {
+    this.memId = memId;
   }
 
-  public int getPro_no() {
-    return pro_no;
+  public int getProNo() {
+    return proNo;
   }
 
-  public void setPro_no(int pro_no) {
-    this.pro_no = pro_no;
+  public void setProNo(int proNo) {
+    this.proNo = proNo;
   }
 
-  public int getPay_price() {
-    return pay_price;
+  public int getPayPrice() {
+    return payPrice;
   }
 
-  public void setPay_price(int pay_price) {
-    this.pay_price = pay_price;
+  public void setPayPrice(int payPrice) {
+    this.payPrice = payPrice;
   }
 
   public int getAmount() {

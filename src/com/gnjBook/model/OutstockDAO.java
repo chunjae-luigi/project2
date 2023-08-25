@@ -32,7 +32,7 @@ public class OutstockDAO {
 
       while(rs.next()){
         String regdate = sdf.format(rs.getDate("regdate"));
-        outstockList.add(new Outstock(rs.getInt("out_no"), rs.getInt("pro_no"), rs.getInt("amount"), rs.getInt("out_price"), regdate));
+        outstockList.add(new Outstock(rs.getInt("outNo"), rs.getInt("proNo"), rs.getInt("amount"), rs.getInt("outPrice"), regdate));
       }
 
     } catch (Exception e) {
@@ -44,19 +44,19 @@ public class OutstockDAO {
     return outstockList;
   }
 
-  public Outstock getOutstock(int out_no){
+  public Outstock getOutstock(int outNo){
     conn = db.connect();
     Outstock outstock = new Outstock();
 
-    String sql = "select * from outstock where out_no=?";
+    String sql = "select * from outstock where outNo=?";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, out_no);
+      pstmt.setInt(1, outNo);
       rs = pstmt.executeQuery();
 
       if(rs.next()){
         String regdate = sdf.format(rs.getDate("regdate"));
-        outstock = new Outstock(rs.getInt("out_no"), rs.getInt("pro_no"), rs.getInt("amount"), rs.getInt("out_price"), regdate);
+        outstock = new Outstock(rs.getInt("outNo"), rs.getInt("proNo"), rs.getInt("amount"), rs.getInt("outPrice"), regdate);
       }
 
     } catch (Exception e) {
@@ -72,12 +72,12 @@ public class OutstockDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "insert into outstock(pro_no, amount, out_price) values(?, ?, ?)";
+    String sql = "insert into outstock(proNo, amount, outPrice) values(?, ?, ?)";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, outstock.getPro_no());
+      pstmt.setInt(1, outstock.getProNo());
       pstmt.setInt(2, outstock.getAmount());
-      pstmt.setInt(3, outstock.getOut_price());
+      pstmt.setInt(3, outstock.getOutPrice());
 
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {
@@ -92,13 +92,13 @@ public class OutstockDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "update outstock set pro_no=?, amount=?, out_price=? where out_no=?";
+    String sql = "update outstock set proNo=?, amount=?, outPrice=? where outNo=?";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, outstock.getPro_no());
+      pstmt.setInt(1, outstock.getProNo());
       pstmt.setInt(2, outstock.getAmount());
-      pstmt.setInt(3, outstock.getOut_price());
-      pstmt.setInt(4, outstock.getOut_no());
+      pstmt.setInt(3, outstock.getOutPrice());
+      pstmt.setInt(4, outstock.getOutNo());
 
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {
@@ -108,14 +108,14 @@ public class OutstockDAO {
     }
     return cnt;
   }
-  public int deleteOutstock(int out_no){
+  public int deleteOutstock(int outNo){
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "delete from outstock where out_no=?";
+    String sql = "delete from outstock where outNo=?";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, out_no);
+      pstmt.setInt(1, outNo);
 
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {

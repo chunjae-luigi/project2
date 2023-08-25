@@ -1,37 +1,37 @@
 package com.gnjBook.dto;
 
 public class Instock {
-  private int in_no;
-  private int pro_no;
+  private int inNo;
+  private int proNo;
   private int amount = 0;
-  private int in_price = 0;
+  private int inPrice = 0;
   private String regdate;
 
   public Instock() {
   }
 
-  public Instock(int in_no, int pro_no, int amount, int in_price, String regdate) {
-    this.in_no = in_no;
-    this.pro_no = pro_no;
+  public Instock(int inNo, int proNo, int amount, int inPrice, String regdate) {
+    this.inNo = inNo;
+    this.proNo = proNo;
     this.amount = amount;
-    this.in_price = in_price;
+    this.inPrice = inPrice;
     this.regdate = regdate;
   }
 
-  public int getIn_no() {
-    return in_no;
+  public int getInNo() {
+    return inNo;
   }
 
-  public void setIn_no(int in_no) {
-    this.in_no = in_no;
+  public void setInNo(int inNo) {
+    this.inNo = inNo;
   }
 
-  public int getPro_no() {
-    return pro_no;
+  public int getProNo() {
+    return proNo;
   }
 
-  public void setPro_no(int pro_no) {
-    this.pro_no = pro_no;
+  public void setProNo(int proNo) {
+    this.proNo = proNo;
   }
 
   public int getAmount() {
@@ -42,12 +42,12 @@ public class Instock {
     this.amount = amount;
   }
 
-  public int getIn_price() {
-    return in_price;
+  public int getInPrice() {
+    return inPrice;
   }
 
-  public void setIn_price(int in_price) {
-    this.in_price = in_price;
+  public void setInPrice(int inPrice) {
+    this.inPrice = inPrice;
   }
 
   public String getRegdate() {

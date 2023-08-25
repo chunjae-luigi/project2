@@ -29,7 +29,7 @@ public class CategoryDAO {
       rs = pstmt.executeQuery();
 
       while(rs.next()){
-        categoryList.add(new Category(rs.getString("category_id"), rs.getString("category_name")));
+        categoryList.add(new Category(rs.getString("categoryId"), rs.getString("categoryName")));
       }
 
     } catch (Exception e) {
@@ -45,14 +45,14 @@ public class CategoryDAO {
     conn = db.connect();
     Category category = new Category();
 
-    String sql = "select * from category where category_id=?";
+    String sql = "select * from category where categoryId=?";
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setString(1, id);
       rs = pstmt.executeQuery();
 
       if(rs.next()){
-        category = new Category(rs.getString("category_id"), rs.getString("category_name"));
+        category = new Category(rs.getString("categoryId"), rs.getString("categoryName"));
       }
 
     } catch (Exception e) {
@@ -68,7 +68,7 @@ public class CategoryDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "insert into category(category_id, category_name) values(?, ?)";
+    String sql = "insert into category(categoryId, categoryName) values(?, ?)";
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setString(1, id);
@@ -86,11 +86,11 @@ public class CategoryDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "update category set category_name=? where category_id=?";
+    String sql = "update category set categoryName=? where categoryId=?";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setString(1, category.getCategory_name());
-      pstmt.setString(2, category.getCategory_id());
+      pstmt.setString(1, category.getCategoryName());
+      pstmt.setString(2, category.getCategoryId());
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {
       throw new RuntimeException(e);
@@ -103,7 +103,7 @@ public class CategoryDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "delete from category where category_id=?";
+    String sql = "delete from category where categoryId=?";
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setString(1, id);

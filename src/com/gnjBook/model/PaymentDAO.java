@@ -29,7 +29,7 @@ public class PaymentDAO {
       rs = pstmt.executeQuery();
 
       while(rs.next()){
-        paymentList.add(new Payment(rs.getInt("pay_no"), rs.getString("mem_id"), rs.getInt("pro_no"), rs.getInt("pay_price"), rs.getInt("amount"), rs.getString("method"), rs.getString("pcom"), rs.getString("paccount"), rs.getInt("dno")));
+        paymentList.add(new Payment(rs.getInt("payNo"), rs.getString("memId"), rs.getInt("proNo"), rs.getInt("payPrice"), rs.getInt("amount"), rs.getString("method"), rs.getString("pcom"), rs.getString("paccount"), rs.getInt("dno")));
       }
 
     } catch (Exception e) {
@@ -41,18 +41,18 @@ public class PaymentDAO {
     return paymentList;
   }
 
-  public Payment getpayment(int pay_no){
+  public Payment getpayment(int payNo){
     conn = db.connect();
     Payment payment = new Payment();
 
-    String sql = "select * from payment where pay_no=?";
+    String sql = "select * from payment where payNo=?";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, pay_no);
+      pstmt.setInt(1, payNo);
       rs = pstmt.executeQuery();
 
       if(rs.next()){
-        payment = new Payment(rs.getInt("pay_no"), rs.getString("mem_id"), rs.getInt("pro_no"), rs.getInt("pay_price"), rs.getInt("amount"), rs.getString("method"), rs.getString("pcom"), rs.getString("paccount"), rs.getInt("dno"));
+        payment = new Payment(rs.getInt("payNo"), rs.getString("memId"), rs.getInt("proNo"), rs.getInt("payPrice"), rs.getInt("amount"), rs.getString("method"), rs.getString("pcom"), rs.getString("paccount"), rs.getInt("dno"));
       }
 
     } catch (Exception e) {
@@ -68,12 +68,12 @@ public class PaymentDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "insert into payment(mem_id, pro_no, pay_price, amount, method, pcom, paccount, dno) values(?, ?, ?, ?, ?, ?, ?, ?)";
+    String sql = "insert into payment(memId, proNo, payPrice, amount, method, pcom, paccount, dno) values(?, ?, ?, ?, ?, ?, ?, ?)";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setString(1, payment.getMem_id());
-      pstmt.setInt(2, payment.getPro_no());
-      pstmt.setInt(3, payment.getPay_price());
+      pstmt.setString(1, payment.getMemId());
+      pstmt.setInt(2, payment.getProNo());
+      pstmt.setInt(3, payment.getPayPrice());
       pstmt.setInt(4, payment.getAmount());
       pstmt.setString(5, payment.getMethod());
       pstmt.setString(6, payment.getPcom());
@@ -93,18 +93,18 @@ public class PaymentDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "update payment set mem_id=?, pro_no=?, pay_price=?, amount=?, method=?, pcom=?, paccount=?, dno=? where pay_no=?";
+    String sql = "update payment set memId=?, proNo=?, payPrice=?, amount=?, method=?, pcom=?, paccount=?, dno=? where payNo=?";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setString(1, payment.getMem_id());
-      pstmt.setInt(2, payment.getPro_no());
-      pstmt.setInt(3, payment.getPay_price());
+      pstmt.setString(1, payment.getMemId());
+      pstmt.setInt(2, payment.getProNo());
+      pstmt.setInt(3, payment.getPayPrice());
       pstmt.setInt(4, payment.getAmount());
       pstmt.setString(5, payment.getMethod());
       pstmt.setString(6, payment.getPcom());
       pstmt.setString(7, payment.getPaccount());
       pstmt.setInt(8, payment.getDno());
-      pstmt.setInt(9, payment.getPay_no());
+      pstmt.setInt(9, payment.getPayNo());
 
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {
@@ -114,14 +114,14 @@ public class PaymentDAO {
     }
     return cnt;
   }
-  public int deletePayment(int pay_no){
+  public int deletePayment(int payNo){
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "delete from payment where pay_no=?";
+    String sql = "delete from payment where payNo=?";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, pay_no);
+      pstmt.setInt(1, payNo);
 
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {
@@ -137,14 +137,14 @@ public class PaymentDAO {
     conn = db.connect();
     List<Payment> paymentList = new ArrayList<>();
 
-    String sql = "select * from payment where mem_id=?";
+    String sql = "select * from payment where memId=?";
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setString(1, id);
       rs = pstmt.executeQuery();
 
       while(rs.next()){
-        paymentList.add(new Payment(rs.getInt("pay_no"), rs.getString("mem_id"), rs.getInt("pro_no"), rs.getInt("pay_price"), rs.getInt("amount"), rs.getString("method"), rs.getString("pcom"), rs.getString("paccount"), rs.getInt("dno")));
+        paymentList.add(new Payment(rs.getInt("payNo"), rs.getString("memId"), rs.getInt("proNo"), rs.getInt("payPrice"), rs.getInt("amount"), rs.getString("method"), rs.getString("pcom"), rs.getString("paccount"), rs.getInt("dno")));
       }
 
     } catch (Exception e) {

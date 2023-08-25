@@ -2,8 +2,8 @@ package com.gnjBook.dto;
 
 public class Delivery {
   private int dno;
-  private int pay_no;
-  private String mem_id;
+  private int payNo;
+  private String memId;
   private String name;
   private String tel;
   private String address;
@@ -18,10 +18,10 @@ public class Delivery {
   public Delivery() {
   }
 
-  public Delivery(int dno, int pay_no, String mem_id, String name, String tel, String address, String dcom, String dtel, int state, String etd, String eta, String dcode) {
+  public Delivery(int dno, int payNo, String memId, String name, String tel, String address, String dcom, String dtel, int state, String etd, String eta, String dcode) {
     this.dno = dno;
-    this.pay_no = pay_no;
-    this.mem_id = mem_id;
+    this.payNo = payNo;
+    this.memId = memId;
     this.name = name;
     this.tel = tel;
     this.address = address;
@@ -41,20 +41,20 @@ public class Delivery {
     this.dno = dno;
   }
 
-  public int getPay_no() {
-    return pay_no;
+  public int getPayNo() {
+    return payNo;
   }
 
-  public void setPay_no(int pay_no) {
-    this.pay_no = pay_no;
+  public void setPayNo(int payNo) {
+    this.payNo = payNo;
   }
 
-  public String getMem_id() {
-    return mem_id;
+  public String getMemId() {
+    return memId;
   }
 
-  public void setMem_id(String mem_id) {
-    this.mem_id = mem_id;
+  public void setMemId(String memId) {
+    this.memId = memId;
   }
 
   public String getName() {

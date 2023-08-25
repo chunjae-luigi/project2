@@ -2,24 +2,24 @@ package com.gnjBook.dto;
 
 public class Review {
   private int rno;
-  private String mem_id;
-  private int pay_no;
+  private String memId;
+  private int payNo;
   private int star = 5;
   private String content;
   private String regdate;
-  private int pro_no;
+  private int proNo;
 
   public Review() {
   }
 
-  public Review(int rno, String mem_id, int pay_no, int star, String content, String regdate, int pro_no) {
+  public Review(int rno, String memId, int payNo, int star, String content, String regdate, int proNo) {
     this.rno = rno;
-    this.mem_id = mem_id;
-    this.pay_no = pay_no;
+    this.memId = memId;
+    this.payNo = payNo;
     this.star = star;
     this.content = content;
     this.regdate = regdate;
-    this.pro_no = pro_no;
+    this.proNo = proNo;
   }
 
   public int getRno() {
@@ -30,20 +30,20 @@ public class Review {
     this.rno = rno;
   }
 
-  public String getMem_id() {
-    return mem_id;
+  public String getMemId() {
+    return memId;
   }
 
-  public void setMem_id(String mem_id) {
-    this.mem_id = mem_id;
+  public void setMemId(String memId) {
+    this.memId = memId;
   }
 
-  public int getPay_no() {
-    return pay_no;
+  public int getPayNo() {
+    return payNo;
   }
 
-  public void setPay_no(int pay_no) {
-    this.pay_no = pay_no;
+  public void setPayNo(int payNo) {
+    this.payNo = payNo;
   }
 
   public int getStar() {
@@ -70,11 +70,11 @@ public class Review {
     this.regdate = regdate;
   }
 
-  public int getPro_no() {
-    return pro_no;
+  public int getProNo() {
+    return proNo;
   }
 
-  public void setPro_no(int pro_no) {
-    this.pro_no = pro_no;
+  public void setProNo(int proNo) {
+    this.proNo = proNo;
   }
 }

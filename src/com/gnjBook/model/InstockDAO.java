@@ -32,7 +32,7 @@ public class InstockDAO {
 
       while(rs.next()){
         String regdate = sdf.format(rs.getDate("regdate"));
-        instockList.add(new Instock(rs.getInt("in_no"), rs.getInt("pro_no"), rs.getInt("amount"), rs.getInt("in_price"), regdate));
+        instockList.add(new Instock(rs.getInt("inNo"), rs.getInt("proNo"), rs.getInt("amount"), rs.getInt("inPrice"), regdate));
       }
 
     } catch (Exception e) {
@@ -44,19 +44,19 @@ public class InstockDAO {
     return instockList;
   }
 
-  public Instock getInstock(int in_no){
+  public Instock getInstock(int inNo){
     conn = db.connect();
     Instock instock = new Instock();
 
     String sql = "select * from instock where in_no=?";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, in_no);
+      pstmt.setInt(1, inNo);
       rs = pstmt.executeQuery();
 
       if(rs.next()){
         String regdate = sdf.format(rs.getDate("regdate"));
-        instock = new Instock(rs.getInt("in_no"), rs.getInt("pro_no"), rs.getInt("amount"), rs.getInt("in_price"), regdate);
+        instock = new Instock(rs.getInt("inNo"), rs.getInt("proNo"), rs.getInt("amount"), rs.getInt("inPrice"), regdate);
       }
 
     } catch (Exception e) {
@@ -72,12 +72,12 @@ public class InstockDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "insert into instock(pro_no, amount, in_price) values(?, ?, ?)";
+    String sql = "insert into instock(proNo, amount, inPrice) values(?, ?, ?)";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, instock.getPro_no());
+      pstmt.setInt(1, instock.getProNo());
       pstmt.setInt(2, instock.getAmount());
-      pstmt.setInt(3, instock.getIn_price());
+      pstmt.setInt(3, instock.getInPrice());
 
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {
@@ -92,13 +92,13 @@ public class InstockDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "update instock set pro_no=?, amount=?, in_price=? where in_no=?";
+    String sql = "update instock set proNo=?, amount=?, inPrice=? where inNo=?";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, instock.getPro_no());
+      pstmt.setInt(1, instock.getProNo());
       pstmt.setInt(2, instock.getAmount());
-      pstmt.setInt(3, instock.getIn_price());
-      pstmt.setInt(4, instock.getIn_no());
+      pstmt.setInt(3, instock.getInPrice());
+      pstmt.setInt(4, instock.getInNo());
 
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {
@@ -108,14 +108,14 @@ public class InstockDAO {
     }
     return cnt;
   }
-  public int deleteInstock(int in_no){
+  public int deleteInstock(int inNo){
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "delete from instock where in_no=?";
+    String sql = "delete from instock where inNo=?";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, in_no);
+      pstmt.setInt(1, inNo);
 
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {
@@ -131,12 +131,12 @@ public class InstockDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "insert into instock(pro_no, amount, in_price) values(?, ?, ?)";
+    String sql = "insert into instock(proNo, amount, inPrice) values(?, ?, ?)";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, instock.getPro_no());
+      pstmt.setInt(1, instock.getProNo());
       pstmt.setInt(2, instock.getAmount());
-      pstmt.setInt(3, instock.getIn_price());
+      pstmt.setInt(3, instock.getInPrice());
 
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {

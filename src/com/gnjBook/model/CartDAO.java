@@ -29,7 +29,7 @@ public class CartDAO {
       rs = pstmt.executeQuery();
 
       while(rs.next()){
-        cartList.add(new Cart(rs.getInt("cart_no"), rs.getString("mem_id"), rs.getInt("pro_no"), rs.getInt("amount")));
+        cartList.add(new Cart(rs.getInt("cartNo"), rs.getString("memId"), rs.getInt("proNo"), rs.getInt("amount")));
       }
 
     } catch (Exception e) {
@@ -45,14 +45,14 @@ public class CartDAO {
     conn = db.connect();
     Cart cart = new Cart();
 
-    String sql = "select * from cart where cart_no=?";
+    String sql = "select * from cart where cartNo=?";
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setInt(1, cart_no);
       rs = pstmt.executeQuery();
 
       if(rs.next()){
-        cart = new Cart(rs.getInt("cart_no"), rs.getString("mem_id"), rs.getInt("pro_no"), rs.getInt("amount"));
+        cart = new Cart(rs.getInt("cartNo"), rs.getString("memId"), rs.getInt("proNo"), rs.getInt("amount"));
       }
 
     } catch (Exception e) {
@@ -68,11 +68,11 @@ public class CartDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "insert into cart(mem_id, pro_no, amount) values(?, ?, ?)";
+    String sql = "insert into cart(memId, proNo, amount) values(?, ?, ?)";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setString(1, cart.getMem_id());
-      pstmt.setInt(2, cart.getPro_no());
+      pstmt.setString(1, cart.getMemId());
+      pstmt.setInt(2, cart.getProNo());
       pstmt.setInt(3, cart.getAmount());
 
       cnt = pstmt.executeUpdate();
@@ -88,13 +88,13 @@ public class CartDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "update cart set mem_id=?, pro_no=?, amount=? where cart_no=?";
+    String sql = "update cart set memId=?, proNo=?, amount=? where cartNo=?";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setString(1, cart.getMem_id());
-      pstmt.setInt(2, cart.getPro_no());
+      pstmt.setString(1, cart.getMemId());
+      pstmt.setInt(2, cart.getProNo());
       pstmt.setInt(3, cart.getAmount());
-      pstmt.setInt(4, cart.getCart_no());
+      pstmt.setInt(4, cart.getCartNo());
 
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {
@@ -108,7 +108,7 @@ public class CartDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "delete from cart where cart_no=?";
+    String sql = "delete from cart where cartNo=?";
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setInt(1, cart_no);
@@ -127,7 +127,7 @@ public class CartDAO {
     conn = db.connect();
     List<Cart> cartList = new ArrayList<>();
 
-    String sql = "select * from cart where mem_id=?";
+    String sql = "select * from cart where memId=?";
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setString(1, mem_id);
@@ -135,7 +135,7 @@ public class CartDAO {
       rs = pstmt.executeQuery();
 
       while(rs.next()){
-        cartList.add(new Cart(rs.getInt("cart_no"), rs.getString("mem_id"), rs.getInt("pro_no"), rs.getInt("amount")));
+        cartList.add(new Cart(rs.getInt("cartNo"), rs.getString("memId"), rs.getInt("proNo"), rs.getInt("amount")));
       }
 
     } catch (Exception e) {

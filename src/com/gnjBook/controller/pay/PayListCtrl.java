@@ -33,13 +33,13 @@ public class PayListCtrl extends HttpServlet {
     ProductDAO productDAO = new ProductDAO();
     List<Product> productList = new ArrayList<>();
     for(Payment p: payList){
-      productList.add(productDAO.getProduct(p.getPro_no()));
+      productList.add(productDAO.getProduct(p.getProNo()));
     }
 
     DeliveryDAO deliveryDAO = new DeliveryDAO();
     List<Delivery> delList = new ArrayList<>();
     for(Payment p: payList){
-      delList.add(deliveryDAO.getPayDeliveryList(p.getPay_no()));
+      delList.add(deliveryDAO.getPayDeliveryList(p.getPayNo()));
     }
 
     List<PayVO> payvoList = new ArrayList<>();

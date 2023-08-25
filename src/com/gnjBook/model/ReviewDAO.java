@@ -14,7 +14,6 @@ public class ReviewDAO {
   Connection conn = null;
   PreparedStatement pstmt = null;
   ResultSet rs = null;
-  String key = "%02x";
   final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
   public ReviewDAO() {
@@ -32,7 +31,7 @@ public class ReviewDAO {
       while(rs.next()){
         String regdate = sdf.format(rs.getDate("regdate"));
 
-        reviewList.add(new Review(rs.getInt("rno"), rs.getString("mem_id"), rs.getInt("pay_no"), rs.getInt("star"), rs.getString("content"), regdate, rs.getInt("pro_no")));
+        reviewList.add(new Review(rs.getInt("rno"), rs.getString("memId"), rs.getInt("payNo"), rs.getInt("star"), rs.getString("content"), regdate, rs.getInt("proNo")));
       }
 
     } catch (Exception e) {
@@ -59,7 +58,7 @@ public class ReviewDAO {
       if(rs.next()){
         String regdate = sdf.format(rs.getDate("regdate"));
 
-        review = new Review(rs.getInt("rno"), rs.getString("mem_id"), rs.getInt("pay_no"), rs.getInt("star"), rs.getString("content"), regdate, rs.getInt("pro_no"));
+        review = new Review(rs.getInt("rno"), rs.getString("memId"), rs.getInt("payNo"), rs.getInt("star"), rs.getString("content"), regdate, rs.getInt("proNo"));
       }
 
     } catch (Exception e) {
@@ -76,15 +75,15 @@ public class ReviewDAO {
 
     conn = db.connect();
 
-    String sql = "insert into review(mem_id, pay_no, star, content, pro_no) values (?, ?, ?, ?, ?)";
+    String sql = "insert into review(memId, payNo, star, content, proNo) values (?, ?, ?, ?, ?)";
 
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setString(1, review.getMem_id());
-      pstmt.setInt(2, review.getPay_no());
+      pstmt.setString(1, review.getMemId());
+      pstmt.setInt(2, review.getPayNo());
       pstmt.setInt(3, review.getStar());
       pstmt.setString(4, review.getContent());
-      pstmt.setInt(5, review.getPro_no());
+      pstmt.setInt(5, review.getProNo());
 
       cnt = pstmt.executeUpdate();
 
@@ -101,15 +100,15 @@ public class ReviewDAO {
     int cnt = 0;
 
     conn = db.connect();
-    String sql = "update review set mem_id=?, pay_no=?, star=?, content=?, pro_no=? where rno=?";
+    String sql = "update review set memId=?, payNo=?, star=?, content=?, proNo=? where rno=?";
 
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setString(1, review.getMem_id());
-      pstmt.setInt(2, review.getPay_no());
+      pstmt.setString(1, review.getMemId());
+      pstmt.setInt(2, review.getPayNo());
       pstmt.setInt(3, review.getStar());
       pstmt.setString(4, review.getContent());
-      pstmt.setInt(5, review.getPro_no());
+      pstmt.setInt(5, review.getProNo());
       pstmt.setInt(6, review.getRno());
 
       cnt = pstmt.executeUpdate();

@@ -32,7 +32,7 @@ public class BookAddProCTRL extends HttpServlet {
 
             MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
             Product product= new Product();
-            product.setCategory_id(mr.getParameter("category"));
+            product.setCategoryId(mr.getParameter("category"));
             product.setTitle(mr.getParameter("title"));
             product.setPrice(Integer.parseInt(mr.getParameter("price")));
             product.setContent(mr.getParameter("content"));
@@ -63,7 +63,7 @@ public class BookAddProCTRL extends HttpServlet {
 
             if(cnt>0){
                 List<Product> productList = new ArrayList<>();
-                productList = dao.getCategoryProduct(product.getCategory_id());
+                productList = dao.getCategoryProduct(product.getCategoryId());
                 request.setAttribute("bookList",productList);
                 RequestDispatcher view = request.getRequestDispatcher("/BookListAdmin.do");
                 view.forward(request, response);

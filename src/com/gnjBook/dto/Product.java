@@ -1,8 +1,8 @@
 package com.gnjBook.dto;
 
 public class Product {
-  private int pro_no;
-  private String category_id;
+  private int proNo;
+  private String categoryId;
   private String procategory;
   private int price = 0;
   private String title;
@@ -16,9 +16,10 @@ public class Product {
   public Product() {
   }
 
-  public Product(int pro_no, String category_id, int price, String title, String description, String content, String thumbnail, String img, String video, String regdate) {
-    this.pro_no = pro_no;
-    this.category_id = category_id;
+  public Product(int proNo, String categoryId, String procategory, int price, String title, String description, String content, String thumbnail, String img, String video, String regdate) {
+    this.proNo = proNo;
+    this.categoryId = categoryId;
+    this.procategory = procategory;
     this.price = price;
     this.title = title;
     this.description = description;
@@ -27,34 +28,30 @@ public class Product {
     this.img = img;
     this.video = video;
     this.regdate = regdate;
-    this.setProcategory();
   }
 
-  public int getPro_no() {
-    return pro_no;
+  public int getProNo() {
+    return proNo;
   }
 
-  public void setPro_no(int pro_no) {
-    this.pro_no = pro_no;
+  public void setProNo(int proNo) {
+    this.proNo = proNo;
   }
 
-  public String getCategory_id() {
-    return category_id;
+  public String getCategoryId() {
+    return categoryId;
   }
 
-  public void setCategory_id(String category_id) {
-    this.category_id = category_id;
-    this.setProcategory();
+  public void setCategoryId(String categoryId) {
+    this.categoryId = categoryId;
   }
 
   public String getProcategory() {
     return procategory;
   }
 
-  public void setProcategory() {
-    if(this.category_id!=null && this.pro_no!=0){
-        this.procategory = this.category_id + "_" + this.pro_no;
-    }
+  public void setProcategory(String procategory) {
+    this.procategory = procategory;
   }
 
   public int getPrice() {

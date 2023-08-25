@@ -23,7 +23,7 @@ public class JoinProCtrl extends HttpServlet {
         new_member.setTel(request.getParameter("tel"));
         new_member.setBirth(request.getParameter("birth"));
         new_member.setPostcode(request.getParameter("postcode"));
-        new_member.setAddress(request.getParameter("address1")+" "+request.getParameter("address2"));
+        new_member.setAddress(request.getParameter("address1")+"/"+request.getParameter("address2"));
 
         MemberDAO dao = new MemberDAO();
         int cnt = dao.addMember(new_member);

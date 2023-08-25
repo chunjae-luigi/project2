@@ -24,7 +24,7 @@ public class BookGetAdminCtrl extends HttpServlet {
     Product product = dao.getProduct(id);
 
     CategoryDAO cdao = new CategoryDAO();
-    Category category = cdao.getCategory(product.getCategory_id());
+    Category category = cdao.getCategory(product.getCategoryId());
 
     request.setAttribute("book", product);
     request.setAttribute("category", category);

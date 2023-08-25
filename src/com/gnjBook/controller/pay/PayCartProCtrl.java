@@ -35,7 +35,7 @@ public class PayCartProCtrl extends HttpServlet {
     ProductDAO productDAO = new ProductDAO();
     List<Product> productList = new ArrayList<>();
     for(Cart c: cartList){
-      productList.add(productDAO.getProduct(c.getPro_no()));
+      productList.add(productDAO.getProduct(c.getProNo()));
     }
 
     // 출고 처리
@@ -46,9 +46,9 @@ public class PayCartProCtrl extends HttpServlet {
     List<Payment> payList = new ArrayList<>();
     for(int i=0; i<cartList.size(); i++){
       Payment pay = new Payment();
-      pay.setMem_id(id);
-      pay.setPro_no(productList.get(i).getPro_no());
-      pay.setPay_price(productList.get(i).getPrice());
+      pay.setMemId(id);
+      pay.setProNo(productList.get(i).getProNo());
+      pay.setPayPrice(productList.get(i).getPrice());
       pay.setAmount(cartList.get(i).getAmount());
       pay.setMethod(method);
       pay.setPcom(pcom);
@@ -59,7 +59,7 @@ public class PayCartProCtrl extends HttpServlet {
     List<Delivery> delList = new ArrayList<>();
     for(int i=0; i<cartList.size(); i++){
       Delivery del = new Delivery();
-      del.setMem_id(id);
+      del.setMemId(id);
       del.setAddress(request.getParameter("address1")+" "+request.getParameter("address2")+" "+request.getParameter("postcode"));
       del.setTel(request.getParameter("tel"));
       del.setName(request.getParameter("name"));
