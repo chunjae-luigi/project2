@@ -2,9 +2,11 @@
   <library name="jsoup" type="repository">
     <properties maven-id="org.jsoup:jsoup:1.12.1" />
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.12.1/jsoup-1.12.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/jsoup-1.12.1.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/jsoup-1.12.1-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

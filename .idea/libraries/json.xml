@@ -2,9 +2,11 @@
   <library name="json" type="repository">
     <properties maven-id="org.json:json:20151123" />
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/json/json/20151123/json-20151123.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/json-20151123.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/json-20151123-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

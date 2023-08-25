@@ -11,6 +11,13 @@
         </webroots>
       </configuration>
     </facet>
+    <facet type="javaeeApplication" name="javaEEApplication">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="application.xml" url="file://$MODULE_DIR$/META-INF/application.xml" />
+        </descriptors>
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
@@ -19,17 +26,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="servlets.cos" level="project" />
-    <orderEntry type="library" name="junit" level="project" />
+    <orderEntry type="library" name="javax.el.api" level="project" />
+    <orderEntry type="library" name="apache.tomcat.servlet.api" level="project" />
     <orderEntry type="library" name="json" level="project" />
     <orderEntry type="library" name="jsoup" level="project" />
     <orderEntry type="library" name="javax.json.api" level="project" />
     <orderEntry type="library" name="google.code.gson" level="project" />
-    <orderEntry type="library" name="net.markenwerk.utils.json.parser" level="project" />
-    <orderEntry type="library" name="mariadb.jdbc.java.client" level="project" />
-    <orderEntry type="library" name="javax.servlet.api" level="project" />
-    <orderEntry type="library" name="jstl" level="project" />
-    <orderEntry type="library" name="taglibs.standard" level="project" />
-    <orderEntry type="library" name="javax.el.api" level="project" />
+    <orderEntry type="library" exported="" name="cos" level="project" />
   </component>
 </module>

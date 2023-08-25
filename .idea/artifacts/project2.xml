@@ -3,22 +3,17 @@
     <output-path>$PROJECT_DIR$/out/artifacts/project2</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
-        <element id="directory" name="classes">
-          <element id="module-output" name="project2" />
-        </element>
         <element id="directory" name="lib">
+          <element id="archive" name="project2.jar">
+            <element id="module-output" name="project2" />
+          </element>
+          <element id="library" level="project" name="cos" />
+          <element id="library" level="project" name="apache.tomcat.servlet.api" />
           <element id="library" level="project" name="google.code.gson" />
           <element id="library" level="project" name="javax.el.api" />
           <element id="library" level="project" name="javax.json.api" />
-          <element id="library" level="project" name="javax.servlet.api" />
           <element id="library" level="project" name="json" />
           <element id="library" level="project" name="jsoup" />
-          <element id="library" level="project" name="jstl" />
-          <element id="library" level="project" name="junit" />
-          <element id="library" level="project" name="mariadb.jdbc.java.client" />
-          <element id="library" level="project" name="net.markenwerk.utils.json.parser" />
-          <element id="library" level="project" name="servlets.cos" />
-          <element id="library" level="project" name="taglibs.standard" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="project2/web/Web" />
