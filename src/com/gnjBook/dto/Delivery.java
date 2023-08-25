@@ -4,8 +4,10 @@ public class Delivery {
   private int dno;
   private int pay_no;
   private String mem_id;
-  private String daddress;
-  private String mem_tel;
+  private String name;
+  private String tel;
+  private String address;
+
   private String dcom;
   private String dtel;
   private int state = 0;
@@ -16,12 +18,13 @@ public class Delivery {
   public Delivery() {
   }
 
-  public Delivery(int dno, int pay_no, String mem_id, String daddress, String mem_tel, String dcom, String dtel, int state, String etd, String eta, String dcode) {
+  public Delivery(int dno, int pay_no, String mem_id, String name, String tel, String address, String dcom, String dtel, int state, String etd, String eta, String dcode) {
     this.dno = dno;
     this.pay_no = pay_no;
     this.mem_id = mem_id;
-    this.daddress = daddress;
-    this.mem_tel = mem_tel;
+    this.name = name;
+    this.tel = tel;
+    this.address = address;
     this.dcom = dcom;
     this.dtel = dtel;
     this.state = state;
@@ -54,20 +57,28 @@ public class Delivery {
     this.mem_id = mem_id;
   }
 
-  public String getDaddress() {
-    return daddress;
+  public String getName() {
+    return name;
   }
 
-  public void setDaddress(String daddress) {
-    this.daddress = daddress;
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public String getMem_tel() {
-    return mem_tel;
+  public String getTel() {
+    return tel;
   }
 
-  public void setMem_tel(String mem_tel) {
-    this.mem_tel = mem_tel;
+  public void setTel(String tel) {
+    this.tel = tel;
+  }
+
+  public String getAddress() {
+    return address;
+  }
+
+  public void setAddress(String address) {
+    this.address = address;
   }
 
   public String getDcom() {

@@ -1,4 +1,4 @@
-package com.gnjBook.controller.cart;
+package com.gnjBook.controller.pay;
 
 import com.gnjBook.dto.Cart;
 import com.gnjBook.dto.Member;
@@ -18,8 +18,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/CartPay.do") // 사용자가 보는 이름
-public class CartPayCtrl extends HttpServlet {
+@WebServlet("/PayCart.do") // 사용자가 보는 이름
+public class PayCartCtrl extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     String[] checked = request.getParameterValues("cartCheck");
@@ -44,11 +44,11 @@ public class CartPayCtrl extends HttpServlet {
 
     MemberDAO memberDAO = new MemberDAO();
     HttpSession session = request.getSession(); // 세션 생성
-    Member customer = memberDAO.getMember((String) session.getAttribute("session_id"));
+    Member member = memberDAO.getMember((String) session.getAttribute("session_id"));
 
-    request.setAttribute("cus", customer);
+    request.setAttribute("mem", member);
 
-    RequestDispatcher view = request.getRequestDispatcher("/cart/cartPay.jsp");
+    RequestDispatcher view = request.getRequestDispatcher("/pay/cartPay.jsp");
     view.forward(request,response);
   }
 }

@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
     <%@ include file="../common.jsp" %>
-    <style>
-
-    </style>
 </head>
 <body>
 <%@ include file="../header.jsp" %>
@@ -22,53 +19,53 @@
         </ol>
     </nav>
     <form class="form_row" action="${rootPath}/JoinPro.do" method="post" onsubmit="return inform(this)">
-            <div class="row">
-                <div class="col-2"><label for="name" class="form-label">이름</label></div>
-                <div class="col-8"><input type="text" class="form-control" id="name" name="name"></div>
+        <div class="row">
+            <div class="col-2"><label for="name" class="form-label">이름</label></div>
+            <div class="col-8"><input type="text" class="form-control" id="name" name="name"></div>
+        </div>
+        <div class="row">
+            <div class="col-2"><label for="id" class="form-label">아이디</label></div>
+            <div class="col-8">
+                <input type="text" class="form-control" id="id" name="id" aria-describedby="idStatus">
+                <div id="idStatus" class="form-text text-start">아이디 중복 검사를 진행해주세요.</div>
             </div>
-            <div class="row">
-                <div class="col-2"><label for="id" class="form-label">아이디</label></div>
-                <div class="col-8">
-                    <input type="text" class="form-control" id="id" name="id" aria-describedby="idStatus">
-                    <div id="idStatus" class="form-text text-start">아이디 중복 검사를 진행해주세요.</div>
-                </div>
-                <div class="col-2"><button type="button" class="btn btn-primary mb-3" onclick="idcheck()">중복검사</button></div>
-                <input type="hidden" id="idck" value="no">
+            <div class="col-2"><button type="button" class="btn btn-primary mb-3" onclick="idcheck()">중복검사</button></div>
+            <input type="hidden" id="idck" value="no">
+        </div>
+        <div class="row">
+            <div class="col-2"><label for="pw" class="form-label">비밀번호</label></div>
+            <div class="col-3"><input type="password" class="form-control" id="pw" name="pw" placeholder="비밀번호" required></div>
+            <div class="col-3">
+                <input type="password" class="form-control" id="pwchk" name="pwchk" placeholder="비밀번호 확인" required>
             </div>
-            <div class="row">
-                <div class="col-2"><label for="pw" class="form-label">비밀번호</label></div>
-                <div class="col-3"><input type="password" class="form-control" id="pw" name="pw" placeholder="비밀번호" required></div>
-                <div class="col-3">
-                    <input type="password" class="form-control" id="pwchk" name="pwchk" placeholder="비밀번호 확인" required>
-                </div>
-                <div class="col-4"><div id="pwStatus" class="form-text text-start">비밀번호와 비밀번호 확인이 일치하지 않습니다.</div></div>
-                <input type="hidden" id="pwck" value="no">
-            </div>
-            <div class="row">
-                <div class="col-2"><label for="email" class="form-label">이메일</label></div>
-                <div class="col-8"><input type="email" class="form-control" id="email" name="email"></div>
-            </div>
-            <div class="row">
-                <div class="col-2"><label for="tel" class="form-label">전화번호</label></div>
-                <div class="col-8"><input type="tel" class="form-control" id="tel" name="tel"></div>
-            </div>
-            <div class="row">
-                <div class="col-2"><label for="birth">생년월일</label></div>
-                <div class="col-4"><input type="date" class="form-control" id="birth" name="birth" value="1999-01-01"></div>
-            </div>
-            <div class="row">
-                <div class="col-2"><label for="address1" class="form-label">주소</label></div>
-                <div class="col-4"><input type="text" class="form-control" id="address1" name="address1"></div>
-                <div class="col-4"><input type="text" class="form-control" id="postcode" name="postcode" placeholder="우편번호"></div>
-                <div class="col-2"><button type="button" class="btn btn-primary mb-3" onclick="findAddr()">우편번호 검색</button></div>
-            </div>
-            <div class="row">
-                <div class="col-2"><label for="address2" class="form-label">상세 주소</label></div>
-                <div class="col-8"><input type="text" class="form-control" id="address2" name="address2"></div>
-                <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-            </div>
-            <input type="submit" class="btn btn-primary mb-3" value="가입하기">
-        </form>
+            <div class="col-4"><div id="pwStatus" class="form-text text-start">비밀번호와 비밀번호 확인이 일치하지 않습니다.</div></div>
+            <input type="hidden" id="pwck" value="no">
+        </div>
+        <div class="row">
+            <div class="col-2"><label for="email" class="form-label">이메일</label></div>
+            <div class="col-8"><input type="email" class="form-control" id="email" name="email"></div>
+        </div>
+        <div class="row">
+            <div class="col-2"><label for="tel" class="form-label">전화번호</label></div>
+            <div class="col-8"><input type="tel" class="form-control" id="tel" name="tel"></div>
+        </div>
+        <div class="row">
+            <div class="col-2"><label for="birth">생년월일</label></div>
+            <div class="col-4"><input type="date" class="form-control" id="birth" name="birth" value="1999-01-01"></div>
+        </div>
+        <div class="row">
+            <div class="col-2"><label for="address1" class="form-label">주소</label></div>
+            <div class="col-4"><input type="text" class="form-control" id="address1" name="address1"></div>
+            <div class="col-4"><input type="text" class="form-control" id="postcode" name="postcode" placeholder="우편번호"></div>
+            <div class="col-2"><button type="button" class="btn btn-primary mb-3" onclick="findAddr()">우편번호 검색</button></div>
+        </div>
+        <div class="row">
+            <div class="col-2"><label for="address2" class="form-label">상세 주소</label></div>
+            <div class="col-8"><input type="text" class="form-control" id="address2" name="address2"></div>
+            <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        </div>
+        <input type="submit" class="btn btn-primary mb-3" value="가입하기">
+    </form>
 </div>
 
 <%@ include file="../footer.jsp" %>

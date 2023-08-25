@@ -28,9 +28,10 @@
     <c:set var="category" value="${category}"/>
     <div class="row">
         <div class="col-4">
-            <img class="card-img-top" src="${rootPath}/storage/${book.imgSrc }" alt="${book.title }" width="100"/>
+            <img class="card-img-top" src="${rootPath}/storage/${book.thumbnail }" alt="${book.title }" width="100"/>
         </div>
         <div class="col-8">
+            <form action="" method="post">
             <table class="table">
                 <thead>
                 <tr>
@@ -40,14 +41,32 @@
                 <tbody>
                 <tr>
                     <th scope="row">카테고리</th>
-                    <td>${category.main} ${category.sub}</td>
+                    <td>${category.category_name} </td>
                 </tr>
                 <tr>
                     <th scope="row">가격</th>
                     <td>${book.price}</td>
                 </tr>
+                <tr>
+                    <td>
+                        <label for="amount">수량</label>
+                    </td>
+                    <td>
+                        <input id="amount" name="amount" type="number" class="form-control" value="1">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="btn btn-primary" type="submit" value="장바구니 추가" onclick="addCart()">
+                    </td>
+                    <td>
+                        <input type="hidden" name="pro_no" value="${book.pro_no}">
+                        <input class="btn btn-primary" type="submit" value="결제하기" onclick="payProduct()">
+                    </td>
+                </tr>
                 </tbody>
             </table>
+            </form>
         </div>
     </div>
     <div class="content">
@@ -59,3 +78,12 @@
 <%@ include file="../footer.jsp" %>
 </body>
 </html>
+
+<script>
+    function addCart(){
+        $("form").attr("action", "${rootPath}/CartAdd.do");
+    }
+    function payProduct(){
+        $("form").attr("action", "${rootPath}/PayProduct.do");
+    }
+</script>

@@ -131,4 +131,28 @@ public class PaymentDAO {
     }
     return cnt;
   }
+
+  //  특정 회원의 결제 내역 가져오기
+  public List<Payment> getMemberPaymentList(String id){
+    conn = db.connect();
+    List<Payment> paymentList = new ArrayList<>();
+
+    String sql = "select * from payment where mem_id=?";
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, id);
+      rs = pstmt.executeQuery();
+
+      while(rs.next()){
+        paymentList.add(new Payment(rs.getInt("pay_no"), rs.getString("mem_id"), rs.getInt("pro_no"), rs.getInt("pay_price"), rs.getInt("amount"), rs.getString("method"), rs.getString("pcom"), rs.getString("paccount"), rs.getInt("dno")));
+      }
+
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    } finally{
+      db.close(rs, pstmt, conn);
+    }
+
+    return paymentList;
+  }
 }

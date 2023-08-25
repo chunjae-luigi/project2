@@ -29,14 +29,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="${rootPath}/product/introduce.jsp">쌤쌤 소개</a>
                         </li>
+                        <li class="nav-item"><a href="${rootPath }/BookList.do?category=*" class="nav-link">전체 상품</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="${rootPath }/ProList.do" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                상품
+                                초등교재
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="${rootPath }/BookList.do">교과서</a></li>
-                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="${rootPath}/BookList.do?category=A">초등교과서</a></li>
                                 <li><a class="dropdown-item" href="${rootPath}/BookList.do?category=B">초등참고서</a></li>
+                                <li><a class="dropdown-item" href="${rootPath}/BookList.do?category=C">초등문제집</a></li>
                             </ul>
                         </li>
 
@@ -66,7 +67,15 @@
                         <c:otherwise>
                             <li class="nav-item"><a href="${rootPath }/Logout.do" class="nav-link">로그아웃</a></li>
                             <li class="nav-item"><a href="${rootPath }/Mypage.do" class="nav-link">내 정보</a></li>
-                            <li class="nav-item"><a href="${rootPath }/CartList.do" class="nav-link">장바구니</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="${rootPath }/CartList.do" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    장바구니
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="${rootPath }/CartList.do">장바구니</a></li>
+                                    <li><a class="dropdown-item" href="${rootPath }/PayList.do">결제 내역</a></li>
+                                </ul>
+                            </li>
                             <li class="nav-item"><a href="${rootPath }/member/map.jsp" class="nav-link">오시는 길</a></li>
                         </c:otherwise>
                     </c:choose>
@@ -76,3 +85,5 @@
         </nav>
     </div>
 </header>
+
+<%----%>

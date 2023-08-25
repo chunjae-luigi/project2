@@ -93,8 +93,9 @@ create table delivery(
 	dno INT PRIMARY KEY AUTO_INCREMENT, -- 배송 번호
 	pay_no INT NOT NULL, -- 결제 번호
 	mem_id VARCHAR(16) NOT NULL, -- 회원 아이디
-	daddress VARCHAR(300) NOT NULL, -- 배송지
-	mem_tel varchar(13) not NULL, -- 회원 연락처
+	NAME VARCHAR(30) NOT NULL, -- 수신인 이름
+	tel VARCHAR(13) NOT NULL, -- 수신인 연락처
+	address VARCHAR(300) NOT NULL, -- 수신인 배송지
 	dcom varchar(100), -- 배송 회사
 	dtel varchar(13), -- 배송 기사 전화번호
 	state integer default 0, -- 배송 상태(0: 배송 전, 1: 배송 중, 2: 도착, 3: 구매 결정)

@@ -25,7 +25,7 @@
     <div class="d-flex align-content-start flex-wrap">
     <c:forEach var="book" items="${bookList}" varStatus="status">
         <div class="card" style="width: 18rem; margin: 10px;">
-            <a href="${rootPath}/BookGet.do?id=${book.id }">
+            <a href="${rootPath}/BookGet.do?id=${book.pro_no }">
             <img class="card-img-top" src="${rootPath}/storage/${book.thumbnail }" alt="${book.title }" width="100"/>
             </a>
             <div class="card-body">

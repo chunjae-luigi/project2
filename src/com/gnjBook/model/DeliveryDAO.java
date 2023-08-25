@@ -33,7 +33,7 @@ public class DeliveryDAO {
         String etd = sdf.format(rs.getDate("etd"));
         String eta = sdf.format(rs.getDate("eta"));
 
-        deliveryList.add(new Delivery(rs.getInt("dno"), rs.getInt("pay_no"), rs.getString("mem_id"), rs.getString("daddress"), rs.getString("mem_tel"), rs.getString("dcom"), rs.getString("dtel"), rs.getInt("state"), etd, eta, rs.getString("dcode")));
+        deliveryList.add(new Delivery(rs.getInt("dno"), rs.getInt("pay_no"), rs.getString("mem_id"), rs.getString("name"), rs.getString("tel"), rs.getString("address"), rs.getString("dcom"), rs.getString("dtel"), rs.getInt("state"), etd, eta, rs.getString("dcode")));
       }
 
     } catch (Exception e) {
@@ -61,7 +61,7 @@ public class DeliveryDAO {
         String etd = sdf.format(rs.getDate("etd"));
         String eta = sdf.format(rs.getDate("eta"));
 
-        delivery = new Delivery(rs.getInt("dno"), rs.getInt("pay_no"), rs.getString("mem_id"), rs.getString("daddress"), rs.getString("mem_tel"), rs.getString("dcom"), rs.getString("dtel"), rs.getInt("state"), etd, eta, rs.getString("dcode"));
+        delivery = new Delivery(rs.getInt("dno"), rs.getInt("pay_no"), rs.getString("mem_id"), rs.getString("name"), rs.getString("tel"), rs.getString("address"), rs.getString("dcom"), rs.getString("dtel"), rs.getInt("state"), etd, eta, rs.getString("dcode"));
       }
 
     } catch (Exception e) {
@@ -78,21 +78,23 @@ public class DeliveryDAO {
 
     conn = db.connect();
 
-    String sql = "insert into delivery(pay_no, mem_id, daddress, mem_tel, dcom, dtel, state, eta, dcode) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    String sql = "insert into delivery(pay_no, mem_id, name, tel, address, mem_tel, dcom, dtel, state, eta, dcode) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setInt(1, delivery.getPay_no());
       pstmt.setString(2, delivery.getMem_id());
-      pstmt.setString(3, delivery.getDaddress());
-      pstmt.setString(4, delivery.getMem_tel());
-      pstmt.setString(5, delivery.getDcom());
-      pstmt.setString(6, delivery.getDtel());
-      pstmt.setInt(7, delivery.getState());
+      pstmt.setString(3, delivery.getName());
+      pstmt.setString(4, delivery.getTel());
+      pstmt.setString(5, delivery.getAddress());
+      pstmt.setString(6, delivery.getDcom());
+      pstmt.setString(7, delivery.getDtel());
+      pstmt.setInt(8, delivery.getState());
       java.util.Date utilDate = sdf.parse(delivery.getEta());
       java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-      pstmt.setDate(8, sqlDate);
-      pstmt.setString(9, delivery.getDcode());
+      pstmt.setDate(9, sqlDate);
+      pstmt.setString(10, delivery.getDcode());
+      pstmt.setInt(11, delivery.getDno());
 
       cnt = pstmt.executeUpdate();
 
@@ -109,22 +111,23 @@ public class DeliveryDAO {
     int cnt = 0;
 
     conn = db.connect();
-    String sql = "update delivery set pay_no=?, mem_id=?, daddress=?, mem_tel=?, dcom=?, dtel=?, state=?, eta=?, dcode=? where dno=?";
+    String sql = "update delivery set pay_no=?, mem_id=?, name=?,  tel=?, address=?, dcom=?, dtel=?, state=?, eta=?, dcode=? where dno=?";
 
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setInt(1, delivery.getPay_no());
       pstmt.setString(2, delivery.getMem_id());
-      pstmt.setString(3, delivery.getDaddress());
-      pstmt.setString(4, delivery.getMem_tel());
-      pstmt.setString(5, delivery.getDcom());
-      pstmt.setString(6, delivery.getDtel());
-      pstmt.setInt(7, delivery.getState());
+      pstmt.setString(3, delivery.getName());
+      pstmt.setString(4, delivery.getTel());
+      pstmt.setString(5, delivery.getAddress());
+      pstmt.setString(6, delivery.getDcom());
+      pstmt.setString(7, delivery.getDtel());
+      pstmt.setInt(8, delivery.getState());
       java.util.Date utilDate = sdf.parse(delivery.getEta());
       java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-      pstmt.setDate(8, sqlDate);
-      pstmt.setString(9, delivery.getDcode());
-      pstmt.setInt(10, delivery.getDno());
+      pstmt.setDate(9, sqlDate);
+      pstmt.setString(10, delivery.getDcode());
+      pstmt.setInt(11, delivery.getDno());
 
       cnt = pstmt.executeUpdate();
 
@@ -211,5 +214,30 @@ public class DeliveryDAO {
     return cnt;
   }
 
+  // 특정 회원이 결제한 내역의 배송 리스트
+  public Delivery getPayDeliveryList(int pay_no){
+    conn = db.connect();
+    Delivery delivery = new Delivery();
+    String sql = "select * from delivery where pay_no=?";
 
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setInt(1, pay_no);
+      rs = pstmt.executeQuery();
+
+      while(rs.next()){
+        String etd = sdf.format(rs.getDate("etd"));
+        String eta = sdf.format(rs.getDate("eta"));
+
+        delivery = new Delivery(rs.getInt("dno"), rs.getInt("pay_no"), rs.getString("mem_id"), rs.getString("name"), rs.getString("tel"), rs.getString("address"), rs.getString("dcom"), rs.getString("dtel"), rs.getInt("state"), etd, eta, rs.getString("dcode"));
+      }
+
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    } finally{
+      db.close(rs, pstmt, conn);
+    }
+
+    return delivery;
+  }
 }

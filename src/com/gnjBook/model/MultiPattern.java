@@ -34,7 +34,7 @@ public class MultiPattern {
       int cnt = 0;
 
       // 출고 시 결제 기록
-      sql = "insert into payment(mem_id, pro_no, pay_price, amount, method, pcom, paccount, dno) values(?, ?, ?, ?, ?, ?, ?, '')";
+      sql = "insert into payment(mem_id, pro_no, pay_price, amount, method, pcom, paccount) values(?, ?, ?, ?, ?, ?, ?)";
       pstmt = conn.prepareStatement(sql);
       pstmt.setString(1, payment.getMem_id());
       pstmt.setInt(2, payment.getPro_no());
@@ -53,18 +53,79 @@ public class MultiPattern {
       pstmt.setInt(3, payment.getPay_price());
       cnt += pstmt.executeUpdate();
 
-      sql = "insert into delivery(pay_no, mem_id, daddress, mem_tel, state) values (?, ?, ?, ?, 0)";
+      sql = "insert into delivery(pay_no, mem_id, address, tel, name, state) values (?, ?, ?, ?, ?, 0)";
       pstmt = conn.prepareStatement(sql);
       pstmt.setInt(1, delivery.getPay_no());
       pstmt.setString(2, delivery.getMem_id());
-      pstmt.setString(3, delivery.getDaddress());
-      pstmt.setString(4, delivery.getMem_tel());
+      pstmt.setString(3, delivery.getAddress());
+      pstmt.setString(4, delivery.getTel());
+      pstmt.setString(5, delivery.getName());
       cnt += pstmt.executeUpdate();
 
       // 출고 시 카트에서 삭제
       sql = "delete from cart where cart_no=?";
       pstmt = conn.prepareStatement(sql);
       pstmt.setInt(1, cart.getCart_no());
+      cnt += pstmt.executeUpdate();
+
+      // 출고, 결제 시 결제 번호 반환
+      sql = "select pay_no from payment order by pay_no desc limit 1";
+      pstmt = conn.prepareStatement(sql);
+      rs = pstmt.executeQuery();
+
+      if(rs.next()){
+        pay_no = rs.getInt("pay_no");
+      }
+
+      conn.commit();
+      conn.setAutoCommit(true);
+    } catch (SQLException e) {
+      try {
+        conn.rollback();
+      } catch (SQLException ex) {
+        throw new RuntimeException(ex);
+      }
+
+      throw new RuntimeException(e);
+    }
+    return pay_no;
+  }
+
+  public int outstockProduct(Payment payment, Delivery delivery){
+    int pay_no = 0;
+    conn = db.connect();
+    String sql = "";
+    try {
+      conn.setAutoCommit(false);
+      int cnt = 0;
+
+      // 출고 시 결제 기록
+      sql = "insert into payment(mem_id, pro_no, pay_price, amount, method, pcom, paccount) values(?, ?, ?, ?, ?, ?, ?)";
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, payment.getMem_id());
+      pstmt.setInt(2, payment.getPro_no());
+      pstmt.setInt(3, payment.getPay_price());
+      pstmt.setInt(4, payment.getAmount());
+      pstmt.setString(5, payment.getMethod());
+      pstmt.setString(6, payment.getPcom());
+      pstmt.setString(7, payment.getPaccount());
+      cnt += pstmt.executeUpdate();
+
+      // 출고 시 출고 기록
+      sql = "insert into outstock(pro_no, amount, out_price) values(?, ?, ?)";
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setInt(1, payment.getPro_no());
+      pstmt.setInt(2, payment.getAmount());
+      pstmt.setInt(3, payment.getPay_price());
+      cnt += pstmt.executeUpdate();
+
+      sql = "insert into delivery(pay_no, mem_id, address, tel, name, state) values (?, ?, ?, ?, ?, 0)";
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setInt(1, delivery.getPay_no());
+      pstmt.setString(2, delivery.getMem_id());
+      pstmt.setString(3, delivery.getAddress());
+      pstmt.setString(4, delivery.getTel());
+      pstmt.setString(5, delivery.getName());
       cnt += pstmt.executeUpdate();
 
       // 출고, 결제 시 결제 번호 반환
