@@ -48,7 +48,7 @@ public class InstockDAO {
     conn = db.connect();
     Instock instock = new Instock();
 
-    String sql = "select * from instock where in_no=?";
+    String sql = "select * from instock where inNo=?";
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setInt(1, inNo);
@@ -145,5 +145,29 @@ public class InstockDAO {
       db.close(rs, pstmt, conn);
     }
     return cnt;
+  }
+
+  public Instock getProductInstock(int proNo){
+    conn = db.connect();
+    Instock instock = new Instock();
+
+    String sql = "select * from instock where proNo=?";
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setInt(1, proNo);
+      rs = pstmt.executeQuery();
+
+      if(rs.next()){
+        String regdate = sdf.format(rs.getDate("regdate"));
+        instock = new Instock(rs.getInt("inNo"), rs.getInt("proNo"), rs.getInt("amount"), rs.getInt("inPrice"), regdate);
+      }
+
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    } finally{
+      db.close(rs, pstmt, conn);
+    }
+
+    return instock;
   }
 }

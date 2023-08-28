@@ -9,7 +9,7 @@ NAME VARCHAR(100) NOT NULL,   -- (이름)
 email VARCHAR(100) NOT NULL,   -- (이메일)
 tel VARCHAR(13),   -- (전화번호)
 birth DATE, -- 생년월일
-addresss VARCHAR(300), -- 주소 
+address VARCHAR(300), -- 주소 
 postcode VARCHAR(10),
 regdate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,   -- (가입일)
 POINT INT DEFAULT 0,   -- (포인트)

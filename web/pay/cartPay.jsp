@@ -136,7 +136,6 @@
 </html>
 
 
-
 <script>
     $(document).ready(function(){
         let total = 0;
