@@ -137,7 +137,7 @@ public class PaymentDAO {
     conn = db.connect();
     List<Payment> paymentList = new ArrayList<>();
 
-    String sql = "select * from payment where memId=?";
+    String sql = "select * from payment where memId=? order by payNo desc";
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setString(1, id);

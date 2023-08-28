@@ -39,7 +39,7 @@
                 <tbody>
                 <c:forEach var="cartVO" items="${cartVOList}" varStatus="status">
                 <tr>
-                    <td><input type="checkbox" name="cartCheck" value="${cartVO.cart.cart_no}"></td>
+                    <td><input type="checkbox" name="cartCheck" value="${cartVO.cart.cartNo}"></td>
                     <td>${status.count}</td>
                     <td>${cartVO.product.title}</td>
                     <td>${cartVO.product.price}</td>

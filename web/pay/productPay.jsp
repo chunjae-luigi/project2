@@ -39,7 +39,7 @@
                 <tr>
                     <td>
                         ${product.title}
-                            <input type="hidden" name="pro_no" value="${product.pro_no}">
+                            <input type="hidden" name="pro_no" value="${product.proNo}">
                     </td>
                     <td>${product.price}</td>
                     <td>

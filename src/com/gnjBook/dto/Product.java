@@ -9,14 +9,12 @@ public class Product {
   private String description;
   private String content;
   private String thumbnail;
-  private String img = "no_img.jpg";
-  private String video = "no_video.mp4";
   private String regdate;
 
   public Product() {
   }
 
-  public Product(int proNo, String categoryId, String procategory, int price, String title, String description, String content, String thumbnail, String img, String video, String regdate) {
+  public Product(int proNo, String categoryId, String procategory, int price, String title, String description, String content, String thumbnail, String regdate) {
     this.proNo = proNo;
     this.categoryId = categoryId;
     this.procategory = procategory;
@@ -25,8 +23,6 @@ public class Product {
     this.description = description;
     this.content = content;
     this.thumbnail = thumbnail;
-    this.img = img;
-    this.video = video;
     this.regdate = regdate;
   }
 
@@ -92,22 +88,6 @@ public class Product {
 
   public void setThumbnail(String thumbnail) {
     this.thumbnail = thumbnail;
-  }
-
-  public String getImg() {
-    return img;
-  }
-
-  public void setImg(String img) {
-    this.img = img;
-  }
-
-  public String getVideo() {
-    return video;
-  }
-
-  public void setVideo(String video) {
-    this.video = video;
   }
 
   public String getRegdate() {

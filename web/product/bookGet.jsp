@@ -24,11 +24,9 @@
             <li class="breadcrumb-item active" aria-current="page">교과서</li>
         </ol>
     </nav>
-    <c:set var="book" value="${book}"/>
-    <c:set var="category" value="${category}"/>
     <div class="row">
         <div class="col-4">
-            <img class="card-img-top" src="${rootPath}/storage/${book.thumbnail }" alt="${book.title }" width="100"/>
+            <img class="card-img-top" src="${rootPath}/storage/${product.thumbnail }" alt="${book.title }" width="100"/>
         </div>
         <div class="col-8">
             <form action="" method="post">
@@ -41,11 +39,11 @@
                 <tbody>
                 <tr>
                     <th scope="row">카테고리</th>
-                    <td>${category.category_name} </td>
+                    <td>${category.categoryName} </td>
                 </tr>
                 <tr>
                     <th scope="row">가격</th>
-                    <td>${book.price}</td>
+                    <td>${product.price}</td>
                 </tr>
                 <tr>
                     <td>
@@ -60,7 +58,7 @@
                         <input class="btn btn-primary" type="submit" value="장바구니 추가" onclick="addCart()">
                     </td>
                     <td>
-                        <input type="hidden" name="pro_no" value="${book.pro_no}">
+                        <input type="hidden" name="proNo" value="${product.proNo}">
                         <input class="btn btn-primary" type="submit" value="결제하기" onclick="payProduct()">
                     </td>
                 </tr>
@@ -72,7 +70,7 @@
     <div class="content">
         ${book.content}
     </div>
-    <a class="btn btn-primary" href="${rootPath }/BookList.do" role="button">글 목록</a>
+    <a class="btn btn-primary" href="${rootPath }/BookList.do?category=*" role="button">글 목록</a>
 </div>
 
 <%@ include file="../footer.jsp" %>

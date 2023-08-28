@@ -28,8 +28,6 @@ public class PayListCtrl extends HttpServlet {
     PaymentDAO dao = new PaymentDAO();
     List<Payment> payList = dao.getMemberPaymentList(id);
 
-
-
     ProductDAO productDAO = new ProductDAO();
     List<Product> productList = new ArrayList<>();
     for(Payment p: payList){
