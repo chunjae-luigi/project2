@@ -14,8 +14,12 @@ postcode VARCHAR(10),
 regdate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,   -- (가입일)
 POINT INT DEFAULT 0,   -- (포인트)
 grade VARCHAR(4) DEFAULT 'F',
+state BOOLEAN DEFAULT TRUE,
 PRIMARY KEY (id)
 );
+
+-- 이미 생성한 테이블에서 member column 추가
+ALTER TABLE member ADD state BOOLEAN DEFAULT TRUE;
 
 -- qna
 CREATE TABLE qna(
