@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>파일 업로드</title>
+    <title>상품 정보수정</title>
     <jsp:include page="../../common.jsp" />
 </head>
 <body>
@@ -17,15 +17,15 @@
 <div style="display: flex; min-height: 80vh;">
     <%@include file="adminBoardList.jsp"%>
     <div class="container" style="margin-top: 20px;">
-        <h2 class="title">교재 추가</h2>
+        <h2 class="title">상품 수정</h2>
         <div class="container">
-            <form class="form_row" action="${path }/BookAddPro.do" method="post" enctype="multipart/form-data">
+            <form class="form_row" action="${rootPath }/BookUpdatePro.do" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-2"><label for="category">카테고리</label></div>
                     <div class="col-8">
                         <select class="form-select" id="category" name="category">
                             <option selected>카테고리 선택</option>
-                            <c:forEach  var="cate" items="${cateList}">
+                            <c:forEach  var="cate" items="${categoryList}">
                                 <option value="${cate.categoryId}">${cate.categoryName}</option>
                             </c:forEach>
                         </select>
@@ -33,22 +33,19 @@
                 </div>
                 <div class="row">
                     <div class="col-2"><label for="title" class="form-label">교재 이름</label></div>
-                    <div class="col-8">
-                        <input type="hidden" name="pno" id="pno" value="${product.proNo}">
-                        <input type="text" class="form-control col-10" id="title" name="title">
-                    </div>
+                    <div class="col-8"><input type="text" class="form-control col-10" id="title" name="title">${pro.title}</div>
                 </div>
                 <div class="row">
                     <div class="col-2"><label for="price" class="form-label">가격</label></div>
-                    <div class="col-8"><input type="number" class="form-control" id="price" name="price"></div>
+                    <div class="col-8"><input type="number" class="form-control" id="price" name="price">${pro.price}</div>
                 </div>
                 <div class="row">
                     <div class="col-2"><label for="content" class="form-label">내용</label></div>
-                    <div class="col-8"><textarea class="form-control" id="content" name="content" rows="5"></textarea></div>
+                    <div class="col-8"><textarea class="form-control" id="content" name="content" rows="5">${pro.content}</textarea></div>
                 </div>
                 <div class="row">
                     <div class="col-2"><label for="imgSrc">파일 첨부</label></div>
-                    <div class="col-8"><input type="file" class="form-control" id="imgSrc" name="imgSrc"></div>
+                    <div class="col-8"><input type="file" class="form-control" id="imgSrc" name="imgSrc">${pro.img}</div>
                 </div>
                 <input type="submit" class="btn btn-primary mb-3" value="교재 추가">
             </form>

@@ -19,9 +19,9 @@ import java.util.Enumeration;
 import java.util.List;
 
 @WebServlet("/BookAddPro.do")
-public class BookAddProCTRL extends HttpServlet {
+public class BookAddProCtrl extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String msg = "";
         ServletContext application = request.getServletContext();
 
@@ -52,23 +52,27 @@ public class BookAddProCTRL extends HttpServlet {
                 msg = "파일 업로드 실패";
                 System.out.println("파일 업로드 실패");
             }
+
             if(upfile.getName().isEmpty()){
-                product.setThumbnail("empty.jpg");
+                product.setImg("empty.jpg");
             }
-            product.setThumbnail(upfile.getName());
+
+            product.setImg(upfile.getName());
             System.out.println();
+
+
 
             ProductDAO dao = new ProductDAO();
             int cnt = dao.addProduct(product);
+            List<Product> productList = new ArrayList<>();
 
             if(cnt>0){
-                List<Product> productList = new ArrayList<>();
-                productList = dao.getCategoryProduct(product.getCategoryId());
+                productList = dao.getCategoryProduct(mr.getParameter("category"));
                 request.setAttribute("bookList",productList);
-                RequestDispatcher view = request.getRequestDispatcher("/BookListAdmin.do");
+                RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/bookList.jsp");
                 view.forward(request, response);
             } else {
-                response.sendRedirect("/BookAdd.do");
+                response.sendRedirect(request.getContextPath()+"/BookAdd.do");
             }
         } catch(Exception e){
             System.out.println(e.getMessage());

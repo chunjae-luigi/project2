@@ -12,22 +12,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/BookAdd.do")
-public class BookAddCtrl extends HttpServlet {
+@WebServlet("/BookUpdateCtrl.do")
+public class BookUpdateCtrl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String msg = "관리자의 상품등록이 로딩되었습니다.";
+        String msg = "관리자의 상품을 수정합니다.";
+
+        int pno = Integer.parseInt(request.getParameter("proNo"));
+        ProductDAO dao = new ProductDAO();
+        Product pro = dao.getProduct(pno);
+
+        CategoryDAO cao = new CategoryDAO();
+        List<Category> categoryList = cao.getCategoryList();
+
+        request.setAttribute("categoryList", categoryList);
         request.setAttribute("msg", msg);
+        request.setAttribute("pro", pro);
 
-        CategoryDAO dao = new CategoryDAO();
-        List<Category> categoryList = dao.getCategoryList();
-
-
-        request.setAttribute("cateList", categoryList);
-        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/bookAdd.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/bookUpdate.jsp");
         view.forward(request, response);
     }
 }
