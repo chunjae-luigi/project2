@@ -29,7 +29,7 @@ public class CartDAO {
       rs = pstmt.executeQuery();
 
       while(rs.next()){
-        cartList.add(new Cart(rs.getInt("cartNo"), rs.getString("memId"), rs.getInt("proNo"), rs.getInt("amount")));
+        cartList.add(new Cart(rs.getInt("cartNo"), rs.getString("memId"), rs.getInt("proNo"), rs.getInt("amount"),rs.getInt("price"),rs.getString("imgsrc1")));
       }
 
     } catch (Exception e) {
@@ -52,7 +52,7 @@ public class CartDAO {
       rs = pstmt.executeQuery();
 
       if(rs.next()){
-        cart = new Cart(rs.getInt("cartNo"), rs.getString("memId"), rs.getInt("proNo"), rs.getInt("amount"));
+        cart = new Cart(rs.getInt("cartNo"), rs.getString("memId"), rs.getInt("proNo"), rs.getInt("amount"),rs.getInt("price"),rs.getString("imgsrc1"));
       }
 
     } catch (Exception e) {
@@ -68,12 +68,14 @@ public class CartDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "insert into cart(memId, proNo, amount) values(?, ?, ?)";
+    String sql = "insert into cart(memId, proNo, amount,price,imgsrc1) values(?, ?, ?,?,?)";
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setString(1, cart.getMemId());
       pstmt.setInt(2, cart.getProNo());
       pstmt.setInt(3, cart.getAmount());
+      pstmt.setInt(4,cart.getPrice());
+      pstmt.setString(5, cart.getImgsrc1());
 
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {
@@ -104,38 +106,37 @@ public class CartDAO {
     }
     return cnt;
   }
-  public int deleteCart(int cart_no){
+  public int deleteCart(int cartno){
     conn = db.connect();
     int cnt = 0;
 
     String sql = "delete from cart where cartNo=?";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, cart_no);
-
+      pstmt.setInt(1, cartno);
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {
       throw new RuntimeException(e);
     } finally{
-      db.close(rs, pstmt, conn);
+      db.close(rs,pstmt, conn);
     }
     return cnt;
   }
 
   // 특정 회원의 장바구니 목록 가져오기
-  public List<Cart> getMemberCartList(String mem_id){
+  public List<Cart> getMemberCartList(String memid){
     conn = db.connect();
     List<Cart> cartList = new ArrayList<>();
 
     String sql = "select * from cart where memId=?";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setString(1, mem_id);
+      pstmt.setString(1, memid);
 
       rs = pstmt.executeQuery();
 
       while(rs.next()){
-        cartList.add(new Cart(rs.getInt("cartNo"), rs.getString("memId"), rs.getInt("proNo"), rs.getInt("amount")));
+        cartList.add(new Cart(rs.getInt("cartNo"), rs.getString("memId"), rs.getInt("proNo"), rs.getInt("amount"),rs.getInt("price"),rs.getString("imgsrc1")));
       }
 
     } catch (Exception e) {
@@ -143,7 +144,6 @@ public class CartDAO {
     } finally{
       db.close(rs, pstmt, conn);
     }
-
     return cartList;
   }
 }

@@ -5,15 +5,35 @@ public class Cart {
   private String memId;
   private int proNo;
   private int amount;
+  private int price;
+  private String imgsrc1;
+
+  public int getPrice() {
+    return price;
+  }
+
+  public void setPrice(int price) {
+    this.price = price;
+  }
+
+  public String getImgsrc1() {
+    return imgsrc1;
+  }
+
+  public void setImgsrc1(String imgsrc1) {
+    this.imgsrc1 = imgsrc1;
+  }
 
   public Cart() {
   }
 
-  public Cart(int cartNo, String memId, int proNo, int amount) {
+  public Cart(int cartNo, String memId, int proNo, int amount, int price, String imgsrc1) {
     this.cartNo = cartNo;
     this.memId = memId;
     this.proNo = proNo;
     this.amount = amount;
+    this.price = price;
+    this.imgsrc1 = imgsrc1;
   }
 
   public int getCartNo() {
