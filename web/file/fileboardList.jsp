@@ -7,19 +7,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>공지사항 목록</title>
+    <title>학습자료실</title>
     <%@ include file="../common.jsp"%>
 </head>
 
 <body>
 <%@ include file="../header.jsp"%>
 <div class="container contents">
-    <h2 class="page_title text-center">공지사항</h2>
+    <h2 class="page_title text-center">학습자료실</h2>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb justify-content-end">
             <li class="breadcrumb-item"><a href="${rootPath }">Home</a></li>
             <li class="breadcrumb-item"><a href="#">Community</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Notice</li>
+            <li class="breadcrumb-item active" aria-current="page">studyfile</li>
         </ol>
     </nav>
     <div class="container">
@@ -34,15 +34,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="notice" items="${noticeList}" varStatus="status">
-                <tr>
-                    <td class="item1">${status.count}</td>
-                    <td class="item2">
-                        <a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="${rootPath }/Notice.do?no=${notice.no}" style="display:inline-block; width:100%;">${notice.title}</a>
-                    </td>
-                    <td class="item3">${notice.resdate}</td>
-                    <td class="item4">${notice.visited}</td>
-                </tr>
+                <c:forEach var="notice" items="${fileboardList}" varStatus="status">
+                    <tr>
+                        <td class="item1">${status.count}</td>
+                        <td class="item2">
+                            <a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="${rootPath }/Notice.do?no=${fileboard.no}" style="display:inline-block; width:100%;">${fileboard.title}</a>
+                        </td>
+                        <td class="item3">${fileboard.regdate}</td>
+                        <td class="item4">${fileboard.visited}</td>
+                    </tr>
                 </c:forEach>
                 </tbody>
             </table>

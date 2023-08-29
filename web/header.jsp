@@ -47,8 +47,9 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="${rootPath }/NoticeList.do">공지사항</a></li>
-                                <li><a class="dropdown-item" href="${rootPath }/">묻고답하기</a></li>
+                                <li><a class="dropdown-item" href="${rootPath }/QnaList.do">묻고답하기</a></li>
                                 <li><a class="dropdown-item" href="${rootPath }/">학습후기</a></li>
+                                <li><a class="dropdown-item" href="${rootPath }">학습자료실</a></li>
                             </ul>
                         </li>
                     </ul>
