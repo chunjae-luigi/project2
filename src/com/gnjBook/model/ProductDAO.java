@@ -8,6 +8,7 @@ import com.gnjBook.dto.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -231,4 +232,26 @@ public class ProductDAO {
 
       return productList;
     }
+
+    // 해당 상품의 재고 수량을 가져옴
+  public int getAmount(int proNo){
+    int amount = 0;
+    conn = db.connect();
+
+    String sql = "select * from inventory where proNo = ?";
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setInt(1, proNo);
+      rs = pstmt.executeQuery();
+      if(rs.next()){
+        amount = rs.getInt("amount");
+      }
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    } finally {
+      db.close(rs, pstmt, conn);
+    }
+
+    return amount;
+  }
 }

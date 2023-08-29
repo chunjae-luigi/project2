@@ -35,12 +35,12 @@ public class PayCartCtrl extends HttpServlet {
       cartList.add(cartDAO.getCart(Integer.parseInt(s)));
     }
 
-    InstockDAO indao = new InstockDAO();
-
     ProductDAO productDAO = new ProductDAO();
+    List<Integer> inventoryList = new ArrayList<>();
     for(Cart c: cartList){
       CartVO cvo = new CartVO();
-      if(indao.getProductInstock(c.getProNo()).getAmount()<=0){
+      int inAmount = productDAO.getAmount(c.getProNo());
+      if(inAmount<c.getAmount()){
         System.out.println(c.getProNo()+"의 재고 수량이 부족합니다.");
       } else{
         cvo.setCart(c);

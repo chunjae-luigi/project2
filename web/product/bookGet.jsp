@@ -86,7 +86,7 @@
 
 <script>
     function addCart(){
-        $("form").attr("action", "${rootPath}/CartAdd.do");
+        $("form").attr("action", "${rootPath}/CartAdd.do?pno=${product.proNo }&imgsrc1=${product.img}&price=${product.price}");
     }
     function payProduct(){
         $("form").attr("action", "${rootPath}/PayProduct.do");

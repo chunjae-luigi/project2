@@ -36,15 +36,15 @@ public class PayCartProCtrl extends HttpServlet {
       cartList.add(cartDAO.getCart(Integer.parseInt(s)));
     }
 
-    InstockDAO indao = new InstockDAO();
-    List<Instock> instockList = new ArrayList<>();
-
     ProductDAO productDAO = new ProductDAO();
     List<Product> productList = new ArrayList<>();
+    List<Integer> inventoryList = new ArrayList<>();
     for(Cart c: cartList){
       productList.add(productDAO.getProduct(c.getProNo()));
-      instockList.add(indao.getProductInstock(c.getProNo()));
+      inventoryList.add(productDAO.getAmount(c.getProNo()));
     }
+
+
 
     // 출고 처리
     String method = request.getParameter("method");
@@ -76,9 +76,9 @@ public class PayCartProCtrl extends HttpServlet {
 
     boolean flag = true;
     for(int i=0; i<cartList.size(); i++){
-      int instockamount = instockList.get(i).getAmount();
+      int inamount = inventoryList.get(i);
       int cartstock = cartList.get(i).getAmount();
-      if(instockamount<cartstock){
+      if(inamount<cartstock){
         flag = false;
         break;
       }

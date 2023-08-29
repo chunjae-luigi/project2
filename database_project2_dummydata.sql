@@ -52,5 +52,5 @@ INSERT INTO outstock(proNo, amount, outPrice) VALUES(1, 5, 14500);
 -- 결제
 
 -- 카트
-INSERT INTO cart(memId, proNo, amount) VALUES("kim1", 1, 2);
+INSERT INTO cart(memId, proNo, amount, price) VALUES("kim1", 1, 2,3000);
 
