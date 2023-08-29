@@ -33,19 +33,21 @@
                 </div>
                 <div class="row">
                     <div class="col-2"><label for="title" class="form-label">교재 이름</label></div>
-                    <div class="col-8"><input type="text" class="form-control col-10" id="title" name="title">${pro.title}</div>
+                    <div class="col-8"><input type="text" class="form-control col-10" id="title" name="title" value="${pro.title}"></div>
+                    <div class="col-8"><input type="hidden" class="form-control col-10" id="proNo" name="proNo" value="${pro.proNo}"></div>
+
                 </div>
                 <div class="row">
                     <div class="col-2"><label for="price" class="form-label">가격</label></div>
-                    <div class="col-8"><input type="number" class="form-control" id="price" name="price">${pro.price}</div>
+                    <div class="col-8"><input type="number" class="form-control" id="price" name="price" value="${pro.price}"></div>
                 </div>
                 <div class="row">
                     <div class="col-2"><label for="content" class="form-label">내용</label></div>
-                    <div class="col-8"><textarea class="form-control" id="content" name="content" rows="5">${pro.content}</textarea></div>
+                    <div class="col-8"><textarea class="form-control" id="content" name="content" rows="5" value="${pro.content}"></textarea></div>
                 </div>
                 <div class="row">
                     <div class="col-2"><label for="imgSrc">파일 첨부</label></div>
-                    <div class="col-8"><input type="file" class="form-control" id="imgSrc" name="imgSrc">${pro.img}</div>
+                    <div class="col-8"><input type="file" class="form-control" id="imgSrc" name="imgSrc" value="${pro.img}"></div>
                 </div>
                 <input type="submit" class="btn btn-primary mb-3" value="교재 추가">
             </form>

@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/BookUpdateCtrl.do")
+@WebServlet("/BookUpdate.do")
 public class BookUpdateCtrl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String msg = "관리자의 상품을 수정합니다.";
 
-        int pno = Integer.parseInt(request.getParameter("proNo"));
+        int pno = Integer.parseInt(request.getParameter("no"));
         ProductDAO dao = new ProductDAO();
         Product pro = dao.getProduct(pno);
 
