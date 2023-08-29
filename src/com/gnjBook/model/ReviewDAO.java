@@ -19,13 +19,59 @@ public class ReviewDAO {
   public ReviewDAO() {
   }
 
-  public List<Review> getReviewList(){
+  public boolean checkReview(String id, int proNo) {
+    boolean pass =false;
+
     conn = db.connect();
-    List<Review> reviewList = new ArrayList<>();
-    String sql = "select * from review";
+    String sql = "SELECT * FROM delivery d, payment p WHERE d.payNo = p.payNo AND d.memId = ? AND p.proNo = ? AND d.state = 3";
 
     try {
       pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, id);
+      pstmt.setInt(2, proNo);
+      rs = pstmt.executeQuery();
+      if(rs.next()) {
+        pass = true;
+      }
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    } finally {
+      db.close(rs, pstmt, conn);
+    }
+
+    return pass;
+  }
+
+  public int getReviewPayInfo(String id, int proNo) {
+    int payNo = 0;
+
+    conn = db.connect();
+    String sql = "SELECT d.payNo AS payNo FROM delivery d, payment p WHERE d.payNo = p.payNo AND d.memId = ? AND p.proNo = ?";
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, id);
+      pstmt.setInt(2, proNo);
+      rs = pstmt.executeQuery();
+      if(rs.next()) {
+        payNo = rs.getInt("payNo");
+      }
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    } finally{
+      db.close(rs, pstmt, conn);
+    }
+
+    return payNo;
+  }
+
+  public List<Review> getReviewList(int proNo){
+    conn = db.connect();
+    List<Review> reviewList = new ArrayList<>();
+    String sql = "select * from review WHERE proNo = ?";
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setInt(1, proNo);
       rs = pstmt.executeQuery();
 
       while(rs.next()){

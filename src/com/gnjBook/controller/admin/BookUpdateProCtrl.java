@@ -38,55 +38,55 @@ public class BookUpdateProCtrl extends HttpServlet {
                 MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
                 Product uppro = new Product();
                 uppro.setCategoryId(mr.getParameter("category"));
-            System.out.println(mr.getParameter("category"));
-
                 uppro.setPrice(Integer.parseInt(mr.getParameter("price")));
-            System.out.println(mr.getParameter("price"));
-
                 uppro.setTitle(mr.getParameter("title"));
-            System.out.println(mr.getParameter("title"));
-
+                uppro.setAuthor(mr.getParameter("author"));
                 uppro.setContent(mr.getParameter("content"));
-            System.out.println(mr.getParameter("content"));
-
                 uppro.setProNo(Integer.parseInt(mr.getParameter("proNo")));
-            System.out.println(mr.getParameter("proNo"));
 
 
 
+                    File upfile = null;
+                    Enumeration files = mr.getFileNames();
 
-                Enumeration files = mr.getFileNames();
+                    int idx = 1;
+                    String item;
+                    String oriFile = "";
+                    String fileName = "";
 
-                String item = (String) files.nextElement();
-                String oriFile = mr.getOriginalFileName(item);
-                String fileName = mr.getFilesystemName(item);
-
-
-                File upfile = null;
-                upfile = mr.getFile(item); //실제 업로드
-
-                if(upfile.exists()){
-                    msg = "파일 업로드 성공";
-                    System.out.println("파일 업로드 성공");
-                } else {
-                    msg = "파일 업로드 실패";
-                    System.out.println("파일 업로드 실패");
-                }
-
-                uppro.setImg(upfile.getName());
+                    while(files.hasMoreElements()) {
+                        item = (String) files.nextElement();
+                        oriFile = mr.getOriginalFileName(item); //실제 첨부된 파일경로와 이름
+                        fileName = mr.getFilesystemName(item);  //파일이름만 추출
 
 
-                request.setAttribute("msg", msg);
+                        if(fileName!=null) {
+                            upfile = mr.getFile(item); //실제 업로드
+                            if (upfile.exists()) {
+                                long filesize = upfile.length();
+                                if (idx == 1) {
+                                    uppro.setImg(upfile.getName());
+                                } else if (idx == 2) {
+                                    uppro.setVideo(upfile.getName());
+                                }
+                                msg = "파일 업로드 성공";
+                                System.out.println("파일 업로드 성공");
+                            } else {
+                                msg = "파일 업로드 실패";
+                                System.out.println("파일 업로드 실패");
+                            }
+                        }
+                        idx++;
+                    }
 
 
-            ProductDAO dao = new ProductDAO();
-            int cnt = dao.updateProduct(uppro);
 
-            PrintWriter out = response.getWriter();
+                    ProductDAO dao = new ProductDAO();
+                    int cnt = dao.updateProduct(uppro);
 
-            response.sendRedirect(home+"/BookListAdmin.do");
+                    PrintWriter out = response.getWriter();
 
-
+                    response.sendRedirect(home+"/BookListAdmin.do");
 
                 } catch(Exception e){
                 System.out.println(e.getMessage());
