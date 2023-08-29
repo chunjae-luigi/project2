@@ -147,6 +147,7 @@ public class QnaDAO extends NoticeDAO {
     return cnt;
   }
 
+
   public int countUp(int qno){
     int cnt = 0;
     conn = db.connect();

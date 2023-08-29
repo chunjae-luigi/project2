@@ -1,6 +1,8 @@
 package com.gnjBook.controller.admin;
 
+import com.gnjBook.dto.Fileboard;
 import com.gnjBook.dto.Notice;
+import com.gnjBook.model.FileboardDAO;
 import com.gnjBook.model.NoticeDAO;
 
 import javax.servlet.RequestDispatcher;
@@ -16,13 +18,13 @@ import java.util.List;
 public class FileboardListAdminCtrl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("msg", "공지사항 목록을 출력합니다.");
+        request.setAttribute("msg", "학습자료실 목록을 출력합니다.");
 
         FileboardDAO dao = new FileboardDAO();
-        List<Fileboard> fileboard = dao.getFileboard();
-        request.setAttribute("fileboard", fileboard);
+        List<Fileboard> fileboardList = dao.getFileboardList();
+        request.setAttribute("fileboardList", fileboardList);
 
-        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/noticeList.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/fileboardList.jsp");
         view.forward(request, response);
     }
 }

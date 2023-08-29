@@ -23,25 +23,7 @@ public class FileboardDAO {
   public FileboardDAO() {
   }
 
-  public int fileboardUpload(Fileboard file){
-    int cnt = 0;
-    conn = db.connect();
-    String sql = "insert into fileboard values (?,?,?,?,?)";
-    try {
-      pstmt = conn.prepareStatement(sql);
-      pstmt.setString(2, file.getTitle());
-      pstmt.setString(3, file.getContent());
-      pstmt.setString(4, file.getFilename1());
-      pstmt.setString(5, file.getFilename2());
-      pstmt.setString(6, file.getFilename3());
-      cnt = pstmt.executeUpdate();
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    } finally {
-      db.close(rs, pstmt, conn);
-    }
-    return cnt;
-  }
+
 
   public List<Fileboard> getFileboardList(){
     List<Fileboard> fileList = new ArrayList<>();
@@ -51,13 +33,13 @@ public class FileboardDAO {
       pstmt = conn.prepareStatement(sql);
       rs = pstmt.executeQuery();
       while(rs.next()){
-        Fileboard file = new Fileboard();
-        file.setTitle(rs.getString("title"));
-        file.setContent(rs.getString("content"));
-        file.setFilename1(rs.getString("filename1"));
-        file.setFilename2(rs.getString("filename2"));
-        file.setFilename3(rs.getString("filename3"));
-        fileList.add(file);
+        Fileboard fileboard = new Fileboard();
+        fileboard.setTitle(rs.getString("title"));
+        fileboard.setContent(rs.getString("content"));
+        fileboard.setFilename1(rs.getString("filename1"));
+        fileboard.setFilename2(rs.getString("filename2"));
+        fileboard.setFilename3(rs.getString("filename3"));
+        fileList.add(fileboard);
       }
     } catch (SQLException e) {
       throw new RuntimeException(e);
@@ -66,6 +48,56 @@ public class FileboardDAO {
     }
     return fileList;
   }
+
+
+  public Fileboard getFileboard(int no){
+    conn = db.connect();
+    Fileboard fileboard = new Fileboard();
+
+    String sql = "select * from fileboard where no=?";
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setInt(1, no);
+      rs = pstmt.executeQuery();
+
+      if(rs.next()){
+        String regdate = sdf.format(rs.getDate("regdate"));
+
+      }
+
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    } finally{
+      db.close(rs, pstmt, conn);
+    }
+
+    return fileboard;
+  }
+
+
+
+  public int fileboardUpload(Fileboard fileboard){
+    int cnt = 0;
+    conn = db.connect();
+    String sql = "insert into fileboard values (?,?,?,?,?)";
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setString(2, fileboard.getTitle());
+      pstmt.setString(3, fileboard.getContent());
+      pstmt.setString(4, fileboard.getFilename1());
+      pstmt.setString(5, fileboard.getFilename2());
+      pstmt.setString(6, fileboard.getFilename3());
+      cnt = pstmt.executeUpdate();
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    } finally {
+      db.close(rs, pstmt, conn);
+    }
+    return cnt;
+  }
+
+
 
   public int addFileboard(Fileboard fileboard){
     int cnt = 0;
@@ -88,33 +120,12 @@ public class FileboardDAO {
     return cnt;
   }
 
-  public int updateFileboard(Fileboard fileboard){
+
+  public int deleteFileboard(int no){
     int cnt = 0;
 
     conn = db.connect();
-    String sql = "update fileboard set title=?, content=? where no=?";
-
-    try {
-      pstmt = conn.prepareStatement(sql);
-      pstmt.setString(1, fileboard.getTitle());
-      pstmt.setString(2, fileboard.getContent());
-      pstmt.setInt(3, fileboard.getNo());
-      cnt = pstmt.executeUpdate();
-
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
-
-    db.close(rs, pstmt, conn);
-
-    return cnt;
-  }
-
-  public int deleteNotice(int no){
-    int cnt = 0;
-
-    conn = db.connect();
-    String sql = "delete from notice where no=?";
+    String sql = "delete from fileboard where no=?";
 
     try {
       pstmt = conn.prepareStatement(sql);
@@ -129,6 +140,8 @@ public class FileboardDAO {
 
     return cnt;
   }
+
+
 
   public int countUp(int no){
     int cnt = 0;

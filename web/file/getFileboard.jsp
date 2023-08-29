@@ -31,7 +31,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:set var="notice" value="${fileboard}"/>
+        <c:set var="fileboard" value="${fileboard}"/>
         <tr>
             <td class="item2">${fileboard.title}</td>
             <td class="item3">${fileboard.regdate}</td>

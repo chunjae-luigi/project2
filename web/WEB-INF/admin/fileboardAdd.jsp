@@ -16,13 +16,9 @@
 <jsp:include page="../../header.jsp" />
 <div class="container">
     <h2>학습 자료실 업로드</h2>
-    <form action="${path }/FileUploadProTest2.do" method="post" enctype="multipart/form-data">
+    <form action="${path }/FileboardAddPro.do" method="post" enctype="multipart/form-data">
        <table class="table">
            <tbody>
-           <tr>
-               <th><label for="uname">이름</label></th>
-               <td><input type="text" name="uname" id="uname" class="form-control"></td>
-           </tr>
            <tr>
                <th><label for="subject">제목</label></th>
                <td><input type="text" name="subject" id="subject" class="form-control"></td>
