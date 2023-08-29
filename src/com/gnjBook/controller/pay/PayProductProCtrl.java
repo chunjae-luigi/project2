@@ -30,18 +30,20 @@ public class PayProductProCtrl extends HttpServlet {
     String id = (String) session.getAttribute("session_id");
 
     ProductDAO productDAO = new ProductDAO();
-    Product product = productDAO.getProduct(Integer.parseInt(request.getParameter("pro_no")));
+    int proNo = Integer.parseInt(request.getParameter("proNo"));
+    Product product = productDAO.getProduct(proNo);
 
     // 출고 처리
     String method = request.getParameter("method");
     String pcom = request.getParameter("pcom");
     String paccount = request.getParameter("paccount");
+    int amount = Integer.parseInt(request.getParameter("amount"));
 
     Payment pay = new Payment();
     pay.setMemId(id);
     pay.setProNo(product.getProNo());
     pay.setPayPrice(product.getPrice());
-    pay.setAmount(Integer.parseInt(request.getParameter("amount")));
+    pay.setAmount(amount);
     pay.setMethod(method);
     pay.setPcom(pcom);
     pay.setPaccount(paccount);
@@ -57,8 +59,9 @@ public class PayProductProCtrl extends HttpServlet {
     payvo.setDel(del);
     payvo.setPay(pay);
 
-    InstockDAO indao = new InstockDAO();
-    if(indao.getProductInstock(product.getProNo()).getAmount()<=0){
+    int instockamount =  productDAO.getAmount(proNo);
+
+    if(instockamount < amount){
       response.setCharacterEncoding("UTF-8");
       response.setContentType("text/html; charset=UTF-8");
       PrintWriter out = response.getWriter();

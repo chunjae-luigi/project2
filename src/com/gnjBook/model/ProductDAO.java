@@ -229,6 +229,7 @@ public class ProductDAO {
       return productList;
     }
 
+    // 해당 상품의 재고 수량을 가져옴
   public int getAmount(int proNo){
     int amount = 0;
     conn = db.connect();
