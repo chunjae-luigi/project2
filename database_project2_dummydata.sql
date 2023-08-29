@@ -42,17 +42,15 @@ INSERT INTO book VALUES(5, DEFAULT, "카카오", "나연","타이틀5","콘텐�
 INSERT INTO book VALUES(6, DEFAULT, "네이버", "소윤","타이틀6","콘텐츠 입니다.6",DEFAULT,DEFAULT);
 
 -- 입고
-INSERT INTO instock(pro_no, amount, in_price) values(1, 10, 10000);
+INSERT INTO instock(proNo, amount, inPrice) values(1, 10, 10000);
 
 -- 출고
-INSERT INTO outstock(pro_no, amount, out_price) VALUES(1, 5, 14500);
+INSERT INTO outstock(proNo, amount, outPrice) VALUES(1, 5, 14500);
 
 -- 배송
 
 -- 결제
 
 -- 카트
-INSERT INTO cart(mem_id, pro_no, amount) VALUES("kim1", 1, 2);
-
--- 리뷰
+INSERT INTO cart(memId, proNo, amount) VALUES("kim1", 1, 2);
 
