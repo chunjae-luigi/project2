@@ -34,6 +34,13 @@
                         <td>${category.categoryName} </td>
                     </tr>
                     <tr>
+                        <th scope="row">수량</th>
+                        <td>
+                            <c:if test="${amount <= 0}">절판</c:if>
+                            <c:if test="${amount > 0}">${amount}</c:if>
+                        </td>
+                    </tr>
+                    <tr>
                         <th scope="row">가격</th>
                         <td>${product.price}</td>
                     </tr>
