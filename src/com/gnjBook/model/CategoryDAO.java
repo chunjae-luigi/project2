@@ -64,15 +64,15 @@ public class CategoryDAO {
     return category;
   }
 
-  public int addCategory(String id, String name){
+  public int addCategory(Category cate){
     conn = db.connect();
     int cnt = 0;
 
     String sql = "insert into category(categoryId, categoryName) values(?, ?)";
     try {
       pstmt = conn.prepareStatement(sql);
-      pstmt.setString(1, id);
-      pstmt.setString(2, name);
+      pstmt.setString(1, cate.getCategoryId());
+      pstmt.setString(2, cate.getCategoryName());
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {
       throw new RuntimeException(e);
