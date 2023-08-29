@@ -1,13 +1,8 @@
 package com.gnjBook.controller.cart;
 
 import com.gnjBook.dto.Cart;
-import com.gnjBook.dto.Member;
 import com.gnjBook.model.CartDAO;
-import com.gnjBook.model.MemberDAO;
-import com.gnjBook.model.ProductDAO;
-import com.gnjBook.vo.CartVO;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet("/CartAdd.do") // 사용자가 보는 이름
 public class CartAddCtrl extends HttpServlet {
@@ -30,6 +23,8 @@ public class CartAddCtrl extends HttpServlet {
     cart.setMemId(id);
     cart.setAmount(Integer.parseInt(request.getParameter("amount")));
     cart.setProNo(Integer.parseInt(request.getParameter("proNo")));
+    cart.setPrice(Integer.parseInt(request.getParameter("price")));
+    cart.setImgsrc1(request.getParameter("img"));
     System.out.println(cart.getProNo());
     dao.addCart(cart);
 

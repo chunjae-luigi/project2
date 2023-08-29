@@ -22,12 +22,14 @@ public class BookGetAdminCtrl extends HttpServlet {
 
     ProductDAO dao = new ProductDAO();
     Product product = dao.getProduct(id);
+    int amount = dao.getAmount(id);
 
     CategoryDAO cdao = new CategoryDAO();
     Category category = cdao.getCategory(product.getCategoryId());
 
     request.setAttribute("product", product);
     request.setAttribute("category", category);
+    request.setAttribute("amount", amount);
 
     RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/bookGet.jsp");
     view.forward(request, response);

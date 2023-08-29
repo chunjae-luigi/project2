@@ -37,13 +37,14 @@ public class BookAddProCtrl extends HttpServlet {
             product.setPrice(Integer.parseInt(mr.getParameter("price")));
             product.setContent(mr.getParameter("content"));
 
+
             Enumeration files = mr.getFileNames();
             String item = (String) files.nextElement();
-
             String oriFile = mr.getOriginalFileName(item); //실제 첨부된 파일경로와 이름
             String fileName = mr.getFilesystemName(item);  //파일이름만 추출
 
-            File upfile = mr.getFile(item); //실제 업로드
+            File upfile = null;
+            upfile = mr.getFile(item); //실제 업로드
 
             if(upfile.exists()){
                 msg = "파일 업로드 성공";
