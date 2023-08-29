@@ -144,6 +144,8 @@ create table cart(
 	memId VARCHAR(16) not NULL, -- 회원 아이디
 	proNo integer not NULL, -- 상품 번호
 	amount integer NOT NULL -- 제품 수량
+	price INTEGER DEFAULT 100,
+	imgsrc1 VARCHAR(5000) DEFAULT 'no_img.jpg'
 );
 
 
