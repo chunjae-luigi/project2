@@ -31,8 +31,8 @@ public class PayProductCtrl extends HttpServlet {
     ProductDAO dao = new ProductDAO();
     Product product = dao.getProduct(proNo);
 
-    InstockDAO indao = new InstockDAO();
-    int instockamount =  indao.getProductInstock(proNo).getAmount();
+    int instockamount =  dao.getAmount(proNo);
+
     System.out.println(instockamount+" "+amount);
     if(instockamount<amount){
       response.setCharacterEncoding("UTF-8");
