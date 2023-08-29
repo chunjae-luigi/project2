@@ -152,7 +152,7 @@ public class MultiPattern {
     return payNo;
   }
 
-  public void refund(Payment pay){
+  public void refund(int payNo, int proNo){
     conn = db.connect();
     int cnt = 0;
     String sql = "";
@@ -163,27 +163,19 @@ public class MultiPattern {
       // 반품 시 결제 취소
       sql = "delete from payment where payNo=?";
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, pay.getPayNo());
+      pstmt.setInt(1, payNo);
       cnt += pstmt.executeUpdate();
 
 
       // 반품 시 출고 취소
-      sql = "delete from outstock where payNo=?";
+      sql = "delete from outstock where proNo=?";
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, pay.getPayNo());
-      cnt += pstmt.executeUpdate();
-
-      // 반품 시 장바구니에 다시 넣기
-      sql = "insert into cart(memId, proNo, amount) values(?, ?, ?)";
-      pstmt = conn.prepareStatement(sql);
-      pstmt.setString(1, pay.getMemId());
-      pstmt.setInt(2, pay.getProNo());
-      pstmt.setInt(3, pay.getAmount());
+      pstmt.setInt(1, proNo);
       cnt += pstmt.executeUpdate();
 
       // 반품 시 배송 삭제
       sql = "delete from delivery where payNo=?";
-      pstmt.setInt(1, pay.getPayNo());
+      pstmt.setInt(1, payNo);
       cnt += pstmt.executeUpdate();
 
       conn.commit();

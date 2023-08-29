@@ -5,6 +5,7 @@ import com.gnjBook.dto.Delivery;
 import com.gnjBook.dto.Payment;
 import com.gnjBook.dto.Product;
 import com.gnjBook.model.CartDAO;
+import com.gnjBook.model.InstockDAO;
 import com.gnjBook.model.MultiPattern;
 import com.gnjBook.model.ProductDAO;
 import com.gnjBook.vo.PayVO;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +56,15 @@ public class PayProductProCtrl extends HttpServlet {
     payvo.setPro(product);
     payvo.setDel(del);
     payvo.setPay(pay);
+
+    InstockDAO indao = new InstockDAO();
+    if(indao.getProductInstock(product.getProNo()).getAmount()<=0){
+      response.setCharacterEncoding("UTF-8");
+      response.setContentType("text/html; charset=UTF-8");
+      PrintWriter out = response.getWriter();
+
+      out.println("<script>alert('재고 수량이 부족하여 결제되지 않았습니다. 죄송합니다.');history.go(-1);</script>");
+    }
 
     MultiPattern mdao = new MultiPattern();
     int pno = mdao.outstockProduct(pay, del);
