@@ -25,18 +25,18 @@
         </ol>
     </nav>
     <div class="row">
-        <div class="col-4">
-            <img class="card-img-top" src="${rootPath}/storage/${product.thumbnail }" alt="${book.title }" width="100"/>
+        <div class="col-4" style="width: 700px">
+            <img class="card-img-top" src="${rootPath}/storage/${product.img }" alt="${product.title }" width="100"/>
         </div>
-        <div class="col-8">
+        <div class="col-8" style="width: 440px">
             <form action="" method="post">
             <table class="table">
                 <thead>
                 <tr>
-                    <td colspan="2"><h2>${book.title }</h2></td>
+                    <td colspan="2"><h2>${product.title }</h2></td>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody >
                 <tr>
                     <th scope="row">카테고리</th>
                     <td>${category.categoryName} </td>
@@ -67,8 +67,11 @@
             </form>
         </div>
     </div>
-    <div class="content">
-        ${book.content}
+    <div class="content" style="margin: auto; padding-bottom: 24px; border: 1px solid black; ">
+        ${product.content}
+            <div class="content_video">
+                ${product.video}
+            </div>
     </div>
     <a class="btn btn-primary" href="${rootPath }/BookList.do?category=*" role="button">글 목록</a>
 </div>
