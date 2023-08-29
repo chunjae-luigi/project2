@@ -23,7 +23,7 @@ public class BookDeleteCtrl extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         if(cnt > 0) {
-            response.sendRedirect(home + "/ProList.do");
+            response.sendRedirect(home + "/BookListAdmin.do");
         }else{
             out.println("<script>history.go(-1);</script>");
 

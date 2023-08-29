@@ -47,8 +47,12 @@
                     <div class="col-8"><textarea class="form-control" id="content" name="content" rows="5"></textarea></div>
                 </div>
                 <div class="row">
-                    <div class="col-2"><label for="imgSrc">파일 첨부</label></div>
+                    <div class="col-2"><label for="imgSrc">이미지 첨부</label></div>
                     <div class="col-8"><input type="file" class="form-control" id="imgSrc" name="imgSrc"></div>
+                </div>
+                <div class="row">
+                    <div class="col-2"><label for="video">동영상 첨부</label></div>
+                    <div class="col-8"><input type="file" class="form-control" id="video" name="video"></div>
                 </div>
                 <input type="submit" class="btn btn-primary mb-3" value="교재 추가">
             </form>

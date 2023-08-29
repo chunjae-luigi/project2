@@ -42,6 +42,10 @@
                     <td>${category.categoryName} </td>
                 </tr>
                 <tr>
+                    <th scope="row">저자</th>
+                    <td>${product.author} </td>
+                </tr>
+                <tr>
                     <th scope="row">가격</th>
                     <td>${product.price}</td>
                 </tr>
@@ -67,12 +71,12 @@
             </form>
         </div>
     </div>
-    <div class="content" style="margin: auto; padding-bottom: 24px; border: 1px solid black; ">
+    <div class="content" style="margin-top: 24px; padding: 24px; border: 1px solid black; ">
+            <video height="300" width="500" controls >
+                <source src="${rootPath}/storage/${product.video }" type="video/mp4"></video>
         ${product.content}
-            <div class="content_video">
-                ${product.video}
-            </div>
-    </div>
+
+        </div>
     <a class="btn btn-primary" href="${rootPath }/BookList.do?category=*" role="button">글 목록</a>
 </div>
 

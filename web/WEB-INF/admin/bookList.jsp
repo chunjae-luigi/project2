@@ -36,7 +36,7 @@
             </ul>
         </ui>
         <div class="container">
-            <form action="${rootPath}/BookDelete.do" method="post" onsubmit="deleteTrue()">
+            <form action="${rootPath}/BookDelete.do" method="post" onsubmit="return deleteTrue()">
             <table class="table table-secondary" id="tb1">
                 <thead>
                 <tr>
@@ -48,10 +48,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="book" items="${bookList}" varStatus="status">
                     <tr>
-                        <td class="check"><input type="checkbox" name="isDelete" value="${book.proNo}"></td>
-                        <td>${book.categoryId}</td>
+                        <c:forEach var="book" items="${bookList}" varStatus="status">
+                        <td class="check"><input type="checkbox" class="isDelete" name="isDelete" value="${book.proNo}"></td>
+
+                        <td >${book.categoryId}</td>
                         <td>
                             <a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="${rootPath }/BookGetAdmin.do?id=${book.proNo}" style="display:inline-block; width:100%;">${book.title}</a>
                         </td>
@@ -63,7 +64,7 @@
                 </tbody>
             </table>
             <a class="btn btn-primary" href="${rootPath }/BookAdd.do" role="button">교재 추가</a>
-            <a class="btn btn-primary" href="${rootPath }/BookDelete.do" role="button">삭제하기</a>
+            <input class="btn btn-primary" type="submit" value="회원 삭제">
             <nav aria-label="Page navigation example" id="page-nation1">
                 <ul class="pagination">
                     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -82,10 +83,17 @@
 </html>
 <script>
     function deleteTrue(){
-        let isdelete = confirm("정말 삭제하시겠습니까?");
-        if(isdelete){
-            return true;
-        } else{
+        var isdelete = confirm("정말 삭제하시겠습니까?");
+        console.log(isdelete);
+        if(isdelete==true){
+            var len = $(".isDelete [checked='true']").length;
+            if(len>0){
+                return true;
+            } else{
+                alert("삭제할 상품이 없습니다.");
+                return false;
+            }
+        } else {
             return false;
         }
     }
