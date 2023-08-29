@@ -2,6 +2,7 @@ package com.gnjBook.model;
 
 import com.gnjBook.db.DBC;
 import com.gnjBook.db.MariaDBCon;
+import com.gnjBook.dto.Member;
 import com.gnjBook.dto.Product;
 
 import java.sql.Connection;
@@ -91,6 +92,8 @@ public class ProductDAO {
     conn = db.connect();
     int cnt = 0;
 
+    Product product1 = new Product();
+
     String sql = "insert into product(categoryId, title, price, content, img) values(?, ?, ?, ?, ?)";
     try {
       pstmt = conn.prepareStatement(sql);
@@ -101,11 +104,50 @@ public class ProductDAO {
       pstmt.setString(5, product.getImg());
 
       cnt = pstmt.executeUpdate();
+
+      pstmt.close();
     } catch (Exception e) {
       throw new RuntimeException(e);
-    } finally{
+    }
+
+    sql = "SELECT * FROM product ORDER BY regdate DESC LIMIT 1";
+    try {
+      pstmt = conn.prepareStatement(sql);
+      rs = pstmt.executeQuery();
+      if(rs.next()) {
+        product1.setProNo(rs.getInt("proNo"));
+      }
+      rs.close();
+      pstmt.close();
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+
+    sql = "insert into instock(proNo, amount, inPrice) values(?, ?, ?)";
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setInt(1, product1.getProNo());
+      pstmt.setInt(2, 0);
+      pstmt.setInt(3, 0);
+      cnt += pstmt.executeUpdate();
+      pstmt.close();
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+
+    sql = "insert into outstock(proNo, amount, outPrice) values(?, ?, ?)";
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setInt(1, product1.getProNo());
+      pstmt.setInt(2, 0);
+      pstmt.setInt(3, 0);
+      cnt += pstmt.executeUpdate();
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    } finally {
       db.close(rs, pstmt, conn);
     }
+
     return cnt;
   }
 

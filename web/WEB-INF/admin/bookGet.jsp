@@ -43,9 +43,9 @@
         </div>
         <div class="content">
             ${product.content}
-
         </div>
         <a class="btn btn-primary" href="${rootPath }/BookListAdmin.do" role="button">글 목록</a>
+        <a class="btn btn-primary" href="${rootPath }/Instock.do?no=${product.proNo}" role="button">상품 입고</a>
         <a class="btn btn-primary" href="${rootPath }/BookUpdate.do?no=${product.proNo}" role="button">글 수정</a>
         <a class="btn btn-primary" href="${rootPath }/BookDelete.do?no=${product.proNo}" role="button">글 삭제</a>
     </div>

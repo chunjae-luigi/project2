@@ -73,12 +73,12 @@ create table product(
 	content VARCHAR(2000), -- 상품 설명
 	img VARCHAR(5000) default 0, -- 상품 썸네일
 	regdate timestamp default CURRENT_TIMESTAMP(),
-    video VARCHAR(5000) default 0, -- 상품 썸네일      //0828 추가 황교진 - product와 book 테이블을 하나로 합치기 위함
+    video VARCHAR(5000) default 0 -- 상품 썸네일      //0828 추가 황교진 - product와 book 테이블을 하나로 합치기 위함
 );
 -- ALTER table product CHANGE thumbnail img VARCHAR(5000) DEFAULT 0;
 -- ALTER TABLE product ADD video VARCHAR(5000) DEFAULT 0;
 
--- 도서 상품 추가 테이블 생성
+-- 도서 상품 추가 테이블 생성 - 사용안함
 CREATE TABLE book(
 	proNo INT, -- 상품 테이블 번호
 	bookNo INT PRIMARY KEY AUTO_INCREMENT, -- 도서 고유번호
@@ -157,6 +157,11 @@ CREATE TABLE review(
 	regdate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	proNo INT NOT NULL   -- 리뷰 대상 상품 번호
 );
+
+-- 재고 VIEW 생성
+CREATE VIEW instockInventory AS (SELECT proNo, sum(amount) AS amount FROM instock GROUP BY proNo);
+CREATE VIEW outstockInventory AS (SELECT proNo, sum(amount) AS amount FROM outstock GROUP BY proNo);
+CREATE VIEW inventory AS (SELECT a.proNo, (a.amount-b.amount) AS amount FROM instockInventory a, outstockInventory b  WHERE a.proNo = b.proNo);
 
 -- 재고는 페이지에서 알아서 계산하기
 -- 재고 보정은 일단은 생각하지 말기~
