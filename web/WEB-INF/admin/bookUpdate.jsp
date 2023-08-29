@@ -49,6 +49,10 @@
                     <div class="col-2"><label for="imgSrc">파일 첨부</label></div>
                     <div class="col-8"><input type="file" class="form-control" id="imgSrc" name="imgSrc" value="${pro.img}"></div>
                 </div>
+                <div class="row">
+                    <div class="col-2"><label for="video">동영상 첨부</label></div>
+                    <div class="col-8"><input type="file" class="form-control" id="video" name="video" value="${pro.video}"></div>
+                </div>
                 <input type="submit" class="btn btn-primary mb-3" value="교재 추가">
             </form>
 

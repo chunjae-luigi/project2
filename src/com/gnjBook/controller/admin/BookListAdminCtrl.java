@@ -1,7 +1,9 @@
 package com.gnjBook.controller.admin;
 
 
+import com.gnjBook.dto.Category;
 import com.gnjBook.dto.Product;
+import com.gnjBook.model.CategoryDAO;
 import com.gnjBook.model.ProductDAO;
 
 import javax.servlet.RequestDispatcher;
@@ -24,6 +26,11 @@ public class BookListAdminCtrl extends HttpServlet {
         ProductDAO dao = new ProductDAO();
         List<Product> bookList = dao.getProductList();
 
+        CategoryDAO cao = new CategoryDAO();
+        Category cate = cao.getCategory("bookList");
+
+
+        request.setAttribute("cate", cate);
         request.setAttribute("bookList", bookList);
 
         RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/bookList.jsp");

@@ -34,33 +34,42 @@ public class BookAddProCtrl extends HttpServlet {
             Product product= new Product();
             product.setCategoryId(mr.getParameter("category"));
             product.setTitle(mr.getParameter("title"));
+            product.setAuthor(mr.getParameter("author"));
             product.setPrice(Integer.parseInt(mr.getParameter("price")));
             product.setContent(mr.getParameter("content"));
 
 
-            Enumeration files = mr.getFileNames();
-            String item = (String) files.nextElement();
-            String oriFile = mr.getOriginalFileName(item); //실제 첨부된 파일경로와 이름
-            String fileName = mr.getFilesystemName(item);  //파일이름만 추출
-
             File upfile = null;
-            upfile = mr.getFile(item); //실제 업로드
+            Enumeration files = mr.getFileNames();
 
-            if(upfile.exists()){
-                msg = "파일 업로드 성공";
-                System.out.println("파일 업로드 성공");
-            } else {
-                msg = "파일 업로드 실패";
-                System.out.println("파일 업로드 실패");
+            int idx = 1;
+            String item;
+            String oriFile = "";
+            String fileName = "";
+            while(files.hasMoreElements()) {
+                item = (String) files.nextElement();
+                oriFile = mr.getOriginalFileName(item); //실제 첨부된 파일경로와 이름
+                fileName = mr.getFilesystemName(item);  //파일이름만 추출
+
+
+                if(fileName!=null) {
+                    upfile = mr.getFile(item); //실제 업로드
+                    if (upfile.exists()) {
+                        long filesize = upfile.length();
+                        if (idx == 1) {
+                            product.setImg(upfile.getName());
+                        } else if (idx == 2) {
+                            product.setVideo(upfile.getName());
+                        }
+                        msg = "파일 업로드 성공";
+                        System.out.println("파일 업로드 성공");
+                    } else {
+                            msg = "파일 업로드 실패";
+                            System.out.println("파일 업로드 실패");
+                        }
+                }
+                idx++;
             }
-
-            if(upfile.getName().isEmpty()){
-                product.setImg("empty.jpg");
-            }
-
-            product.setImg(upfile.getName());
-            System.out.println();
-
 
 
             ProductDAO dao = new ProductDAO();
@@ -70,8 +79,9 @@ public class BookAddProCtrl extends HttpServlet {
             if(cnt>0){
                 productList = dao.getCategoryProduct(mr.getParameter("category"));
                 request.setAttribute("bookList",productList);
-                RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/bookList.jsp");
-                view.forward(request, response);
+                response.sendRedirect(request.getContextPath()+"/BookListAdmin.do");
+                //RequestDispatcher view = request.getRequestDispatcher("/BookListAdmin.do");
+                  //              view.forward(request, response);
             } else {
                 response.sendRedirect(request.getContextPath()+"/BookAdd.do");
             }
