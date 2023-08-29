@@ -3,6 +3,7 @@ package com.gnjBook.model;
 import com.gnjBook.db.DBC;
 import com.gnjBook.db.MariaDBCon;
 import com.gnjBook.dto.Instock;
+import com.gnjBook.vo.InstockVO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
