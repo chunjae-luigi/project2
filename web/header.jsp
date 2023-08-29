@@ -29,18 +29,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="${rootPath}/product/introduce.jsp">쌤쌤 소개</a>
                         </li>
-                        <li class="nav-item"><a href="${rootPath }/BookList.do?category=*" class="nav-link">전체 상품</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="${rootPath }/ProList.do" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                초등교재
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="${rootPath}/BookList.do?category=A">초등교과서</a></li>
-                                <li><a class="dropdown-item" href="${rootPath}/BookList.do?category=B">초등참고서</a></li>
-                                <li><a class="dropdown-item" href="${rootPath}/BookList.do?category=C">초등문제집</a></li>
-                            </ul>
-                        </li>
-
+                        <li class="nav-item"><a href="${rootPath }/BookList.do?category=*" class="nav-link">교과서</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 커뮤니티

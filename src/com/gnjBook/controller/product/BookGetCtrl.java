@@ -25,16 +25,12 @@ public class BookGetCtrl extends HttpServlet {
     ProductDAO dao = new ProductDAO();
     Product product = dao.getProduct(proNo);
 
-    BookDAO bdao = new BookDAO();
-    Book book = bdao.getBook(proNo);
-
     CategoryDAO cdao = new CategoryDAO();
     Category category = cdao.getCategory(product.getCategoryId());
 
 
 
     request.setAttribute("product", product);
-    request.setAttribute("book", book);
     request.setAttribute("category", category);
 
     RequestDispatcher view = request.getRequestDispatcher("/product/bookGet.jsp");

@@ -9,7 +9,7 @@ NAME VARCHAR(100) NOT NULL,   -- (이름)
 email VARCHAR(100) NOT NULL,   -- (이메일)
 tel VARCHAR(13),   -- (전화번호)
 birth DATE, -- 생년월일
-addresss VARCHAR(300), -- 주소 
+address VARCHAR(300), -- 주소
 postcode VARCHAR(10),
 regdate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,   -- (가입일)
 POINT INT DEFAULT 0,   -- (포인트)
@@ -49,7 +49,10 @@ visited INTEGER DEFAULT 0
 );
 
 -- 카테고리 테이블
--- A:초등교과서, B:초등참고서, C:초등문제집, D:초등기타, E:중등교과서, F:중등참고서, G:중등문제집, H:중등기타, I:고등교과서, J:고등참고서, K:고등문제집, L:고등기타, M:일반교과서, N:일반참고서, O:일반문제집, P:일반기타, Q:유아콘텐츠, R:유아놀이, S:유아기타, T:해외서적,  U:해외콘텐츠
+-- A:초등교과서, B:초등참고서, C:초등문제집, D:초등기타, E:중등교과서,
+-- F:중등참고서, G:중등문제집, H:중등기타, I:고등교과서, J:고등참고서,
+-- K:고등문제집, L:고등기타, M:일반교과서, N:일반참고서, O:일반문제집,
+-- P:일반기타, Q:유아콘텐츠, R:유아놀이, S:유아기타, T:해외서적,  U:해외콘텐츠
 create table category(
 	categoryId VARCHAR(4) PRIMARY KEY,
 	categoryName varchar(100) not NULL
@@ -64,9 +67,12 @@ create table product(
 	title VARCHAR(100) NOT NULL,
 	description VARCHAR(200), -- 상품 썸네일 설명
 	content VARCHAR(2000), -- 상품 설명
-	thumbnail VARCHAR(256), -- 상품 썸네일
-	regdate timestamp default CURRENT_TIMESTAMP()
-);	
+	img VARCHAR(5000) default 0, -- 상품 썸네일
+	regdate timestamp default CURRENT_TIMESTAMP(),
+    video VARCHAR(5000) default 0, -- 상품 썸네일      //0828 추가 황교진 - product와 book 테이블을 하나로 합치기 위함
+);
+-- ALTER table product CHANGE thumbnail img VARCHAR(5000) DEFAULT 0;
+-- ALTER TABLE product ADD video VARCHAR(5000) DEFAULT 0;
 
 -- 도서 상품 추가 테이블 생성
 CREATE TABLE book(

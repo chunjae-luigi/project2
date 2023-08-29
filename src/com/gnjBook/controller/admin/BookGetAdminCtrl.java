@@ -26,7 +26,7 @@ public class BookGetAdminCtrl extends HttpServlet {
     CategoryDAO cdao = new CategoryDAO();
     Category category = cdao.getCategory(product.getCategoryId());
 
-    request.setAttribute("book", product);
+    request.setAttribute("product", product);
     request.setAttribute("category", category);
 
     RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/bookGet.jsp");

@@ -1,5 +1,4 @@
-package com.gnjBook.controller.admin;
-
+package com.gnjBook.controller.product;
 
 import com.gnjBook.dto.Product;
 import com.gnjBook.model.ProductDAO;
@@ -14,19 +13,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/BookListAdmin.do")
-public class BookListAdminCtrl extends HttpServlet {
+@WebServlet("/CateList.do")
+public class CateListCtrl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("msg", "교재 목록을 출력합니다.");
-        String category = request.getParameter("category");
+        String category = "";
 
         ProductDAO dao = new ProductDAO();
-        List<Product> bookList = dao.getProductList();
+        List<Product> bookList = new ArrayList<>();
+        if(request.getParameter("category")==""){
+            bookList = dao.getProductList();
+        } else{
+            category = request.getParameter("category");
+            bookList = dao.getCategoryProduct(category);
+        }
+
 
         request.setAttribute("bookList", bookList);
 
-        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/bookList.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("/product/bookList.jsp");
         view.forward(request, response);
     }
 }

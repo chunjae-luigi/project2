@@ -32,7 +32,16 @@ public class ProductDAO {
 
       while(rs.next()){
         String regdate = sdf.format(rs.getDate("regdate"));
-        productList.add(new Product(rs.getInt("proNo"), rs.getString("categoryId"), rs.getString("procategory"), rs.getInt("price"), rs.getString("title"), rs.getString("description"), rs.getString("content"), rs.getString("thumbnail"), regdate));
+        productList.add(new Product(
+                rs.getInt("proNo"),
+                rs.getString("categoryId"),
+                rs.getString("procategory"),
+                rs.getInt("price"),
+                rs.getString("title"),
+                rs.getString("description"),
+                rs.getString("content"),
+                rs.getString("img"),
+                rs.getString("video"), regdate));
       }
 
     } catch (Exception e) {
@@ -56,7 +65,17 @@ public class ProductDAO {
 
       if(rs.next()){
         String regdate = sdf.format(rs.getDate("regdate"));
-        product = new Product(rs.getInt("proNo"), rs.getString("categoryId"), rs.getString("procategory"), rs.getInt("price"), rs.getString("title"), rs.getString("description"), rs.getString("content"), rs.getString("thumbnail"), regdate);
+        product = new Product(
+                rs.getInt("proNo"),
+                rs.getString("categoryId"),
+                rs.getString("procategory"),
+                rs.getInt("price"),
+                rs.getString("title"),
+                rs.getString("description"),
+                rs.getString("content"),
+                rs.getString("img"),
+                rs.getString("video"),
+                regdate);
       }
 
     } catch (Exception e) {
@@ -72,15 +91,14 @@ public class ProductDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "insert into product(categoryId, price, title, description, content, thumbnail) values(?, ?, ?, ?, ?, ?, )";
+    String sql = "insert into product(categoryId, title, price, content, img) values(?, ?, ?, ?, ?)";
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setString(1, product.getCategoryId());
-      pstmt.setInt(2, product.getPrice());
-      pstmt.setString(3, product.getTitle());
-      pstmt.setString(4, product.getDescription());
-      pstmt.setString(5, product.getContent());
-      pstmt.setString(6, product.getThumbnail());
+      pstmt.setString(2, product.getTitle());
+      pstmt.setInt(3, product.getPrice());
+      pstmt.setString(4, product.getContent());
+      pstmt.setString(5, product.getImg());
 
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {
@@ -95,16 +113,15 @@ public class ProductDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "update product set categoryId=?, price=?, title=?, description=?, content=?, thumbnail=? where proNo=?";
+    String sql = "update product set categoryId=?, price=?, title=?, content=?, img=? where proNo=?";
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setString(1, product.getCategoryId());
       pstmt.setInt(2, product.getPrice());
       pstmt.setString(3, product.getTitle());
-      pstmt.setString(4, product.getDescription());
-      pstmt.setString(5, product.getContent());
-      pstmt.setString(6, product.getThumbnail());
-      pstmt.setInt(7, product.getProNo());
+      pstmt.setString(4, product.getContent());
+      pstmt.setString(5, product.getImg());
+      pstmt.setInt(6, product.getProNo());
 
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {
@@ -114,6 +131,7 @@ public class ProductDAO {
     }
     return cnt;
   }
+
   public int deleteProduct(int proNo){
     conn = db.connect();
     int cnt = 0;
@@ -132,6 +150,7 @@ public class ProductDAO {
     return cnt;
   }
 
+
   public List<Product> getCategoryProduct(String categoryId){
       conn = db.connect();
       List<Product> productList = new ArrayList<>();
@@ -145,7 +164,17 @@ public class ProductDAO {
         while(rs.next()){
           String regdate = sdf.format(rs.getDate("regdate"));
 
-          productList.add(new Product(rs.getInt("proNo"), rs.getString("categoryId"), rs.getString("procategory"), rs.getInt("price"), rs.getString("title"), rs.getString("description"), rs.getString("content"), rs.getString("thumbnail"), regdate));
+          productList.add(new Product(
+                  rs.getInt("proNo"),
+                  rs.getString("categoryId"),
+                  rs.getString("procategory"),
+                  rs.getInt("price"),
+                  rs.getString("title"),
+                  rs.getString("description"),
+                  rs.getString("content"),
+                  rs.getString("img"),
+                  rs.getString("video"),
+                  regdate));
         }
 
       } catch (Exception e) {
