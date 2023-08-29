@@ -18,7 +18,7 @@
     <div class="container" style="margin-top: 20px;">
         <h2 class="title">회원</h2>
         <div class="container">
-            <form action="${rootPath}/MemberDelete.do" method="post" onsubmit="deleteTrue()">
+            <form action="${rootPath}/MemberDelete.do" method="post" onsubmit="return deleteTrue()">
                 <table class="table table-secondary" id="tb1">
                     <thead>
                     <tr>
@@ -31,8 +31,8 @@
                     </thead>
                     <tbody>
                     <c:forEach var="member" items="${memberList}" varStatus="status">
-                    <tr>
-                        <td class="check"><input type="checkbox" name="isDelete" value="${member.id}"></td>
+                    <tr id="${status.count}">
+                        <td class="check"><input type="checkbox" class="isDelete" name="isDelete" value="${member.id}"></td>
                         <td>${status.count}</td>
                         <td>
                             <a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="${rootPath }/MemberGetAdmin.do?id=${member.id}" style="display:inline-block; width:100%;">${member.id}</a>
@@ -62,10 +62,17 @@
 </html>
 <script>
     function deleteTrue(){
-        let isdelete = confirm("정말 삭제하시겠습니까?");
-        if(isdelete){
-            return true;
-        } else{
+        var isdelete = confirm("정말 삭제하시겠습니까?");
+        console.log(isdelete);
+        if(isdelete===true){
+            var len = $(".isDelete [checked='true']").length;
+            if(len>0){
+                return true;
+            } else{
+                alert("삭제할 회원이 없습니다.");
+                return false;
+            }
+        } else {
             return false;
         }
     }

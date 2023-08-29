@@ -4,6 +4,7 @@ import com.gnjBook.dto.Cart;
 import com.gnjBook.dto.Member;
 import com.gnjBook.dto.Product;
 import com.gnjBook.model.CartDAO;
+import com.gnjBook.model.InstockDAO;
 import com.gnjBook.model.MemberDAO;
 import com.gnjBook.model.ProductDAO;
 import com.gnjBook.vo.CartVO;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,21 +26,32 @@ public class PayProductCtrl extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     int amount = Integer.parseInt(request.getParameter("amount"));
-    int pro_no = Integer.parseInt(request.getParameter("pro_no"));
+    int proNo = Integer.parseInt(request.getParameter("proNo"));
 
     ProductDAO dao = new ProductDAO();
-    Product product = dao.getProduct(pro_no);
+    Product product = dao.getProduct(proNo);
 
-    request.setAttribute("amount", amount);
-    request.setAttribute("product", product);
+    InstockDAO indao = new InstockDAO();
+    int instockamount =  indao.getProductInstock(proNo).getAmount();
+    System.out.println(instockamount+" "+amount);
+    if(instockamount<amount){
+      response.setCharacterEncoding("UTF-8");
+      response.setContentType("text/html; charset=UTF-8");
+      PrintWriter out = response.getWriter();
 
-    MemberDAO memberDAO = new MemberDAO();
-    HttpSession session = request.getSession(); // 세션 생성
-    Member member = memberDAO.getMember((String) session.getAttribute("session_id"));
+      out.println("<script>alert('재고 수량이 부족하여 결제할 수 없습니다. 죄송합니다.');history.go(-1);</script>");
+    } else{
+      request.setAttribute("amount", amount);
+      request.setAttribute("product", product);
 
-    request.setAttribute("mem", member);
+      MemberDAO memberDAO = new MemberDAO();
+      HttpSession session = request.getSession(); // 세션 생성
+      Member member = memberDAO.getMember((String) session.getAttribute("session_id"));
 
-    RequestDispatcher view = request.getRequestDispatcher("/pay/productPay.jsp");
-    view.forward(request,response);
+      request.setAttribute("mem", member);
+
+      RequestDispatcher view = request.getRequestDispatcher("/pay/productPay.jsp");
+      view.forward(request,response);
+    }
   }
 }

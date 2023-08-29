@@ -131,6 +131,7 @@ public class MemberDAO {
       pstmt.setString(1, member.getId());
       String encrypt = AES256.encryptAES256(member.getPw(), key);
       pstmt.setString(2, encrypt);
+
       pstmt.setString(3, member.getName());
       pstmt.setString(4, member.getEmail());
       pstmt.setString(5, member.getTel());

@@ -33,5 +33,9 @@
     <orderEntry type="library" name="javax.json.api" level="project" />
     <orderEntry type="library" name="google.code.gson" level="project" />
     <orderEntry type="library" exported="" name="cos" level="project" />
+    <orderEntry type="library" name="jstl" level="project" />
+    <orderEntry type="library" name="net.markenwerk.utils.json.parser" level="project" />
+    <orderEntry type="library" name="taglibs.standard" level="project" />
+    <orderEntry type="library" name="mariadb.jdbc.java.client" level="project" />
   </component>
 </module>
