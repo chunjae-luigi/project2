@@ -39,10 +39,10 @@ public class ProductDAO {
                 rs.getString("procategory"),
                 rs.getInt("price"),
                 rs.getString("title"),
-                rs.getString("description"),
+                rs.getString("author"),
                 rs.getString("content"),
                 rs.getString("img"),
-                rs.getString("video"), regdate));
+                regdate, rs.getString("video")));
       }
 
     } catch (Exception e) {
@@ -72,11 +72,11 @@ public class ProductDAO {
                 rs.getString("procategory"),
                 rs.getInt("price"),
                 rs.getString("title"),
-                rs.getString("description"),
+                rs.getString("author"),
                 rs.getString("content"),
                 rs.getString("img"),
-                rs.getString("video"),
-                regdate);
+                regdate,
+                rs.getString("video"));
       }
 
     } catch (Exception e) {
@@ -94,14 +94,16 @@ public class ProductDAO {
 
     Product product1 = new Product();
 
-    String sql = "insert into product(categoryId, title, price, content, img) values(?, ?, ?, ?, ?)";
+    String sql = "insert into product(categoryId, title, author, price, content, img, video) values(?, ?, ?, ?, ?, ?, ?)";
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setString(1, product.getCategoryId());
       pstmt.setString(2, product.getTitle());
-      pstmt.setInt(3, product.getPrice());
-      pstmt.setString(4, product.getContent());
-      pstmt.setString(5, product.getImg());
+      pstmt.setString(3, product.getAuthor());
+      pstmt.setInt(4, product.getPrice());
+      pstmt.setString(5, product.getContent());
+      pstmt.setString(6, product.getImg());
+      pstmt.setString(7, product.getVideo());
 
       cnt = pstmt.executeUpdate();
 
@@ -155,15 +157,17 @@ public class ProductDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "update product set categoryId=?, price=?, title=?, content=?, img=? where proNo=?";
+    String sql = "update product set categoryId=?, price=?, title=?, author=?, content=?, img=?, video=? where proNo=?";
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setString(1, product.getCategoryId());
       pstmt.setInt(2, product.getPrice());
       pstmt.setString(3, product.getTitle());
-      pstmt.setString(4, product.getContent());
-      pstmt.setString(5, product.getImg());
-      pstmt.setInt(6, product.getProNo());
+      pstmt.setString(4, product.getAuthor());
+      pstmt.setString(5, product.getContent());
+      pstmt.setString(6, product.getImg());
+      pstmt.setString(7, product.getVideo());
+      pstmt.setInt(8, product.getProNo());
 
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {
@@ -212,7 +216,7 @@ public class ProductDAO {
                   rs.getString("procategory"),
                   rs.getInt("price"),
                   rs.getString("title"),
-                  rs.getString("description"),
+                  rs.getString("author"),
                   rs.getString("content"),
                   rs.getString("img"),
                   rs.getString("video"),

@@ -6,7 +6,7 @@ public class Product {
   private String procategory;
   private int price = 0;
   private String title;
-  private String description;
+  private String author;
   private String content;
   private String img;
   private String regdate;
@@ -16,13 +16,13 @@ public class Product {
   public Product() {
   }
 
-  public Product(int proNo, String categoryId, String procategory, int price, String title, String description, String content, String img, String regdate, String video) {
+  public Product(int proNo, String categoryId, String procategory, int price, String title, String author, String content, String img, String regdate, String video) {
     this.proNo = proNo;
     this.categoryId = categoryId;
     this.procategory = procategory;
     this.price = price;
     this.title = title;
-    this.description = description;
+    this.author = author;
     this.content = content;
     this.img = img;
     this.regdate = regdate;
@@ -70,12 +70,12 @@ public class Product {
     this.title = title;
   }
 
-  public String getDescription() {
-    return description;
+  public String getAuthor() {
+    return author;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
+  public void setAuthor(String author) {
+    this.author = author;
   }
 
   public String getContent() {
