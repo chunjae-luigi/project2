@@ -30,7 +30,7 @@ public class MemberDAO {
   public boolean loginMember(String id, String pw){
     conn = db.connect();
 
-    String sql = "select * from member where id = ?";
+    String sql = "select * from member where id = ? and state=1";
 
     try {
       pstmt = conn.prepareStatement(sql);
@@ -160,7 +160,7 @@ public class MemberDAO {
     int cnt = 0;
 
     conn = db.connect();
-    String sql = "update member set pw=?, name=?, email=?, tel=?, birth=?, address=?, postecode=?, point=?, grade=? where id=?";
+    String sql = "update member set pw=?, name=?, email=?, tel=?, birth=?, address=?, postcode=?, point=?, grade=? where id=?";
 
     try {
       pstmt = conn.prepareStatement(sql);
@@ -195,6 +195,28 @@ public class MemberDAO {
     conn = db.connect();
 
     String sql = "delete from member where id=?";
+
+    try {
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, id);
+
+      cnt = pstmt.executeUpdate();
+
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    } finally{
+      db.close(rs, pstmt, conn);
+    }
+
+    return cnt;
+  }
+
+  public int resignMember(String id){
+    int cnt = 0;
+
+    conn = db.connect();
+
+    String sql = "update member set state=0 where id=?";
 
     try {
       pstmt = conn.prepareStatement(sql);
