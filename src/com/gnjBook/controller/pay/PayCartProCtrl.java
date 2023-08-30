@@ -77,6 +77,7 @@ public class PayCartProCtrl extends HttpServlet {
     boolean flag = true;
     for(int i=0; i<cartList.size(); i++){
       int inamount = inventoryList.get(i);
+      System.out.println(inamount);
       int cartstock = cartList.get(i).getAmount();
       if(inamount<cartstock){
         flag = false;
@@ -84,7 +85,7 @@ public class PayCartProCtrl extends HttpServlet {
       }
     }
 
-    if(flag){
+    if(!flag){
       response.setCharacterEncoding("UTF-8");
       response.setContentType("text/html; charset=UTF-8");
       PrintWriter out = response.getWriter();

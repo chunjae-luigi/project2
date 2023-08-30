@@ -13,29 +13,22 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Arrays;
 
-@WebServlet("/Mypage.do")
-public class MypageCtrl extends HttpServlet {
+@WebServlet("/MypageDelete.do")
+public class MypageDeleteCtrl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("msg", "나의 정보로 이동합니다.");
 
         HttpSession session = request.getSession(); // 세션 생성
+        String id = (String) session.getAttribute("session_id");
         MemberDAO dao = new MemberDAO();
-        Member member = dao.getMember((String) session.getAttribute("session_id"));
-
-        request.setAttribute("me", member);
-
-        String[] address = member.getAddress().split("/");
-        String address1 = address[0];
-        String address2 = "";
-        if(address.length>1){
-            address2 = address[1];
+        int cnt = dao.resignMember(id);
+        if(cnt>0){
+            System.out.println("정상적으로 탈퇴되었습니다.");
         }
 
-        request.setAttribute("address1", address1);
-        request.setAttribute("address2", address2);
-
-        RequestDispatcher view = request.getRequestDispatcher("/member/mypage.jsp");
-        view.forward(request, response);
+        session.removeAttribute("session_id");
+        String path = request.getContextPath();
+        response.sendRedirect(path+"/index.jsp");
     }
 }
