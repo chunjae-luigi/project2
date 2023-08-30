@@ -40,13 +40,13 @@
                             <li><a href="${rootPath }/member/term.jsp">회원가입</a></li>
                         </c:when>
                         <c:when test="${session_id eq 'admin'}">
-                            <li><a href="${rootPath }/Logout.jsp">로그아웃</a></li>
-                            <li><a href="${rootPath }/MemberListAdmin.jsp">관리자</a></li>
+                            <li><a href="${rootPath }/Logout.do">로그아웃</a></li>
+                            <li><a href="${rootPath }/MemberListAdmin.do">관리자</a></li>
                         </c:when>
                         <c:otherwise>
-                            <li><a href="${rootPath }/Logout.jsp">로그아웃</a></li>
-                            <li><a href="${rootPath }/CartList.jsp">장바구니</a></li>
-                            <li><a href="${rootPath }/PayList.jsp">결제 내역</a></li>
+                            <li><a href="${rootPath }/Logout.do">로그아웃</a></li>
+                            <li><a href="${rootPath }/CartList.do">장바구니</a></li>
+                            <li><a href="${rootPath }/PayList.do">결제 내역</a></li>
                         </c:otherwise>
                     </c:choose>
                 </ul>
@@ -63,7 +63,6 @@
                         <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">쌤쌤 소개 <i class="fas fa-sort-down" style="vertical-align: 0.125em!important;"></i></a>
                         <div class="dropdown-menu">
                             <div class="row">
-                                <!-- Basic -->
                                 <div class="col-lg-6 col-md-6 mb-sm-3">
                                     <ul>
                                         <li><a href="${rootPath}/product/introduce.jsp">회사소개</a></li>
@@ -75,17 +74,29 @@
                         </div>
                     </li>
                     <li class="dropdown dropdown-slide">
-                        <a href="${rootPath }/BookList.do?category=*" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">교과서 <i class="fas fa-sort-down" style="vertical-align: 0.125em!important;"></i></a>
+                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">도서 <i class="fas fa-sort-down" style="vertical-align: 0.125em!important;"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 mb-sm-3">
+                                    <ul>
+                                        <li><a href="${rootPath }/BookList.do?category=*">전체</a></li>
+                                        <li><a href="${rootPath }/BookList.do?category=*">초등</a></li>
+                                        <li><a href="${rootPath }/BookList.do?category=*">중등</a></li>
+                                        <li><a href="${rootPath }/BookList.do?category=*">고등</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                     <li class="dropdown dropdown-slide">
                         <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">커뮤니티 <i class="fas fa-sort-down" style="vertical-align: 0.125em!important;"></i></a>
                         <div class="dropdown-menu">
                             <div class="row">
-                                <!-- Basic -->
                                 <div class="col-lg-6 col-md-6 mb-sm-3">
                                     <ul>
-                                        <li><a href="${rootPath}/NoticeList.jsp">공지사항</a></li>
+                                        <li><a href="${rootPath}/NoticeList.do">공지사항</a></li>
                                         <li><a href="${rootPath}/">묻고답하기</a></li>
+                                        <li><a class="dropdown-item" href="${rootPath }/FileboardList.do">학습자료실</a></li>
                                     </ul>
                                 </div>
                             </div>

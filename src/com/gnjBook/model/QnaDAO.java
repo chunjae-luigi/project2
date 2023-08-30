@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QnaDAO {
+public class QnaDAO extends NoticeDAO {
   static DBC db = new MariaDBCon();
   Connection conn = null;
   PreparedStatement pstmt = null;
@@ -25,14 +25,15 @@ public class QnaDAO {
   public List<Qna> getQnaList(){
     conn = db.connect();
     List<Qna> qnaList = new ArrayList<>();
-    String sql = "select * from qna";
+    String sql = "select * from qna order by par asc";
 
     try {
       pstmt = conn.prepareStatement(sql);
       rs = pstmt.executeQuery();
-      String regdate = sdf.format(rs.getDate("regdate"));
+
 
       while(rs.next()){
+        String regdate = sdf.format(rs.getDate("regdate"));
         qnaList.add(new Qna(rs.getInt("qno"), rs.getString("title"), rs.getString("content"), rs.getString("author"), regdate, rs.getInt("visited"), rs.getInt("lev"), rs.getInt("par"), rs.getBoolean("secret")));
       }
 
@@ -90,7 +91,8 @@ public class QnaDAO {
         pstmt.close();
         sql = "update qna set par=qno where par=0 and lev=0";
         pstmt = conn.prepareStatement(sql);
-        cnt += pstmt.executeUpdate();
+        pstmt.executeUpdate();
+        cnt++;
       }
 
     } catch (SQLException e) {
@@ -144,6 +146,7 @@ public class QnaDAO {
 
     return cnt;
   }
+
 
   public int countUp(int qno){
     int cnt = 0;

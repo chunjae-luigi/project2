@@ -38,6 +38,8 @@
         <url-pattern>*.ogv</url-pattern>
         <url-pattern>*.wav</url-pattern>
         <url-pattern>*.webm</url-pattern>
+        <url-pattern>*.pdf</url-pattern>
+        <url-pattern>*.hwp</url-pattern>
     </servlet-mapping>
     <!--    <error-page>-->
     <!--        <error-code>403</error-code>-->
