@@ -11,18 +11,25 @@
     <%@ include file="../common.jsp"%>
 </head>
 
-<body>
+<body id="body">
 <%@ include file="../header.jsp"%>
-<div class="container contents">
-    <h2 class="page_title text-center">공지사항</h2>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb justify-content-end">
-            <li class="breadcrumb-item"><a href="${rootPath }">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Community</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Notice</li>
-        </ol>
-    </nav>
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content">
+                    <h1 class="page-name">공지사항</h1>
+                    <ol class="breadcrumb">
+                        <li><a href="${rootPath }/">Home</a></li>
+                        <li class="active">Community</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<div class="container contents">
     <div class="container">
         <div class="box_wrap">
             <table class="table table-secondary" id="tb1">
@@ -60,5 +67,6 @@
     </div>
 </div>
 <%@ include file="../footer.jsp" %>
+<%@ include file="/commonsub.jsp"%>
 </body>
 </html>
