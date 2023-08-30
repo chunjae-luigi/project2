@@ -25,7 +25,21 @@ INSERT INTO category(categoryId, categoryName) VALUES("K", "고등문제집");
 INSERT INTO category(categoryId, categoryName) VALUES("L", "고등기타");
 
 -- product 상품
-INSERT INTO product(category_id, price, title, DESCRIPTION, content, thumbnail) VALUES("B", 14500, "수학리더 개념 1-1 (2024)", "수학리더 시리즈 연산, 개념, 기본, 기본+응용, 응용·심화 중에서 교과서 개념을 익히는 가장 쉬운 단계의 첫단계 개념서이다.", "개념을 이해하는 쉽게 기초력, 이해력 문제들과 연산드릴 문제도 함께 수록하여 방학 때 다음 학기 내용을 미리 학습하기 좋은 선행 교재이다.", "초등교과서_수학리더 개념 1-1 (2024)");
+INSERT INTO product(categoryId, price, title, author, content, img) VALUES("B", 14500, "수학리더 개념 1-1 (2024)", "수학리더 시리즈 연산, 개념, 기본, 기본+응용, 응용·심화 중에서 교과서 개념을 익히는 가장 쉬운 단계의 첫단계 개념서이다.", "개념을 이해하는 쉽게 기초력, 이해력 문제들과 연산드릴 문제도 함께 수록하여 방학 때 다음 학기 내용을 미리 학습하기 좋은 선행 교재이다.", "초등교과서_수학리더 개념 1-1 (2024)");
+INSERT INTO product(categoryId, price, title, author, content, img) VALUES("A", 15000, "초등국어책", "초등국어책에 대한 간단한 설명", "초등국어책 많은 내용","끝맽음입니다.");
+INSERT INTO product(categoryId, price, title, author, content, img) VALUES("E", 20000, "중등국어책", "중등국어책에 대한 간단한 설명", "중등국어책 많은 내용","끝맽음입니다.");
+INSERT INTO product(categoryId, price, title, author, content, img) VALUES("I", 15000, "고등국어책", "고등국어책에 대한 간단한 설명", "고등국어책 많은 내용","끝맽음입니다.");
+INSERT INTO product(categoryId, price, title, author, content, img) VALUES("M", 20000, "일반교과서책", "일반교과서책에 대한 간단한 설명", "일반교과서책 많은 내용","끝맽음입니다.");
+INSERT INTO product(categoryId, price, title, author, content, img) VALUES("P", 25000, "일반기타책", "일반기타책에 대한 간단한 설명", "일반기타책 많은 내용","끝맽음입니다.");
+
+
+--book 상품
+INSERT INTO book VALUES(1, DEFAULT, "삼성", "교진","타이틀1","콘텐츠 입니다.1",DEFAULT,DEFAULT);
+INSERT INTO book VALUES(2, DEFAULT, "엘지", "상민","타이틀2","콘텐츠 입니다.2",DEFAULT,DEFAULT);
+INSERT INTO book VALUES(3, DEFAULT, "구글", "슬비","타이틀3","콘텐츠 입니다.3",DEFAULT,DEFAULT);
+INSERT INTO book VALUES(4, DEFAULT, "애플", "이호","타이틀4","콘텐츠 입니다.4",DEFAULT,DEFAULT);
+INSERT INTO book VALUES(5, DEFAULT, "카카오", "나연","타이틀5","콘텐츠 입니다.5",DEFAULT,DEFAULT);
+INSERT INTO book VALUES(6, DEFAULT, "네이버", "소윤","타이틀6","콘텐츠 입니다.6",DEFAULT,DEFAULT);
 
 -- 입고
 INSERT INTO instock(proNo, amount, inPrice) values(1, 10, 10000);
@@ -38,5 +52,5 @@ INSERT INTO outstock(proNo, amount, outPrice) VALUES(1, 5, 14500);
 -- 결제
 
 -- 카트
-INSERT INTO cart(mem_id, pro_no, amount) VALUES("kim1", 1, 2);
+INSERT INTO cart(memId, proNo, amount, price) VALUES("kim1", 1, 2,3000);
 
