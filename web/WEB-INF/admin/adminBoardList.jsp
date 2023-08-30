@@ -23,6 +23,11 @@
             </a>
         </li>
         <li class="nav-item">
+            <a id="admin-file-nav" href="${rootPath}/FileboardListAdmin.do" class="nav-link text-white">
+                학습자료 관리
+            </a>
+        </li>
+        <li class="nav-item">
             <a id="admin-delivery-nav" href="${rootPath}/DeliveryListAdmin.do" class="nav-link text-white">
                 배송 관리
             </a>

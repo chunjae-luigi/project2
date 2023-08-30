@@ -69,7 +69,7 @@ create table product(
 	procategory VARCHAR(100), -- 상품번호와 카테고리 아이디 결합
 	price INT DEFAULT 0, -- 상품 가격
 	title VARCHAR(100) NOT NULL,
-    author VARCHAR(100), -- 저자
+    	author VARCHAR(100), -- 저자
 	content VARCHAR(2000), -- 상품 설명
 	img VARCHAR(5000) default 0, -- 상품 썸네일
 	regdate timestamp default CURRENT_TIMESTAMP(),
@@ -144,7 +144,7 @@ create table cart(
 	cartNo INT PRIMARY KEY AUTO_INCREMENT, -- 카트 번호
 	memId VARCHAR(16) not NULL, -- 회원 아이디
 	proNo integer not NULL, -- 상품 번호
-	amount integer NOT NULL -- 제품 수량
+	amount integer NOT NULL, -- 제품 수량
 	price INTEGER DEFAULT 100,
 	imgsrc1 VARCHAR(5000) DEFAULT 'no_img.jpg'
 );
@@ -179,3 +179,14 @@ CREATE VIEW inventory AS (SELECT a.proNo, (a.amount-b.amount) AS amount FROM ins
 
 -- 전체 이익 통계 뷰 작성
 create view profit as (select outNo, sum(outPrice*amount) as tot from outstock group by outNo EXCEPT select inNo, sum(inPrice*amount) as tot from instock group by inNo);
+
+create table fileboard(
+	no INT primary KEY AUTO_INCREMENT,
+	title varchar(300),
+	content varchar(1000),
+	regdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
+	visited INTEGER DEFAULT 0
+	filename1 varchar(500),
+	filename2 varchar(500),
+	filename3 varchar(500)
+);
