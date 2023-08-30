@@ -46,7 +46,7 @@
         </tr>
         <tr>
             <th>주소</th>
-            <td>${me.address}</td>
+            <td>${address1 } ${address2 }</td>
         </tr>
         <tr>
             <th>생년월일</th>
@@ -54,7 +54,8 @@
         </tr>
         </tbody>
     </table>
-
+    <a href="${rootPath }/MypageUpdate.do" class="btn btn-primary mb-3">회원정보 수정하기</a>
+    <a href="${rootPath }/MypageDelete.do" class="btn btn-primary mb-3">회원 탈퇴하기</a>
 </div>
 
 <%@ include file="../footer.jsp" %>
