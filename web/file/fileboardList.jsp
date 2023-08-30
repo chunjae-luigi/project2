@@ -34,11 +34,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="notice" items="${fileboardList}" varStatus="status">
+                <c:forEach var="fileboard" items="${fileboardList}" varStatus="status">
                     <tr>
                         <td class="item1">${status.count}</td>
                         <td class="item2">
-                            <a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="${rootPath }/Notice.do?no=${fileboard.no}" style="display:inline-block; width:100%;">${fileboard.title}</a>
+                            <a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="${rootPath }/Fileboard.do?no=${fileboard.no}" style="display:inline-block; width:100%;">${fileboard.title}</a>
                         </td>
                         <td class="item3">${fileboard.regdate}</td>
                         <td class="item4">${fileboard.visited}</td>

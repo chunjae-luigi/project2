@@ -16,7 +16,7 @@ import java.util.List;
 public class FileboardListCtrl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("msg", "자료실 목록을 출력합니다.");
+        request.setAttribute("msg", "학습자료실 목록을 출력합니다.");
 
         FileboardDAO dao = new FileboardDAO();
         List<Fileboard> fileboardList = dao.getFileboardList();

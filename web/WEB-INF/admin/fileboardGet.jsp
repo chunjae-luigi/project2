@@ -27,21 +27,34 @@
             </tr>
             </thead>
             <tbody>
-            <c:set var="notice" value="${filaboard}"/>
+            <c:set var="notice" value="${fileboard}"/>
             <tr>
-                <td class="item2">${filaboard.title}</td>
-                <td class="item3">${filaboard.regdate}</td>
-                <td class="item4">${filaboard.visited}</td>
+                <td class="item2">${fileboard.title}</td>
+                <td class="item3">${fileboard.regdate}</td>
+                <td class="item4">${fileboard.visited}</td>
             </tr>
             <tr>
                 <td colspan="3">
-                    ${filaboard.content}
+                    ${fileboard.content}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <c:if test="${!empty fileboard.filename1 }">
+                        <img src="${rootPath }/storage/${fileboard.filename1 }" alt="${fileboard.filename1 }" width="100"/>
+                    </c:if>
+                    <c:if test="${!empty fileboard.filename2 }">
+                        <img src="${rootPath }/storage/${fileboard.filename2 }" alt="${fileboard.filename2 }" width="100"/>
+                    </c:if>
+                    <c:if test="${!empty fileboard.filename3 }">
+                        <img src="${rootPath }/storage/${fileboard.filename3 }" alt="${fileboard.filename3 }" width="100"/>
+                    </c:if>
                 </td>
             </tr>
             </tbody>
         </table>
         <a class="btn btn-primary" href="${rootPath }/FileboardListAdmin.do" role="button">글 목록</a>
-        <a class="btn btn-primary" href="${rootPath }/FileboardDelete.do?no=${filaboard.no}" role="button">글 삭제</a>
+        <a class="btn btn-primary" href="${rootPath }/FileboardDelete.do?no=${fileboard.no}" role="button">글 삭제</a>
     </div>
 </div>
 <%@ include file="../../footer.jsp" %>

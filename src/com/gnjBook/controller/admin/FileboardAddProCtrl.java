@@ -14,18 +14,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
+
 @WebServlet("/FileboardAddPro.do") // 사용자가 보는 이름
 public class FileboardAddProCtrl extends HttpServlet {
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String msg = "";
         ServletContext application = request.getServletContext();
+
         try {
             String saveDirectory = application.getRealPath("/storage"); //실제 저장 경로
             int maxSize = 1024*1024*10;     //10MB
@@ -69,13 +69,16 @@ public class FileboardAddProCtrl extends HttpServlet {
 
             FileboardDAO dao = new FileboardDAO();
             int cnt = dao.fileboardUpload(file);
-            List<Fileboard> fileList = new ArrayList<>();
+
+            List<Fileboard> fileboardList = new ArrayList<>();
+
             if(cnt>0){
-                fileList = dao.getFileboardList();
-                request.setAttribute("fileList",fileList);
-                RequestDispatcher view = request.getRequestDispatcher("/web-inf/admin/fileboardList.jsp");
-                view.forward(request, response);
+                System.out.println("성공적으로 추가되었습니다.");
+                String path = request.getContextPath();
+                response.sendRedirect(path+"/FileboardListAdmin.do");
             } else {
+                System.out.println("오류로 인해 제대로 처리되지 않았습니다.");
+
                 response.sendRedirect("/FileboardAdd.do");
             }
         } catch(Exception e){
@@ -83,3 +86,4 @@ public class FileboardAddProCtrl extends HttpServlet {
         }
     }
 }
+

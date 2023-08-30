@@ -38,13 +38,28 @@
             <td class="item4">${fileboard.visited}</td>
         </tr>
         <tr>
-            <td class="item5">${fileboard.filename1}</td>
-            <td class="item6">${fileboard.filename2}</td>
-            <td class="item6">${fileboard.filename3}</td>
+            <td colspan="3">
+                ${fileboard.content}
+            </td>
+        </tr>
+        <tr>
+            <th class="item2" colspan="3">학습자료(클릭하여 다운로드)</th>
         </tr>
         <tr>
             <td colspan="3">
-                ${fileboard.content}
+                <c:if test="${!empty fileboard.filename1 }">
+                    <img src="${rootPath }/storage/${fileboard.filename1 }" alt="${fileboard.filename1 }" width="100"/>
+                    <a href="${rootPath }/storage/${fileboard.filename1 }" download ><i class="fa-solid fa-file"></i>${fileboard.filename1 }</a> <br>
+                </c:if>
+                <c:if test="${!empty fileboard.filename2 }">
+                    <i class="fa-solid fa-file"></i>
+                    <a href="${rootPath }/storage/${fileboard.filename2 }" download >${fileboard.filename2 }</a><br>
+                </c:if>
+                <c:if test="${!empty fileboard.filename3 }">
+                    <img src="${rootPath }/storage/${fileboard.filename3 }" alt="${fileboard.filename3 }" width="100"/>
+                    <a href="${rootPath }/storage/${fileboard.filename3 }" download >${fileboard.filename3 }</a><br>
+
+                </c:if>
             </td>
         </tr>
         </tbody>

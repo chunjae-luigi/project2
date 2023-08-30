@@ -1,9 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page import="java.util.*, java.lang.*" %>
-<%@ page import="java.text.*, java.net.InetAddress" %>
-<c:set var="path" value="<%=request.getContextPath() %>" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,21 +31,11 @@
                 <c:forEach var="fileboard" items="${fileboardList}" varStatus="status">
                     <tr>
                         <td class="item1">${status.count}</td>
-                        <td>
-                            <c:if test="${!empty fileboard.filename1 }">
-                            <img src="${path }/storage/${fileboard.filename1 }" alt="${fileboard.filename1 }" width="100"/>
-                            </c:if>
+                        <td class="item2">
+                        <a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="${rootPath }/FileboardGetAdmin.do?no=${fileboard.no}" style="display:inline-block; width:100%;">${fileboard.title}</a>
                         </td>
-                        <td>
-                            <c:if test="${!empty fileboard.filename2 }">
-                            <img src="${path }/storage/${fileboard.filename2 }" alt="${fileboard.filename2 }" width="100"/>
-                            </c:if>
-                        </td>
-                        <td>
-                            <c:if test="${!empty fileboard.filename3 }">
-                            <img src="${path }/storage/${fileboard.filename3 }" alt="${fileboard.filename3 }" width="100"/>
-                            </c:if>
-                        </td>
+                        <td class="item3">${fileboard.regdate}</td>
+                        <td class="item4">${fileboard.visited}</td>
                     </tr>
                 </c:forEach>
            </tbody>
@@ -63,7 +51,7 @@
         </ul>
     </nav>
     </form>
-</div>
+</div></div></div>
 <%@ include file="../../footer.jsp" %>
 </body>
 </html>

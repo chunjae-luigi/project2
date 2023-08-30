@@ -22,7 +22,7 @@ public class FileboardDeleteCtrl extends HttpServlet {
         if(cnt>0){
             System.out.println("성공적으로 제거되었습니다.");
             String path = request.getContextPath();
-            response.sendRedirect("FileboardListAdmin.do");
+            response.sendRedirect(path+"/FileboardListAdmin.do");
         } else{
             System.out.println("오류로 인해 제대로 처리되지 않았습니다.");
             PrintWriter out = response.getWriter();

@@ -1,8 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page import="java.util.*, java.lang.*" %>
-<%@ page import="java.text.*, java.net.InetAddress" %>
+
 <c:set var="path" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html lang="en">
@@ -13,15 +12,18 @@
     <jsp:include page="../../common.jsp" />
 </head>
 <body>
-<jsp:include page="../../header.jsp" />
-<div class="container">
-    <h2>학습 자료실 업로드</h2>
+<%@ include file="../../header.jsp"%>
+<div style="display: flex; min-height: 80vh;">
+    <%@include file="adminBoardList.jsp"%>
+<div class="container" style="margin-top: 20px;">
+    <div class="container">
+        <h2 class="title" style="margin: 30px auto;">학습자료 업로드</h2>
     <form action="${path }/FileboardAddPro.do" method="post" enctype="multipart/form-data">
        <table class="table">
            <tbody>
            <tr>
-               <th><label for="subject">제목</label></th>
-               <td><input type="text" name="subject" id="subject" class="form-control"></td>
+               <th><label for="title">제목</label></th>
+               <td><input type="text" name="title" id="title" class="form-control"></td>
            </tr>
            <tr>
                <th><label for="content">내용</label></th>
@@ -45,7 +47,7 @@
            </tbody>
        </table>
     </form>
-</div>
-<%@ include file="../../footer.jsp" %>
+    </div></div></div>
+    <%@ include file="../../footer.jsp" %>
 </body>
 </html>
