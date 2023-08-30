@@ -23,6 +23,38 @@ public class ProductDAO {
   public ProductDAO() {
   }
 
+  public List<Product> getProductListmain(){
+    conn = db.connect();
+    List<Product> productList = new ArrayList<>();
+
+    String sql = "select * from product limit 0, 6";
+    try {
+      pstmt = conn.prepareStatement(sql);
+      rs = pstmt.executeQuery();
+
+      while(rs.next()){
+        String regdate = sdf.format(rs.getDate("regdate"));
+        productList.add(new Product(
+                rs.getInt("proNo"),
+                rs.getString("categoryId"),
+                rs.getString("procategory"),
+                rs.getInt("price"),
+                rs.getString("title"),
+                rs.getString("author"),
+                rs.getString("content"),
+                rs.getString("img"),
+                regdate, rs.getString("video")));
+      }
+
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    } finally{
+      db.close(rs, pstmt, conn);
+    }
+
+    return productList;
+  }
+
   public List<Product> getProductList(){
     conn = db.connect();
     List<Product> productList = new ArrayList<>();
