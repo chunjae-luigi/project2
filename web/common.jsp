@@ -7,6 +7,7 @@
 <!-- 메타포, 오픈그래프, 파비콘, 폰트 등 각 종 자원 로딩 -->
 
 
+<%--
 <script src="${rootPath}/js/jquery-1.10.0.js"></script>
 <script src="${rootPath}/js/nav.js"></script>
 
@@ -14,6 +15,26 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+--%>
+<!-- Themefisher Icon font -->
+<link rel="stylesheet" href="${rootPath}/css/bootstrap/themefisher-font/style.css">
+<!-- bootstrap.min css -->
+<link rel="stylesheet" href="${rootPath}/css/bootstrap/bootstrap.min.css">
+
+<!-- Animate css -->
+<link rel="stylesheet" href="${rootPath}/css/bootstrap/animate.css">
+<!-- Slick Carousel -->
+<link rel="stylesheet" href="${rootPath}/css/bootstrap/slick.css">
+<link rel="stylesheet" href="${rootPath}/css/bootstrap/slick-theme.css">
+
+<!-- Main Stylesheet -->
+<link rel="stylesheet" href="${rootPath}/css/bootstrap/style.css">
+
+<script type="text/javascript" charset="UTF-8" src="${rootPath}/js/all.js"></script>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/54/2/intl/ko_ALL/common.js"></script>
+<script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/54/2/intl/ko_ALL/util.js"></script></head>
+<%--
 
 <style>
     @font-face {
@@ -102,4 +123,4 @@
     .term ul li a:before{content:""; display:inline-block; position:absolute; bottom:-1px; left:0; width:100%; border-bottom:1px solid #97999b;}
 
     .inBtn.center{display:block;margin:10px auto 0;width:80%;background-color:var(--third-color);}
-</style>
+</style>--%>
