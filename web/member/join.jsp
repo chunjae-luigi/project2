@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-2"><label for="id" class="form-label">아이디</label></div>
             <div class="col-8">
-                <input type="text" class="form-control" id="id" name="id" aria-describedby="idStatus">
+                <input type="text" class="form-control" id="id" name="id" aria-describedby="idStatus" pattern="^[A-Za-z0-9]{4,16}" maxlength="16" placeholder="아이디는 영문 또는 숫자 4글자 이상, 16글자 이하">
                 <div id="idStatus" class="form-text text-start">아이디 중복 검사를 진행해주세요.</div>
             </div>
             <div class="col-2"><button type="button" class="btn btn-primary mb-3" onclick="idcheck()">중복검사</button></div>
@@ -34,7 +34,7 @@
         </div>
         <div class="row">
             <div class="col-2"><label for="pw" class="form-label">비밀번호</label></div>
-            <div class="col-3"><input type="password" class="form-control" id="pw" name="pw" placeholder="비밀번호" required></div>
+            <div class="col-3"><input type="password" class="form-control" id="pw" name="pw" required pattern="^[A-Za-z0-9]{4}" placeholder="비밀번호는 영문 또는 숫자 4글자 이상"></div>
             <div class="col-3">
                 <input type="password" class="form-control" id="pwchk" name="pwchk" placeholder="비밀번호 확인" required>
             </div>
