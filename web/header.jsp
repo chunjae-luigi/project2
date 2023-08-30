@@ -12,67 +12,98 @@
     .navbar .nav-item {margin: auto 10px;}
     /*부트스트랩 navbar 색깔을 어두운색으로 변경했으므로 색깔을 달리해줘야 한다.*/
 
+    .col-lg-6 {width:100%;}
+
 </style>
 
-<header class="header container-fluid fixed-top" id="hd" style="background-color: #435334">
+<section class="top-header">
     <div class="container">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="${rootPath }">
-                    <img src="${rootPath}/images/favicon-color.png" alt="SamSam" height="40">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="${rootPath}/product/introduce.jsp">쌤쌤 소개</a>
-                        </li>
-                        <li class="nav-item"><a href="${rootPath }/BookList.do?category=*" class="nav-link">교과서</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                커뮤니티
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="${rootPath }/NoticeList.do">공지사항</a></li>
-                                <li><a class="dropdown-item" href="${rootPath }/">묻고답하기</a></li>
-                                <li><a class="dropdown-item" href="${rootPath }/">학습후기</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav justify-content-end">
-                    <c:choose>
-                        <c:when test="${empty session_id}">
-                            <li class="nav-item"><a href="${rootPath }/member/login.jsp" class="nav-link">로그인</a></li>
-                            <li class="nav-item"><a href="${rootPath }/member/term.jsp" class="nav-link">회원가입</a></li>
-                            <li class="nav-item"><a href="${rootPath }/member/map.jsp" class="nav-link">오시는 길</a></li>
-                        </c:when>
-                        <c:when test="${session_id eq 'admin'}">
-                            <li class="nav-item"><a href="${rootPath }/Logout.do" class="nav-link">로그아웃</a></li>
-                            <li class="nav-item"><a href="${rootPath }/Mypage.do" class="nav-link">내 정보</a></li>
-                            <li class="nav-item"><a href="${rootPath }/MemberListAdmin.do" class="nav-link">관리자</a></li>
-                        </c:when>
-                        <c:otherwise>
-                            <li class="nav-item"><a href="${rootPath }/Logout.do" class="nav-link">로그아웃</a></li>
-                            <li class="nav-item"><a href="${rootPath }/Mypage.do" class="nav-link">내 정보</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="${rootPath }/CartList.do" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    장바구니
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="${rootPath }/CartList.do">장바구니</a></li>
-                                    <li><a class="dropdown-item" href="${rootPath }/PayList.do">결제 내역</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a href="${rootPath }/member/map.jsp" class="nav-link">오시는 길</a></li>
-                        </c:otherwise>
-                    </c:choose>
-                    </ul>
+        <div class="row">
+            <div class="col-md-4 col-xs-12 col-sm-4">
+                <div class="contact-number">
                 </div>
             </div>
-        </nav>
+            <div class="col-md-4 col-xs-12 col-sm-4">
+                <!-- Site Logo -->
+                <div class="logo text-center">
+                    <a href="${rootPath }/">
+                        쌤쌤소개
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12 col-sm-4">
+                <!-- Cart -->
+                <ul class="top-menu text-right list-inline">
+                    <c:choose>
+                        <c:when test="${empty session_id}">
+                            <li><a href="${rootPath }/member/login.jsp">로그인</a></li>
+                            <li><a href="${rootPath }/member/term.jsp">회원가입</a></li>
+                        </c:when>
+                        <c:when test="${session_id eq 'admin'}">
+                            <li><a href="${rootPath }/Logout.do">로그아웃</a></li>
+                            <li><a href="${rootPath }/MemberListAdmin.do">관리자</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li><a href="${rootPath }/Logout.do">로그아웃</a></li>
+                            <li><a href="${rootPath }/CartList.do">장바구니</a></li>
+                            <li><a href="${rootPath }/PayList.do">결제 내역</a></li>
+                        </c:otherwise>
+                    </c:choose>
+                </ul>
+            </div>
+        </div>
     </div>
-</header>
-
-<%----%>
+</section>
+<section class="menu">
+    <nav class="navbar navigation">
+        <div class="container">
+            <div id="navbar" class="navbar-collapse collapse text-center">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown dropdown-slide">
+                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">쌤쌤 소개 <i class="fas fa-sort-down" style="vertical-align: 0.125em!important;"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 mb-sm-3">
+                                    <ul>
+                                        <li><a href="${rootPath}/product/introduce.jsp">회사소개</a></li>
+                                        <li><a href="${rootPath}/product/introduce.jsp">회사소개</a></li>
+                                        <li><a href="${rootPath}/product/introduce.jsp">회사소개</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown dropdown-slide">
+                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">도서 <i class="fas fa-sort-down" style="vertical-align: 0.125em!important;"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 mb-sm-3">
+                                    <ul>
+                                        <li><a href="${rootPath }/BookList.do?category=*">전체</a></li>
+                                        <li><a href="${rootPath }/BookList.do?category=*">초등</a></li>
+                                        <li><a href="${rootPath }/BookList.do?category=*">중등</a></li>
+                                        <li><a href="${rootPath }/BookList.do?category=*">고등</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown dropdown-slide">
+                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">커뮤니티 <i class="fas fa-sort-down" style="vertical-align: 0.125em!important;"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 mb-sm-3">
+                                    <ul>
+                                        <li><a href="${rootPath}/NoticeList.do">공지사항</a></li>
+                                        <li><a href="${rootPath}/">묻고답하기</a></li>
+                                        <li><a class="dropdown-item" href="${rootPath }/FileboardList.do">학습자료실</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</section>
