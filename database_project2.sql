@@ -185,7 +185,7 @@ create table fileboard(
 	title varchar(300),
 	content varchar(1000),
 	regdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
-	visited INTEGER DEFAULT 0
+	visited INTEGER DEFAULT 0,
 	filename1 varchar(500),
 	filename2 varchar(500),
 	filename3 varchar(500)

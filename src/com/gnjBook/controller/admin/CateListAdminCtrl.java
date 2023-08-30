@@ -29,7 +29,6 @@ public class CateListAdminCtrl extends HttpServlet {
             bookList = dao.getCategoryProduct(category);
         }
 
-
         request.setAttribute("bookList", bookList);
 
         RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/bookList.jsp");

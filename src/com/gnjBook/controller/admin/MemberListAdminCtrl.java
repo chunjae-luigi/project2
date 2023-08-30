@@ -19,7 +19,6 @@ public class MemberListAdminCtrl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("msg", "회원 목록을 출력합니다.");
 
-
         MemberDAO dao = new MemberDAO();
         List<Member> memberList = dao.getMemberList();
 

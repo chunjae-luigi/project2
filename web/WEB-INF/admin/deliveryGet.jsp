@@ -8,11 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>배송 관리</title>
-    <%@ include file="../../common.jsp"%>
+    <%@ include file="../../adminCommon.jsp"%>
 </head>
 
 <body>
-<%@ include file="../../header.jsp"%>
+<%@ include file="../../adminHeader.jsp"%>
 <div style="display: flex; min-height: 80vh;">
     <%@include file="adminBoardList.jsp"%>
     <div class="container" style="margin-top: 20px;">
@@ -52,7 +52,7 @@
         </div>
     </div>
 </div>
-<%@ include file="../../footer.jsp" %>
+<%@ include file="../../adminFooter.jsp" %>
 </body>
 </html>
 
