@@ -16,14 +16,27 @@
     </style>
 </head>
 
-<body>
+<body id="body">
 <%@ include file="../header.jsp"%>
+<section class="page-header" style="margin-top:0!important;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content">
+                    <h1 class="page-name">교과서 목록</h1>
+                    <ol class="breadcrumb">
+                        <li><a href="${rootPath }/">Home</a></li>
+                        <li class="active">상품</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <div class="container contents text-center">
-    <h2 class="page_title text-center">교과서 목록</h2>
     <nav aria-label="breadcrumb">
         <ui class="category" style="float: left;">
-                <a class="nav-link dropdown-toggle" href="${rootPath }/BookList.do" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                 카테고리</a>
+                <a class="nav-link dropdown-toggle" href="${rootPath }/BookList.do" role="button" data-bs-toggle="dropdown" aria-expanded="false">카테고리</a>
                  <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="${rootPath }/CateList.do?category=A">초등 교과서</a></li>
                     <li><a class="dropdown-item" href="${rootPath }/CateList.do?category=B">중등 참고서</a></li>
@@ -34,11 +47,6 @@
                     <li><a class="dropdown-item" href="${rootPath }/BookList.do?category=*">전체</a></li>
                 </ul>
         </ui>
-        <ol class="breadcrumb justify-content-end">
-            <li class="breadcrumb-item"><a href="${rootPath }">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">상품</a></li>
-            <li class="breadcrumb-item active" aria-current="page">교과서</li>
-        </ol>
     </nav>
     <div class="d-flex align-content-start flex-wrap">
     <c:forEach var="book" items="${bookList}" varStatus="status">

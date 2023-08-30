@@ -6,71 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
     <%@ include file="../common.jsp" %>
+    <style>
+        .form-group {}
+    </style>
 </head>
-<body>
-<%@ include file="../header.jsp" %>
+<body id="body">
 
-<div class="container contents text-center">
-    <h2 class="page_title text-center">회원가입</h2>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb justify-content-end">
-            <li class="breadcrumb-item"><a href="${rootPath }">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">회원가입</li>
-        </ol>
-    </nav>
-    <form class="form_row" action="${rootPath}/JoinPro.do" method="post" onsubmit="return inform(this)">
+<section class="signin-page account">
+    <div class="container">
         <div class="row">
-            <div class="col-2"><label for="name" class="form-label">이름</label></div>
-            <div class="col-8"><input type="text" class="form-control" id="name" name="name"></div>
-        </div>
-        <div class="row">
-            <div class="col-2"><label for="id" class="form-label">아이디</label></div>
-            <div class="col-8">
-                <input type="text" class="form-control" id="id" name="id" aria-describedby="idStatus" pattern="^[A-Za-z0-9]{4,16}" maxlength="16" placeholder="아이디는 영문 또는 숫자 4글자 이상, 16글자 이하">
-                <div id="idStatus" class="form-text text-start">아이디 중복 검사를 진행해주세요.</div>
+            <div class="col-md-6 col-md-offset-3">
+                <div class="block text-center">
+                    <a class="logo" href="${rootPath}/">쌤쌤소개</a>
+                    <h2 class="text-center">회원가입</h2>
+                    <form class="text-left clearfix form_row" action="${rootPath}/JoinPro.do" method="post" onsubmit="return inform(this)">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="id" name="id" aria-describedby="idStatus" pattern="^[A-Za-z0-9]{4,16}" maxlength="16" placeholder="아이디는 영문 또는 숫자 4글자 이상, 16글자 이하">
+                            <input type="hidden" id="idck" value="no">
+                            <div id="idStatus" class="form-text text-start">아이디 중복 검사를 진행해주세요.</div>
+                            <button type="button" class="btn btn-primary mb-3" onclick="idcheck()">중복검사</button>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="pw" name="pw" required pattern="^[A-Za-z0-9]{4}" placeholder="비밀번호는 영문 또는 숫자 4글자 이상">
+                            <input type="password" class="form-control mt-10" id="pwchk" name="pwchk" placeholder="비밀번호 확인해주세요" required>
+                            <input type="hidden" id="pwck" value="no">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="이메일을 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" id="tel" name="tel" placeholder="전화번호를 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <input type="date" class="form-control" id="birth" name="birth"  placeholder="생일을 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="address1" name="address1" placeholder="주소를 입력하세요.">
+                            <input type="text" class="form-control mt-10" id="postcode" name="postcode" placeholder="우편번호">
+                            <button type="button" class="btn btn-primary  mt-10" onclick="findAddr()">우편번호 검색</button>
+                            <div class="col-2"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="address2" name="address2" placeholder="상세주소를 입력하세요.">
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-main text-center">회원가입</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="col-2"><button type="button" class="btn btn-primary mb-3" onclick="idcheck()">중복검사</button></div>
-            <input type="hidden" id="idck" value="no">
         </div>
-        <div class="row">
-            <div class="col-2"><label for="pw" class="form-label">비밀번호</label></div>
-            <div class="col-3"><input type="password" class="form-control" id="pw" name="pw" required pattern="^[A-Za-z0-9]{4}" placeholder="비밀번호는 영문 또는 숫자 4글자 이상"></div>
-            <div class="col-3">
-                <input type="password" class="form-control" id="pwchk" name="pwchk" placeholder="비밀번호 확인" required>
-            </div>
-            <div class="col-4"><div id="pwStatus" class="form-text text-start">비밀번호와 비밀번호 확인이 일치하지 않습니다.</div></div>
-            <input type="hidden" id="pwck" value="no">
-        </div>
-        <div class="row">
-            <div class="col-2"><label for="email" class="form-label">이메일</label></div>
-            <div class="col-8"><input type="email" class="form-control" id="email" name="email"></div>
-        </div>
-        <div class="row">
-            <div class="col-2"><label for="tel" class="form-label">전화번호</label></div>
-            <div class="col-8"><input type="tel" class="form-control" id="tel" name="tel"></div>
-        </div>
-        <div class="row">
-            <div class="col-2"><label for="birth">생년월일</label></div>
-            <div class="col-4"><input type="date" class="form-control" id="birth" name="birth" value="1999-01-01"></div>
-        </div>
-        <div class="row">
-            <div class="col-2"><label for="address1" class="form-label">주소</label></div>
-            <div class="col-4"><input type="text" class="form-control" id="address1" name="address1"></div>
-            <div class="col-4"><input type="text" class="form-control" id="postcode" name="postcode" placeholder="우편번호"></div>
-            <div class="col-2"><button type="button" class="btn btn-primary mb-3" onclick="findAddr()">우편번호 검색</button></div>
-        </div>
-        <div class="row">
-            <div class="col-2"><label for="address2" class="form-label">상세 주소</label></div>
-            <div class="col-8"><input type="text" class="form-control" id="address2" name="address2"></div>
-            <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-        </div>
-        <input type="submit" class="btn btn-primary mb-3" value="가입하기">
-    </form>
-</div>
+    </div>
+</section>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-<%@ include file="../footer.jsp" %>
-</body>
-</html>
 
 <script>
     $(document).ready(function(){
@@ -154,3 +146,7 @@
         }).open();
     }
 </script>
+
+<%@ include file="/commonsub.jsp"%>
+</body>
+</html>
