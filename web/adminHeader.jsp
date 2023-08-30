@@ -27,18 +27,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="${rootPath}/product/introduce.jsp">쌤쌤 소개</a>
-                        </li>
-                        <li class="nav-item"><a href="${rootPath }/BookList.do?category=*" class="nav-link">교과서</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                커뮤니티
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="${rootPath }/NoticeList.do">공지사항</a></li>
-                                <li><a class="dropdown-item" href="${rootPath }/">묻고답하기</a></li>
-                                <li><a class="dropdown-item" href="${rootPath }/">학습후기</a></li>
-                            </ul>
+                            <a class="nav-link" href="${rootPath}/introduce.jsp">쌤쌤 소개</a>
                         </li>
                     </ul>
                     <ul class="nav justify-content-end">
@@ -46,11 +35,9 @@
                         <c:when test="${empty session_id}">
                             <li class="nav-item"><a href="${rootPath }/member/login.jsp" class="nav-link">로그인</a></li>
                             <li class="nav-item"><a href="${rootPath }/member/term.jsp" class="nav-link">회원가입</a></li>
-                            <li class="nav-item"><a href="${rootPath }/member/map.jsp" class="nav-link">오시는 길</a></li>
                         </c:when>
                         <c:when test="${session_id eq 'admin'}">
                             <li class="nav-item"><a href="${rootPath }/Logout.do" class="nav-link">로그아웃</a></li>
-                            <li class="nav-item"><a href="${rootPath }/Mypage.do" class="nav-link">내 정보</a></li>
                             <li class="nav-item"><a href="${rootPath }/MemberListAdmin.do" class="nav-link">관리자</a></li>
                         </c:when>
                         <c:otherwise>
@@ -65,7 +52,6 @@
                                     <li><a class="dropdown-item" href="${rootPath }/PayList.do">결제 내역</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item"><a href="${rootPath }/member/map.jsp" class="nav-link">오시는 길</a></li>
                         </c:otherwise>
                     </c:choose>
                     </ul>

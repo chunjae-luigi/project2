@@ -7,13 +7,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/FileboardDelete.do") // 사용자가 보는 이름
+@WebServlet("/FileboardDelete.do")
 public class FileboardDeleteCtrl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
+        String sid = (String) session.getAttribute("session_id");
+
+        if(sid != null && sid.equals("admin")) {
+        } else {
+            response.sendRedirect(request.getContextPath()+"/");
+        }
         request.setAttribute("msg", "학습자료를 삭제합니다.");
         int no = Integer.parseInt(request.getParameter("no"));
 

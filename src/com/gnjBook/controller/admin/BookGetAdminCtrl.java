@@ -11,27 +11,35 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/BookGetAdmin.do") // 사용자가 보는 이름
+@WebServlet("/BookGetAdmin.do")
 public class BookGetAdminCtrl extends HttpServlet {
-  @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    request.setAttribute("msg", "교재 상세페이지를 출력합니다.");
-    int id = Integer.parseInt(request.getParameter("id"));
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("msg", "교재 상세페이지를 출력합니다.");
+        int id = Integer.parseInt(request.getParameter("id"));
 
-    ProductDAO dao = new ProductDAO();
-    Product product = dao.getProduct(id);
-    int amount = dao.getAmount(id);
+        HttpSession session = request.getSession();
+        String sid = (String) session.getAttribute("session_id");
 
-    CategoryDAO cdao = new CategoryDAO();
-    Category category = cdao.getCategory(product.getCategoryId());
+        if(sid != null && sid.equals("admin")) {
+            ProductDAO dao = new ProductDAO();
+            Product product = dao.getProduct(id);
+            int amount = dao.getAmount(id);
 
-    request.setAttribute("product", product);
-    request.setAttribute("category", category);
-    request.setAttribute("amount", amount);
+            CategoryDAO cdao = new CategoryDAO();
+            Category category = cdao.getCategory(product.getCategoryId());
 
-    RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/bookGet.jsp");
-    view.forward(request, response);
-  }
+            request.setAttribute("product", product);
+            request.setAttribute("category", category);
+            request.setAttribute("amount", amount);
+
+            RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/bookGet.jsp");
+            view.forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath()+"/");
+        }
+    }
 }

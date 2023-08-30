@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -20,18 +21,26 @@ public class BookUpdateCtrl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String msg = "관리자의 상품을 수정합니다.";
 
+        HttpSession session = request.getSession();
+        String sid = (String) session.getAttribute("session_id");
+
         int pno = Integer.parseInt(request.getParameter("no"));
-        ProductDAO dao = new ProductDAO();
-        Product pro = dao.getProduct(pno);
 
-        CategoryDAO cao = new CategoryDAO();
-        List<Category> categoryList = cao.getCategoryList();
+        if(sid != null && sid.equals("admin")) {
+            ProductDAO dao = new ProductDAO();
+            Product pro = dao.getProduct(pno);
 
-        request.setAttribute("categoryList", categoryList);
-        request.setAttribute("msg", msg);
-        request.setAttribute("pro", pro);
+            CategoryDAO cao = new CategoryDAO();
+            List<Category> categoryList = cao.getCategoryList();
 
-        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/bookUpdate.jsp");
-        view.forward(request, response);
+            request.setAttribute("categoryList", categoryList);
+            request.setAttribute("msg", msg);
+            request.setAttribute("pro", pro);
+
+            RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/bookUpdate.jsp");
+            view.forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath()+"/");
+        }
     }
 }

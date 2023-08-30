@@ -20,7 +20,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h2 class="card-title text-center">학습자료 업로드</h2>
-                            <form action="${path}/FileboardAddPro.do" method="post">
+                            <form action="${path}/FileboardAddPro.do" method="post" enctype="multipart/form-data">
                                 <table class="table">
                                     <tbody>
                                     <tr>

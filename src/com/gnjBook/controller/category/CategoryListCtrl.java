@@ -13,13 +13,18 @@ import com.gnjBook.model.CategoryDAO;
 public class CategoryListCtrl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String sid = (String) session.getAttribute("session_id");
 
-        CategoryDAO dao = new CategoryDAO();
-        List<Category> cateList = dao.getCategoryList();
+        if(sid != null && sid.equals("admin")) {
+            CategoryDAO dao = new CategoryDAO();
+            List<Category> cateList = dao.getCategoryList();
 
-        request.setAttribute("cateList", cateList);
-        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/categoryList.jsp");
-        view.forward(request, response);
-
+            request.setAttribute("cateList", cateList);
+            RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/categoryList.jsp");
+            view.forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath()+"/");
+        }
     }
 }

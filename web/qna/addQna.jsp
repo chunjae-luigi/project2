@@ -11,12 +11,26 @@
     <%@ include file="../common.jsp"%>
 
 </head>
-<body>
-<%@ include file="../header.jsp"%>
-<div style="display: flex; min-height: 80vh;">
-    <div class="container" style="margin-top: 20px;">
-            <h2 class="title" style="margin: 30px auto;">질문하기</h2>
-        <form action="${rootPath }/QnaAddPro.do" method="post">
+<body id="body">
+    <%@ include file="../header.jsp"%>
+    <section class="page-header" style="margin-top:0!important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name">질문하기</h1>
+                        <ol class="breadcrumb">
+                            <li><a href="${rootPath }/">Home</a></li>
+                            <li class="active">QnA</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div style="display: flex; min-height: 80vh;">
+        <div class="container" style="margin-top: 20px;">
+            <form action="${rootPath }/QnaAddPro.do" method="post">
                 <input type="hidden" name="lev" value="0" >
                 <input type="hidden" name="par" value="0" >
 
@@ -35,7 +49,7 @@
             <a class="btn btn-primary" href="${rootPath }/QnaList.do" role="button">글 목록</a>
         </div>
     </div>
-</div>
-<%@ include file="../footer.jsp" %>
+    <%@ include file="../footer.jsp" %>
+    <%@ include file="/commonsub.jsp"%>
 </body>
 </html>

@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -18,11 +19,19 @@ public class NoticeListAdminCtrl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("msg", "공지사항 목록을 출력합니다.");
 
-        NoticeDAO dao = new NoticeDAO();
-        List<Notice> noticeList = dao.getNoticeList();
-        request.setAttribute("noticeList", noticeList);
+        HttpSession session = request.getSession();
+        String sid = (String) session.getAttribute("session_id");
 
-        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/noticeList.jsp");
-        view.forward(request, response);
+        if(sid != null && sid.equals("admin")) {
+
+            NoticeDAO dao = new NoticeDAO();
+            List<Notice> noticeList = dao.getNoticeList();
+            request.setAttribute("noticeList", noticeList);
+
+            RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/noticeList.jsp");
+            view.forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath()+"/");
+        }
     }
 }

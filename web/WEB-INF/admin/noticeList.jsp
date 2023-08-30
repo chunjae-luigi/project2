@@ -32,9 +32,10 @@
                 <tr>
                     <td class="item1">${status.count}</td>
                     <td class="item2">
-                        <a  class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="${rootPath }/NoticeGetAdmin.do?no=${notice.no}" style="display:inline-block; width:100%;>${notice.title}</a>
+                        <a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover item3" href="${rootPath }/NoticeGetAdmin.do?no=${notice.no}" style="display:inline-block; width:100%;>${notice.title}</a>
                     </td>
-                    <td class="item3">${notice.resdate}</td>
+                                <td class=">${notice.title}</a></td>
+                    <td>${notice.resdate}</td>
                     <td class="item4">${notice.visited}</td>
                 </tr>
                 </c:forEach>
