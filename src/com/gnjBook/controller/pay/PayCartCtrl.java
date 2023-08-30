@@ -1,8 +1,10 @@
 package com.gnjBook.controller.pay;
 
 import com.gnjBook.dto.Cart;
+import com.gnjBook.dto.Instock;
 import com.gnjBook.dto.Member;
 import com.gnjBook.model.CartDAO;
+import com.gnjBook.model.InstockDAO;
 import com.gnjBook.model.MemberDAO;
 import com.gnjBook.model.ProductDAO;
 import com.gnjBook.vo.CartVO;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,22 +36,36 @@ public class PayCartCtrl extends HttpServlet {
     }
 
     ProductDAO productDAO = new ProductDAO();
+    List<Integer> inventoryList = new ArrayList<>();
     for(Cart c: cartList){
       CartVO cvo = new CartVO();
-      cvo.setCart(c);
-      cvo.setProduct(productDAO.getProduct(c.getProNo()));
-      cartVOList.add(cvo);
+      int inAmount = productDAO.getAmount(c.getProNo());
+      if(inAmount<c.getAmount()){
+        System.out.println(c.getProNo()+"의 재고 수량이 부족합니다.");
+      } else{
+        cvo.setCart(c);
+        cvo.setProduct(productDAO.getProduct(c.getProNo()));
+        cartVOList.add(cvo);
+      }
     }
 
-    request.setAttribute("cartVOList", cartVOList);
+    if(cartVOList.size()<1){
+      response.setCharacterEncoding("UTF-8");
+      response.setContentType("text/html; charset=UTF-8");
+      PrintWriter out = response.getWriter();
 
-    MemberDAO memberDAO = new MemberDAO();
-    HttpSession session = request.getSession(); // 세션 생성
-    Member member = memberDAO.getMember((String) session.getAttribute("session_id"));
+      out.println("<script>alert('재고 수량이 부족하여 결제할 수 없습니다. 죄송합니다.');history.go(-1);</script>");
+    } else{
+      request.setAttribute("cartVOList", cartVOList);
 
-    request.setAttribute("mem", member);
+      MemberDAO memberDAO = new MemberDAO();
+      HttpSession session = request.getSession(); // 세션 생성
+      Member member = memberDAO.getMember((String) session.getAttribute("session_id"));
 
-    RequestDispatcher view = request.getRequestDispatcher("/pay/cartPay.jsp");
-    view.forward(request,response);
+      request.setAttribute("mem", member);
+
+      RequestDispatcher view = request.getRequestDispatcher("/pay/cartPay.jsp");
+      view.forward(request,response);
+    }
   }
 }

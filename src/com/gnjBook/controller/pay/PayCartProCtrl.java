@@ -2,6 +2,7 @@ package com.gnjBook.controller.pay;
 
 import com.gnjBook.dto.*;
 import com.gnjBook.model.CartDAO;
+import com.gnjBook.model.InstockDAO;
 import com.gnjBook.model.MultiPattern;
 import com.gnjBook.model.ProductDAO;
 import com.gnjBook.vo.PayVO;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +28,8 @@ public class PayCartProCtrl extends HttpServlet {
 
     String[] checked = request.getParameterValues("cartCheck");
 
+
+
     CartDAO cartDAO = new CartDAO();
     List<Cart> cartList = new ArrayList<>();
     for(String s: checked){
@@ -34,9 +38,13 @@ public class PayCartProCtrl extends HttpServlet {
 
     ProductDAO productDAO = new ProductDAO();
     List<Product> productList = new ArrayList<>();
+    List<Integer> inventoryList = new ArrayList<>();
     for(Cart c: cartList){
       productList.add(productDAO.getProduct(c.getProNo()));
+      inventoryList.add(productDAO.getAmount(c.getProNo()));
     }
+
+
 
     // 출고 처리
     String method = request.getParameter("method");
@@ -66,12 +74,31 @@ public class PayCartProCtrl extends HttpServlet {
       delList.add(del);
     }
 
-    MultiPattern mdao = new MultiPattern();
+    boolean flag = true;
     for(int i=0; i<cartList.size(); i++){
-      int pno = mdao.outstock(payList.get(i), delList.get(i), cartList.get(i));
+      int inamount = inventoryList.get(i);
+      System.out.println(inamount);
+      int cartstock = cartList.get(i).getAmount();
+      if(inamount<cartstock){
+        flag = false;
+        break;
+      }
     }
 
-    String path = request.getContextPath();
-    response.sendRedirect(path+"/PayList.do");
+    if(!flag){
+      response.setCharacterEncoding("UTF-8");
+      response.setContentType("text/html; charset=UTF-8");
+      PrintWriter out = response.getWriter();
+
+      out.println("<script>alert('재고 수량이 부족하여 결제되지 않았습니다. 죄송합니다.');history.go(-1);</script>");
+    }else{
+      MultiPattern mdao = new MultiPattern();
+      for(int i=0; i<cartList.size(); i++){
+        int pno = mdao.outstock(payList.get(i), delList.get(i), cartList.get(i));
+      }
+
+      String path = request.getContextPath();
+      response.sendRedirect(path+"/PayList.do");
+    }
   }
 }

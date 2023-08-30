@@ -2,8 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px">
-        <span class="fs-4">관리자페이지</span>
+    <span class="fs-4">관리자페이지</span>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
@@ -26,6 +27,11 @@
                 학습자료 관리
             </a>
         </li>
+        <li class="nav-item">
+            <a id="admin-delivery-nav" href="${rootPath}/DeliveryListAdmin.do" class="nav-link text-white">
+                배송 관리
+            </a>
+        </li>
     </ul>
 </div>
 
@@ -44,6 +50,9 @@
         nav = $("#admin-book-nav");
         $(nav).attr("aria-current", "page");
         $(nav).addClass("active");
+    } else if(link.includes("Delivery")){
+        nav = $("#admin-delivery-nav");
+        $(nav).attr("aria-current", "page");
+        $(nav).addClass("active");
     }
-
 </script>

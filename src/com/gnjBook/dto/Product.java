@@ -6,24 +6,28 @@ public class Product {
   private String procategory;
   private int price = 0;
   private String title;
-  private String description;
+  private String author;
   private String content;
-  private String thumbnail;
+  private String img;
   private String regdate;
+  private String video;
+
 
   public Product() {
   }
 
-  public Product(int proNo, String categoryId, String procategory, int price, String title, String description, String content, String thumbnail, String regdate) {
+  public Product(int proNo, String categoryId, String procategory, int price, String title, String author, String content, String img, String regdate, String video) {
     this.proNo = proNo;
     this.categoryId = categoryId;
     this.procategory = procategory;
     this.price = price;
     this.title = title;
-    this.description = description;
+    this.author = author;
     this.content = content;
-    this.thumbnail = thumbnail;
+    this.img = img;
     this.regdate = regdate;
+    this.video = video;
+
   }
 
   public int getProNo() {
@@ -66,12 +70,12 @@ public class Product {
     this.title = title;
   }
 
-  public String getDescription() {
-    return description;
+  public String getAuthor() {
+    return author;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
+  public void setAuthor(String author) {
+    this.author = author;
   }
 
   public String getContent() {
@@ -82,14 +86,6 @@ public class Product {
     this.content = content;
   }
 
-  public String getThumbnail() {
-    return thumbnail;
-  }
-
-  public void setThumbnail(String thumbnail) {
-    this.thumbnail = thumbnail;
-  }
-
   public String getRegdate() {
     return regdate;
   }
@@ -97,4 +93,12 @@ public class Product {
   public void setRegdate(String regdate) {
     this.regdate = regdate;
   }
+
+  public String getImg() { return img; }
+
+  public void setImg(String img) { this.img = img; }
+
+  public String getVideo() { return video; }
+
+  public void setVideo(String video) {this.video = video; }
 }

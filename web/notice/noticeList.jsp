@@ -11,8 +11,24 @@
     <%@ include file="../common.jsp"%>
 </head>
 
-<body>
+<body id="body">
 <%@ include file="../header.jsp"%>
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content">
+                    <h1 class="page-name">공지사항</h1>
+                    <ol class="breadcrumb">
+                        <li><a href="${rootPath }/">Home</a></li>
+                        <li class="active">Community</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <div class="container contents">
     <h2 class="page_title text-center">공지사항</h2>
     <nav aria-label="breadcrumb">
@@ -59,5 +75,6 @@
     </div>
 </div>
 <%@ include file="../footer.jsp" %>
+<%@ include file="/commonsub.jsp"%>
 </body>
 </html>

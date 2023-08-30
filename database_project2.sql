@@ -9,16 +9,17 @@ NAME VARCHAR(100) NOT NULL,   -- (이름)
 email VARCHAR(100) NOT NULL,   -- (이메일)
 tel VARCHAR(13),   -- (전화번호)
 birth DATE, -- 생년월일
-address VARCHAR(300), -- 주소 
+address VARCHAR(300), -- 주소
 postcode VARCHAR(10),
 regdate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,   -- (가입일)
 POINT INT DEFAULT 0,   -- (포인트)
 grade VARCHAR(4) DEFAULT 'F',
-PRIMARY KEY (id),
-state BOOLEAN DEFAULT TRUE
+state BOOLEAN DEFAULT TRUE,
+PRIMARY KEY (id)
 );
 
-DROP DATABASE gnjBook;
+-- 이미 생성한 테이블에서 member column 추가
+ALTER TABLE member ADD state BOOLEAN DEFAULT TRUE;
 
 -- qna
 CREATE TABLE qna(
@@ -52,7 +53,10 @@ visited INTEGER DEFAULT 0
 );
 
 -- 카테고리 테이블
--- A:초등교과서, B:초등참고서, C:초등문제집, D:초등기타, E:중등교과서, F:중등참고서, G:중등문제집, H:중등기타, I:고등교과서, J:고등참고서, K:고등문제집, L:고등기타, M:일반교과서, N:일반참고서, O:일반문제집, P:일반기타, Q:유아콘텐츠, R:유아놀이, S:유아기타, T:해외서적,  U:해외콘텐츠
+-- A:초등교과서, B:초등참고서, C:초등문제집, D:초등기타, E:중등교과서,
+-- F:중등참고서, G:중등문제집, H:중등기타, I:고등교과서, J:고등참고서,
+-- K:고등문제집, L:고등기타, M:일반교과서, N:일반참고서, O:일반문제집,
+-- P:일반기타, Q:유아콘텐츠, R:유아놀이, S:유아기타, T:해외서적,  U:해외콘텐츠
 create table category(
 	categoryId VARCHAR(4) PRIMARY KEY,
 	categoryName varchar(100) not NULL
@@ -65,13 +69,17 @@ create table product(
 	procategory VARCHAR(100), -- 상품번호와 카테고리 아이디 결합
 	price INT DEFAULT 0, -- 상품 가격
 	title VARCHAR(100) NOT NULL,
-	description VARCHAR(200), -- 상품 썸네일 설명
+    author VARCHAR(100), -- 저자
 	content VARCHAR(2000), -- 상품 설명
-	thumbnail VARCHAR(256), -- 상품 썸네일
-	regdate timestamp default CURRENT_TIMESTAMP()
-);	
+	img VARCHAR(5000) default 0, -- 상품 썸네일
+	regdate timestamp default CURRENT_TIMESTAMP(),
+    video VARCHAR(5000) default 0 -- 상품 썸네일      //0828 추가 황교진 - product와 book 테이블을 하나로 합치기 위함
+);
+-- ALTER table product CHANGE thumbnail img VARCHAR(5000) DEFAULT 0;
+-- ALTER TABLE product ADD video VARCHAR(5000) DEFAULT 0;
+--ALTER table product CHANGE description author VARCHAR(100) DEFAULT 0;
 
--- 도서 상품 추가 테이블 생성
+-- 도서 상품 추가 테이블 생성 - 사용안함
 CREATE TABLE book(
 	proNo INT, -- 상품 테이블 번호
 	bookNo INT PRIMARY KEY AUTO_INCREMENT, -- 도서 고유번호
@@ -138,6 +146,8 @@ create table cart(
 	memId VARCHAR(16) not NULL, -- 회원 아이디
 	proNo integer not NULL, -- 상품 번호
 	amount integer NOT NULL -- 제품 수량
+	price INTEGER DEFAULT 100,
+	imgsrc1 VARCHAR(5000) DEFAULT 'no_img.jpg'
 );
 
 
@@ -151,6 +161,11 @@ CREATE TABLE review(
 	regdate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	proNo INT NOT NULL   -- 리뷰 대상 상품 번호
 );
+
+-- 재고 VIEW 생성
+CREATE VIEW instockInventory AS (SELECT proNo, sum(amount) AS amount FROM instock GROUP BY proNo);
+CREATE VIEW outstockInventory AS (SELECT proNo, sum(amount) AS amount FROM outstock GROUP BY proNo);
+CREATE VIEW inventory AS (SELECT a.proNo, (a.amount-b.amount) AS amount FROM instockInventory a, outstockInventory b  WHERE a.proNo = b.proNo);
 
 -- 재고는 페이지에서 알아서 계산하기
 -- 재고 보정은 일단은 생각하지 말기~

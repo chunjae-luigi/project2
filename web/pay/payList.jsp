@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>결제내역</title>
     <%@ include file="../common.jsp"%>
+    <style>
+        a {margin: auto 5px;}
+    </style>
 </head>
 
 <body>
@@ -47,7 +50,7 @@
                     <td>${payvo.pay.amount}</td>
                     <td>${payvo.pay.method}</td>
                     <td class="del_state">${payvo.del.state}</td>
-                    <td class="refund"></td>
+                    <td class="refund">${payvo.pay.payNo}</td>
                 </tr>
                 </c:forEach>
                 </tbody>
@@ -63,18 +66,20 @@
 <script>
     $(document).ready(function(){
         $(".del_state").each(function(){
-            console.log($(this).text())
+            var payNo = $(this).next("td").text();
+            console.log(payNo)
             if($(this).text()==="0"){
                 $(this).text("배송 전");
-                $(this).next("td").html("<a class='btn btn-primary' href='${rootPath}/PayDelete.do?payNo=${payvo.pay.payNo}'>결제취소</a>");
+                $(this).next("td").html("<a class='btn btn-primary' href='${rootPath}/Refund.do?payNo="+payNo+"'>결제취소</a>");
             } else if($(this).text()==="1"){
                 $(this).text("배송 중");
-                $(this).next("td").html("<a class='btn btn-primary' href='${rootPath}/Refund.do?payNo=${payvo.pay.payNo}'>반품신청</a>");
+                $(this).next("td").html("<a class='btn btn-primary' href='${rootPath}/Refund.do?payNo="+payNo+"'>반품 신청</a>");
             } else if($(this).text()==="2"){
                 $(this).text("도착");
-                $(this).next("td").html("<a class='btn btn-primary' href='${rootPath}/Refund.do?payNo=${payvo.pay.payNo}'>반품신청</a>");
+                $(this).next("td").html("<a class='btn btn-primary' href='${rootPath}/Refund.do?payNo="+payNo+"'>반품 신청</a><a class='btn btn-primary' href='${rootPath}/PayConfirm.do?payNo="+payNo+"'>구매 확정</a>");
             } else{
                 $(this).text("구매 결정");
+                $(this).next("td").text("");
             }
         })
     })

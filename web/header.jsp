@@ -14,7 +14,7 @@
 
 </style>
 
-<header class="header container-fluid fixed-top" id="hd" style="background-color: #435334">
+<section class="top-header">
     <div class="container">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
@@ -47,7 +47,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="${rootPath }/NoticeList.do">공지사항</a></li>
-                                <li><a class="dropdown-item" href="${rootPath }/QnaList.do">묻고답하기</a></li>
+                                <li><a class="dropdown-item" href="${rootPath }/">묻고답하기</a></li>
                                 <li><a class="dropdown-item" href="${rootPath }/">학습후기</a></li>
                                 <li><a class="dropdown-item" href="${rootPath }/FileboardList.do">학습자료실</a></li>
                             </ul>
@@ -56,35 +56,63 @@
                     <ul class="nav justify-content-end">
                     <c:choose>
                         <c:when test="${empty session_id}">
-                            <li class="nav-item"><a href="${rootPath }/member/login.jsp" class="nav-link">로그인</a></li>
-                            <li class="nav-item"><a href="${rootPath }/member/term.jsp" class="nav-link">회원가입</a></li>
-                            <li class="nav-item"><a href="${rootPath }/member/map.jsp" class="nav-link">오시는 길</a></li>
+                            <li><a href="${rootPath }/member/login.jsp">로그인</a></li>
+                            <li><a href="${rootPath }/member/term.jsp">회원가입</a></li>
                         </c:when>
                         <c:when test="${session_id eq 'admin'}">
-                            <li class="nav-item"><a href="${rootPath }/Logout.do" class="nav-link">로그아웃</a></li>
-                            <li class="nav-item"><a href="${rootPath }/Mypage.do" class="nav-link">내 정보</a></li>
-                            <li class="nav-item"><a href="${rootPath }/MemberListAdmin.do" class="nav-link">관리자</a></li>
+                            <li><a href="${rootPath }/Logout.jsp">로그아웃</a></li>
+                            <li><a href="${rootPath }/MemberListAdmin.jsp">관리자</a></li>
                         </c:when>
                         <c:otherwise>
-                            <li class="nav-item"><a href="${rootPath }/Logout.do" class="nav-link">로그아웃</a></li>
-                            <li class="nav-item"><a href="${rootPath }/Mypage.do" class="nav-link">내 정보</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="${rootPath }/CartList.do" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    장바구니
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="${rootPath }/CartList.do">장바구니</a></li>
-                                    <li><a class="dropdown-item" href="${rootPath }/PayList.do">결제 내역</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a href="${rootPath }/member/map.jsp" class="nav-link">오시는 길</a></li>
+                            <li><a href="${rootPath }/Logout.jsp">로그아웃</a></li>
+                            <li><a href="${rootPath }/CartList.jsp">장바구니</a></li>
+                            <li><a href="${rootPath }/PayList.jsp">결제 내역</a></li>
                         </c:otherwise>
                     </c:choose>
-                    </ul>
-                </div>
+                </ul>
             </div>
-        </nav>
+        </div>
     </div>
-</header>
-
-<%----%>
+</section>
+<section class="menu">
+    <nav class="navbar navigation">
+        <div class="container">
+            <div id="navbar" class="navbar-collapse collapse text-center">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown dropdown-slide">
+                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">쌤쌤 소개 <i class="fas fa-sort-down" style="vertical-align: 0.125em!important;"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="row">
+                                <!-- Basic -->
+                                <div class="col-lg-6 col-md-6 mb-sm-3">
+                                    <ul>
+                                        <li><a href="${rootPath}/product/introduce.jsp">회사소개</a></li>
+                                        <li><a href="${rootPath}/product/introduce.jsp">회사소개</a></li>
+                                        <li><a href="${rootPath}/product/introduce.jsp">회사소개</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown dropdown-slide">
+                        <a href="${rootPath }/BookList.do?category=*" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">교과서 <i class="fas fa-sort-down" style="vertical-align: 0.125em!important;"></i></a>
+                    </li>
+                    <li class="dropdown dropdown-slide">
+                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">커뮤니티 <i class="fas fa-sort-down" style="vertical-align: 0.125em!important;"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="row">
+                                <!-- Basic -->
+                                <div class="col-lg-6 col-md-6 mb-sm-3">
+                                    <ul>
+                                        <li><a href="${rootPath}/NoticeList.jsp">공지사항</a></li>
+                                        <li><a href="${rootPath}/">묻고답하기</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</section>
