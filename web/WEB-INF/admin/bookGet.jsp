@@ -10,6 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>교재 관리 페이지</title>
     <%@ include file="../../common.jsp"%>
+    <style>
+        tbody th td {margin-top: 200px;}
+    </style>
 </head>
 
 <body>
@@ -18,11 +21,11 @@
     <%@include file="adminBoardList.jsp"%>
     <div class="container" style="margin-top: 20px;">
         <div class="row">
-            <div class="col-4" style="width: 600px">
+            <div class="col-4" style="width: 500px">
                 <img class="card-img-top" src="${rootPath}/storage/${product.img }" alt="${product.title }" width="100"/>
             </div>
-            <div class="col-8" style="width: 350px">
-                <table class="table">
+            <div class="col-8" style="width: 640px">
+                <table class="table" >
                     <thead>
                     <tr>
                         <td colspan="2"><h2>${product.title }</h2></td>
@@ -53,7 +56,7 @@
             </div>
         </div>
         <div class="content" style="margin-top: 24px; padding: 24px; border: 1px solid black; ">
-                <video height="300" width="500" controls >
+                <video width="600" height="400" controls autoplay>
                     <source src="${rootPath}/storage/${product.video }" type="video/mp4"></video>
             <br>
             ${product.content}

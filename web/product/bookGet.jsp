@@ -15,7 +15,7 @@
 <body>
 <%@ include file="../header.jsp"%>
 
-<div class="container contents text-center">
+<div class="container contents">
     <h2 class="page_title text-center">교과서 목록</h2>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb justify-content-end">
@@ -25,10 +25,10 @@
         </ol>
     </nav>
     <div class="row">
-        <div class="col-4" style="width: 700px">
+        <div class="col-4" style="width: 500px">
             <img class="card-img-top" src="${rootPath}/storage/${product.img }" alt="${product.title }" width="100"/>
         </div>
-        <div class="col-8" style="width: 440px">
+        <div class="col-8" style="width: 640px">
             <form action="" method="post">
             <table class="table">
                 <thead>
@@ -46,16 +46,16 @@
                     <td>${product.author} </td>
                 </tr>
                 <tr>
-                    <th scope="row">가격</th>
-                    <td>${product.price}</td>
-                </tr>
-                <tr>
                     <td>
                         <label for="amount">수량</label>
                     </td>
                     <td>
                         <input id="amount" name="amount" type="number" class="form-control" value="1">
                     </td>
+                </tr>
+                <tr>
+                    <th scope="row">가격</th>
+                    <td>${product.price}</td>
                 </tr>
                 <tr>
                     <td>
@@ -80,9 +80,9 @@
         </li>
     </ul>
     <div class="content" style="margin-top: 24px; padding: 24px; border: 1px solid black; ">
-        <video height="300" width="500" controls >
-            <source src="${rootPath}/storage/${product.video }" type="video/mp4">
-        </video>
+        <video width="600" height="400" controls autoplay>
+        <source src="${rootPath}/storage/${product.video }" type="video/mp4"></video>
+        <br>
         ${product.content}
     </div>
     <div id="review_area" style="padding-bottom: 24px; border: 1px solid black; margin: 24px auto 0; ">

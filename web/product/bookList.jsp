@@ -26,10 +26,8 @@
                  카테고리</a>
                  <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="${rootPath }/CateList.do?category=A">초등 교과서</a></li>
-                    <li><a class="dropdown-item" href="${rootPath }/CateList.do?category=B">중등 참고서</a></li>
-                    <li><a class="dropdown-item" href="${rootPath }/CateList.do?category=E">초등 참고서</a></li>
-                    <li><a class="dropdown-item" href="${rootPath }/CateList.do?category=M">초등 기타</a></li>
-                    <li><a class="dropdown-item" href="${rootPath }/CateList.do?category=I">초등 기타</a></li>
+                    <li><a class="dropdown-item" href="${rootPath }/CateList.do?category=B">중등 교과서</a></li>
+                    <li><a class="dropdown-item" href="${rootPath }/CateList.do?category=C">고등 교과서</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="${rootPath }/BookList.do?category=*">전체</a></li>
                 </ul>
@@ -42,7 +40,7 @@
     </nav>
     <div class="d-flex align-content-start flex-wrap">
     <c:forEach var="book" items="${bookList}" varStatus="status">
-        <div class="card" style="width: 18rem; margin: 10px;">
+        <div class="card" style="width: 300px; height: 400px; margin: 10px;">
             <a href="${rootPath}/BookGet.do?proNo=${book.proNo }">
             <img class="card-img-top" src="${rootPath}/storage/${book.img }" alt="${book.title }" width="100"/>
             </a>

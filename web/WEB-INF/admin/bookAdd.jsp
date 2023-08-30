@@ -39,12 +39,16 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-2"><label for="author" class="form-label">저자</label></div>
+                    <div class="col-8"><input type="text" class="form-control" id="author" name="author"></div>
+                </div>
+                <div class="row">
                     <div class="col-2"><label for="price" class="form-label">가격</label></div>
                     <div class="col-8"><input type="number" class="form-control" id="price" name="price"></div>
                 </div>
                 <div class="row">
                     <div class="col-2"><label for="content" class="form-label">내용</label></div>
-                    <div class="col-8"><textarea class="form-control" id="content" name="content" rows="5"></textarea></div>
+                    <div class="col-8"><textarea class="form-control" id="content" name="content" rows="5" wrap="hard" ></textarea></div>
                 </div>
                 <div class="row">
                     <div class="col-2"><label for="imgSrc">이미지 첨부</label></div>
