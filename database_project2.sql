@@ -69,7 +69,7 @@ create table product(
 	procategory VARCHAR(100), -- 상품번호와 카테고리 아이디 결합
 	price INT DEFAULT 0, -- 상품 가격
 	title VARCHAR(100) NOT NULL,
-    author VARCHAR(100), -- 저자
+    	author VARCHAR(100), -- 저자
 	content VARCHAR(2000), -- 상품 설명
 	img VARCHAR(5000) default 0, -- 상품 썸네일
 	regdate timestamp default CURRENT_TIMESTAMP(),
@@ -90,7 +90,7 @@ CREATE TABLE book(
 	img VARCHAR(5000) DEFAULT 'no_img.jpg', -- 이미지 리스트
 	video VARCHAR(5000) DEFAULT 'no_video.mp4' -- 맛보기 동영상
 );
-
+	
 -- 입고 테이블 생성
 create table instock(
 	inNo INT PRIMARY KEY AUTO_INCREMENT, -- 입고 번호
@@ -99,7 +99,6 @@ create table instock(
 	inPrice INT DEFAULT 0, -- 입고가
 	regdate timestamp default CURRENT_TIMESTAMP -- 입고일
 );
-
 
 -- 출고 테이블 생성
 create table outstock(
@@ -145,7 +144,7 @@ create table cart(
 	cartNo INT PRIMARY KEY AUTO_INCREMENT, -- 카트 번호
 	memId VARCHAR(16) not NULL, -- 회원 아이디
 	proNo integer not NULL, -- 상품 번호
-	amount integer NOT NULL -- 제품 수량
+	amount integer NOT NULL, -- 제품 수량
 	price INTEGER DEFAULT 100,
 	imgsrc1 VARCHAR(5000) DEFAULT 'no_img.jpg'
 );
@@ -181,71 +180,13 @@ CREATE VIEW inventory AS (SELECT a.proNo, (a.amount-b.amount) AS amount FROM ins
 -- 전체 이익 통계 뷰 작성
 create view profit as (select outNo, sum(outPrice*amount) as tot from outstock group by outNo EXCEPT select inNo, sum(inPrice*amount) as tot from instock group by inNo);
 
-COMMIT;
-
-
-
-
-
-
-
-
-
-
-
-
-
--- 슬비
-
-
--- 묻고답하기((qna) 이건 가짜짜짜짜짜
-CREATE TABLE qna(
-qno INT PRIMARY KEY AUTO_INCREMENT,
-title VARCHAR(200) NOT NULL,
-content VARCHAR(1000),
-author VARCHAR(16),
-resdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
-cnt INT DEFAULT 0,
-lev INT DEFAULT 0, -- 질문(0), 답변(1)
-par INT,	-- 부모 글번호 -> 질문(자신 레코드의 qno), 답변(질문의 글번호)
-FOREIGN KEY(author) REFERENCES member(id) ON DELETE CASCADE
+create table fileboard(
+	no INT primary KEY AUTO_INCREMENT,
+	title varchar(300),
+	content varchar(1000),
+	regdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
+	visited INTEGER DEFAULT 0
+	filename1 varchar(500),
+	filename2 varchar(500),
+	filename3 varchar(500)
 );
-
-
--- qna
-CREATE TABLE qna(
-	qno INT PRIMARY KEY AUTO_INCREMENT,   -- (문의번호) 자동발생
-	title VARCHAR(100) NOT NULL,   -- (문의 제목)
-	content VARCHAR(1000) NOT NULL,   -- (문의 내용)
-	author VARCHAR(16),   -- (문의 작성자)
-	regdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),   -- (문의 등록일)
-	visited INT DEFAULT 0,   -- (조회수)
-	lev INT DEFAULT 0, -- 질문(0), 답변(1)
-	par INT,	-- 부모 글번호 -> 질문(자신 레코드의 qno), 답변(질문의 글번호)
-	secret BOOLEAN DEFAULT 0,	-- 비밀글 유무
-	FOREIGN KEY(author) REFERENCES member(id) ON DELETE CASCADE
-);
-
--- faq
-CREATE TABLE faq(
-	fno INT PRIMARY KEY AUTO_INCREMENT,   -- (문의번호) 자동발생
-	title VARCHAR(100) NOT NULL,   -- (문의 제목)
-	content VARCHAR(1000) NOT NULL,   -- (문의 내용)
-	regdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP()   -- (문의 등록일)
-);
-
-
-
--- qna 더미
-INSERT INTO qna(title, content, author, lev) VALUES('질문글 테스트.', '멘토 신청 문의합니다.', 'admin', 0);
-UPDATE qna SET par=qno WHERE lev=0;
-INSERT INTO qna(title, content, author, lev, par) VALUES('접수완료 안내', '멘토 신청 접수가 완료 되었습니다.', 'admin', 1, 1);
-UPDATE qna SET par=qno WHERE lev=0 AND qno=3;
-SELECT * FROM qnalist;
-CREATE VIEW qnalist AS (select a.qno as qno, a.title as title, a.content as content, a.author as author, 
-a.regdate as regdate, a.visited as visited, a.lev as lev, a.par as par, b.name as name from qna a, 
-member b where a.author = b.id order by a.par desc, a.lev asc, a.qno ASC);
-
-COMMIT;
-
-SELECT * FROM qnalist;
