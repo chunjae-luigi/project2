@@ -19,7 +19,7 @@ PRIMARY KEY (id)
 );
 
 -- 이미 생성한 테이블에서 member column 추가
-ALTER TABLE member ADD state BOOLEAN DEFAULT TRUE;
+-- ALTER TABLE member ADD state BOOLEAN DEFAULT TRUE;
 
 -- qna
 CREATE TABLE qna(
@@ -69,7 +69,7 @@ create table product(
 	procategory VARCHAR(100), -- 상품번호와 카테고리 아이디 결합
 	price INT DEFAULT 0, -- 상품 가격
 	title VARCHAR(100) NOT NULL,
-    author VARCHAR(100), -- 저자
+   author VARCHAR(100), -- 저자
 	content VARCHAR(2000), -- 상품 설명
 	img VARCHAR(5000) default 0, -- 상품 썸네일
 	regdate timestamp default CURRENT_TIMESTAMP(),
@@ -77,7 +77,7 @@ create table product(
 );
 -- ALTER table product CHANGE thumbnail img VARCHAR(5000) DEFAULT 0;
 -- ALTER TABLE product ADD video VARCHAR(5000) DEFAULT 0;
---ALTER table product CHANGE description author VARCHAR(100) DEFAULT 0;
+-- ALTER table product CHANGE description author VARCHAR(100) DEFAULT 0;
 
 -- 도서 상품 추가 테이블 생성 - 사용안함
 CREATE TABLE book(
@@ -144,7 +144,7 @@ create table cart(
 	cartNo INT PRIMARY KEY AUTO_INCREMENT, -- 카트 번호
 	memId VARCHAR(16) not NULL, -- 회원 아이디
 	proNo integer not NULL, -- 상품 번호
-	amount integer NOT NULL -- 제품 수량
+	amount integer NOT NULL, -- 제품 수량
 	price INTEGER DEFAULT 100,
 	imgsrc1 VARCHAR(5000) DEFAULT 'no_img.jpg'
 );
