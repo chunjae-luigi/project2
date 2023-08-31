@@ -55,37 +55,6 @@ public class ProductDAO {
     return productList;
   }
 
-  public List<Product> getProductList(){
-    conn = db.connect();
-    List<Product> productList = new ArrayList<>();
-
-    String sql = "select * from product limit 0, 6";
-    try {
-      pstmt = conn.prepareStatement(sql);
-      rs = pstmt.executeQuery();
-
-      while(rs.next()){
-        String regdate = sdf.format(rs.getDate("regdate"));
-        productList.add(new Product(
-                rs.getInt("proNo"),
-                rs.getString("categoryId"),
-                rs.getString("procategory"),
-                rs.getInt("price"),
-                rs.getString("title"),
-                rs.getString("author"),
-                rs.getString("content"),
-                rs.getString("img"),
-                regdate, rs.getString("video")));
-      }
-
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    } finally{
-      db.close(rs, pstmt, conn);
-    }
-
-    return productList;
-  }
 
   public List<Product> getProductList(){
     conn = db.connect();
@@ -105,10 +74,8 @@ public class ProductDAO {
                 rs.getInt("price"),
                 rs.getString("title"),
                 rs.getString("author"),
-                rs.getString("author"),
                 rs.getString("content"),
                 rs.getString("img"),
-                regdate, rs.getString("video")));
                 regdate, rs.getString("video")));
       }
 
@@ -140,11 +107,8 @@ public class ProductDAO {
                 rs.getInt("price"),
                 rs.getString("title"),
                 rs.getString("author"),
-                rs.getString("author"),
                 rs.getString("content"),
                 rs.getString("img"),
-                regdate,
-                rs.getString("video"));
                 regdate,
                 rs.getString("video"));
       }
@@ -165,16 +129,10 @@ public class ProductDAO {
     Product product1 = new Product();
 
     String sql = "insert into product(categoryId, title, author, price, content, img, video) values(?, ?, ?, ?, ?, ?, ?)";
-    String sql = "insert into product(categoryId, title, author, price, content, img, video) values(?, ?, ?, ?, ?, ?, ?)";
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setString(1, product.getCategoryId());
       pstmt.setString(2, product.getTitle());
-      pstmt.setString(3, product.getAuthor());
-      pstmt.setInt(4, product.getPrice());
-      pstmt.setString(5, product.getContent());
-      pstmt.setString(6, product.getImg());
-      pstmt.setString(7, product.getVideo());
       pstmt.setString(3, product.getAuthor());
       pstmt.setInt(4, product.getPrice());
       pstmt.setString(5, product.getContent());
@@ -290,7 +248,6 @@ public class ProductDAO {
                   rs.getString("procategory"),
                   rs.getInt("price"),
                   rs.getString("title"),
-                  rs.getString("author"),
                   rs.getString("author"),
                   rs.getString("content"),
                   rs.getString("img"),
