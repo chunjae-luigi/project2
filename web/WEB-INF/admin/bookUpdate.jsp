@@ -48,6 +48,10 @@
                     <div class="col-2"><label for="content" class="form-label">내용</label></div>
                     <div class="col-8"><textarea class="form-control" id="content" name="content" rows="5" >${pro.content}</textarea></div>
                 </div>
+                <div class="row">
+                    <div class="col-2"><label for="video">동영상 첨부</label></div>
+                    <div class="col-8"><input type="file" class="form-control" id="video" name="video" value="${pro.video}"></div>
+                </div>
                 <input type="submit" class="btn btn-primary mb-3" value="교재 추가">
             </form>
 

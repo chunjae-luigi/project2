@@ -69,7 +69,7 @@ create table product(
 	procategory VARCHAR(100), -- 상품번호와 카테고리 아이디 결합
 	price INT DEFAULT 0, -- 상품 가격
 	title VARCHAR(100) NOT NULL,
-    	author VARCHAR(100), -- 저자
+	author VARCHAR(100), -- 저자
 	content VARCHAR(2000), -- 상품 설명
 	img VARCHAR(5000) default 0, -- 상품 썸네일
 	regdate timestamp default CURRENT_TIMESTAMP(),
@@ -77,7 +77,8 @@ create table product(
 );
 -- ALTER table product CHANGE thumbnail img VARCHAR(5000) DEFAULT 0;
 -- ALTER TABLE product ADD video VARCHAR(5000) DEFAULT 0;
---ALTER table product CHANGE description author VARCHAR(100) DEFAULT 0;
+-- ALTER table product CHANGE description author VARCHAR(100) DEFAULT 0;
+-- ALTER table product CHANGE description author VARCHAR(100) DEFAULT 0;
 
 -- 도서 상품 추가 테이블 생성 - 사용안함
 CREATE TABLE book(

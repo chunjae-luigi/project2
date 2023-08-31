@@ -41,6 +41,10 @@
                         <td>${product.author} </td>
                     </tr>
                     <tr>
+                        <th scope="row">저자</th>
+                        <td>${product.author} </td>
+                    </tr>
+                    <tr>
                         <th scope="row">수량</th>
                         <td>
                             <c:if test="${amount <= 0}">절판</c:if>
@@ -60,6 +64,7 @@
                     <source src="${rootPath}/storage/${product.video }" type="video/mp4"></video>
             <br>
             ${product.content}
+
 
         </div>
         <a class="btn btn-primary" href="${rootPath }/BookListAdmin.do" role="button">글 목록</a>
