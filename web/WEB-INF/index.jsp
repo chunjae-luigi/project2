@@ -10,33 +10,7 @@
     <title>메인 페이지</title>
     <%@ include file="/common.jsp"%>
     <style>
-        .product-item .product-thumb .preview-meta li input  {
-            background: #fff;
-            padding: 10px 0px;
-            cursor: pointer;
-            display: inline-block;
-            font-size: 20px;
-            transition: 0.2s all;
-            width: 50px;
-            border:none;
-        }
-        .product-item .product-thumb .preview-meta li a, .product-item .product-thumb .preview-meta li input {
-            content: "";
-            background-color:#fff!important;
-            background-repeat:no-repeat!important;
-            background-position:center center!important;
-            width:50px;
-            height:50px;
-            border-radius:5px;
-        }
-        .product-item .product-thumb .preview-meta li input.list_cart {
-            background-image:url("${rootPath}/images/ico_cart.png");
-            background-size:20px!important;
-        }
-        .product-item .product-thumb .preview-meta li a.list_search {
-            background-image:url("${rootPath}/images/ico_search.png");
-            background-size:35px!important;
-        }
+        .product-item {height:400px;margin-bottom:100px;}
     </style>
 </head>
 
@@ -78,7 +52,7 @@
             <div class="col-md-6">
                 <div class="category-box">
                     <a href="${rootPath }/BookList.do?category=A">
-                        <img src="${rootPath }/images/main/category-1.jpg" alt="" />
+                        <img src="${rootPath }/images/main/elebook.png" alt="" />
                         <div class="content">
                             <h3>초등 서적</h3>
                             <p>초등학생을 위한 최적의 서적</p>
@@ -87,7 +61,7 @@
                 </div>
                 <div class="category-box">
                     <a href="${rootPath }/BookList.do?category=B">
-                        <img src="${rootPath }/images/main/category-2.jpg" alt="" />
+                        <img src="${rootPath }/images/main/midbook.png" alt="" />
                         <div class="content">
                             <h3>중등 서적</h3>
                             <p>중학생을 위한 최적의 서적</p>
@@ -98,7 +72,7 @@
             <div class="col-md-6">
                 <div class="category-box category-box-2">
                     <a href="${rootPath }/BookList.do?category=C">
-                        <img src="${rootPath }/images/main/category-3.jpg" alt="" />
+                        <img src="${rootPath }/images/main/highbook.png" alt="" />
                         <div class="content">
                             <h3>고등 서적</h3>
                             <p>고등학생을 위한 최적의 서적</p>
@@ -118,25 +92,19 @@
         </div>
         <div class="row">
             <c:forEach var="pro" items="${proList }" varStatus="status">
-                <div class="col-md-4">
-                    <form action="" method="post">
+                <a href="${rootPath }/BookGet.do?proNo=${pro.proNo }" class="list_search">
+                    <div class="col-md-3">
                         <div class="product-item">
                             <div class="product-thumb">
                                 <img class="img-responsive" src="${rootPath }/storage/${pro.img }" alt="${pro.title }" />
-                                <div class="preview-meta">
-                                    <ul>
-                                        <li><a href="${rootPath }/BookGet.do?proNo=${pro.proNo }" class="list_search"></a></li>
-                                        <li><input type="submit" value="" class="list_cart" onclick="addCart(${pro.proNo }, ${pro.img }, ${pro.price })"></li>
-                                    </ul>
-                                </div>
                             </div>
                             <div class="product-content">
                                 <h4><a href="product-single.html">${pro.title }</a></h4>
                                 <p class="price">${pro.price } 원</p>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </a>
             </c:forEach>
             <c:if test="${empty proList }">
                 <p class="text-center">등록된 상품이 없습니다.</p>
@@ -149,9 +117,3 @@
 <%@ include file="/commonsub.jsp"%>
 </body>
 </html>
-
-<script>
-    function addCart(proNo, img, price){
-        $("form").attr("action", "${rootPath}/CartAdd.do?pno=" + proNo + "&imgsrc1=" + img + "&price=" + price + "");
-    }
-</script>

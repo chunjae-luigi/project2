@@ -27,7 +27,7 @@ public class ProductDAO {
     conn = db.connect();
     List<Product> productList = new ArrayList<>();
 
-    String sql = "select * from product limit 0, 6";
+    String sql = "select * from product limit 0, 8";
     try {
       pstmt = conn.prepareStatement(sql);
       rs = pstmt.executeQuery();

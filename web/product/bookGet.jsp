@@ -10,6 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>교재 페이지</title>
     <%@ include file="../common.jsp"%>
+    <style>
+        .content {margin-top: 24px; padding: 24px;}
+        .nav.nav-tabs {margin-top:80px;}
+        .product_detail_top {display:inline-block;vertical-align:middle;}
+        .product_detail_top.img_area {width:450px;text-align:center}
+        .product_detail_top.img_area > img {width:300px;height:auto;}
+        .product_detail_top.detail_area {width:calc(100% - 550px);margin-left:80px;}
+    </style>
 </head>
 
 <body id="body">
@@ -30,12 +38,12 @@
         </div>
     </section>
 
-    <div class="container contents text-center">
+    <div class="container contents text-left">
         <div class="row">
-            <div class="col-4" style="width: 700px">
+            <div class="col-4 product_detail_top img_area">
                 <img class="card-img-top" src="${rootPath}/storage/${product.img }" alt="${product.title }" width="100"/>
             </div>
-            <div class="col-8" style="width: 440px">
+            <div class="col-8 product_detail_top detail_area">
                 <form action="" method="post">
                 <table class="table">
                     <thead>
@@ -65,12 +73,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <input class="btn btn-primary" type="submit" value="장바구니 추가" onclick="addCart()">
-                        </td>
-                        <td>
+                        <td colspan="2" class="text-center">
+                            <input class="btn btn-main btn-medium" type="submit" value="장바구니 추가" onclick="addCart()">
                             <input type="hidden" name="proNo" value="${product.proNo}">
-                            <input class="btn btn-primary" type="submit" value="결제하기" onclick="payProduct()">
+                            <input class="btn btn-main btn-medium" type="submit" value="결제하기" onclick="payProduct()">
                         </td>
                     </tr>
                     </tbody>
@@ -78,7 +84,7 @@
                 </form>
             </div>
         </div>
-        <ul class="nav nav-tabs" style="margin-top:24px;">
+        <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#content_area">상세설명</a>
             </li>
@@ -86,15 +92,16 @@
                 <a class="nav-link" href="#review_area">리뷰</a>
             </li>
         </ul>
-        <div class="content" style="margin-top: 24px; padding: 24px; border: 1px solid black; ">
+        <div class="content" style="">
             <video height="300" width="500" controls >
                 <source src="${rootPath}/storage/${product.video }" type="video/mp4">
             </video>
             ${product.content}
         </div>
-        <div id="review_area" style="padding-bottom: 24px; border: 1px solid black; margin: 24px auto 0; ">
+        <hr>
+        <div id="review_area" class="content">
             <c:if test="${!empty reviewList}">
-                <table>
+                <table class="table">
                     <thead>
                     <tr>
                         <th>#</th>
@@ -131,10 +138,14 @@
                 <p class="text-center">등록된 리뷰가 없습니다.</p>
             </c:if>
         </div>
-        <a class="btn btn-primary" href="${rootPath }/BookList.do?category=*" role="button">글 목록</a>
-        <c:if test="${reviewPass eq true}">
-        <a class="btn btn-primary" href="${rootPath }/ReviewAdd.do?proNo=${product.proNo }" role="button">리뷰등록</a>
-        </c:if>
+        <hr>
+        <div class="text-right" style="margin:20px 0;">
+            <a class="btn btn-main btn-medium" href="${rootPath }/BookList.do?category=*" role="button">글 목록</a>
+            <a class="btn btn-main btn-medium" href="${rootPath }/ReviewAdd.do?proNo=${product.proNo }" role="button">리뷰등록</a>
+            <c:if test="${reviewPass eq true}">
+            <a class="btn btn-main btn-medium" href="${rootPath }/ReviewAdd.do?proNo=${product.proNo }" role="button">리뷰등록</a>
+            </c:if>
+        </div>
     </div>
 
     <%@ include file="../footer.jsp" %>
