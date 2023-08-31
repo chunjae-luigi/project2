@@ -36,11 +36,8 @@
 <div class="container contents text-center">
     <div class="intro text-start" style="margin-top: 20px;">
         <h3 class="intro_tit">함께, 똑같이 나아가는 교육, 그로우앤조이북</h3>
-        <div class="row" style="align-items: center;">
+        <div class="row" style="align-items: center;margin-bottom:20px;">
             <div class="col-7"><p>그로우앤조이북은 교육의 혁신과 미래를 모색하는 교육 브랜드로서, 학습자들이 풍부한 지식과 창의력을 발전시키며 더 나은 미래를 준비할 수 있도록 돕고 있습니다. 우리는 교육 분야에서 지속적인 혁신과 도전을 통해 학습 경험을 혁신하고, 학생 한 명 한 명의 잠재력을 최대한으로 끌어내는 데 최선을 다하고 있습니다.</p></div>
-            <div class="col-5" style="display:flex; justify-content: center;">
-                <img src="../images/logo-color-long.png" alt="logo" style="max-height: 200px;">
-            </div>
         </div>
         <h4 class="intro_tit">그로우앤조이북의 가치</h4>
         <ol>
