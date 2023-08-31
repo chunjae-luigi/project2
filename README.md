@@ -28,17 +28,45 @@
 
 ---
 ## 📝프로젝트 설계
-### 개념적 설계
+### 개념적 설계(UCD)
+![UCD](/README/pro02%20UCD.png)
 
 ### 논리적 설계
+![logicerd](/README/logicalerd.png)
+
 
 ### 물리적 설계
+![LERD01](/README/PERD/01.PNG)
+![LERD02](/README/PERD/02.PNG)
+![LERD03](/README/PERD/03.PNG)
+![LERD04](/README/PERD/04.PNG)
+![LERD05](/README/PERD/05.PNG)
+![LERD06](/README/PERD/06.PNG)
+![LERD07](/README/PERD/07.PNG)
+![LERD08](/README/PERD/08.PNG)
+![LERD09](/README/PERD/09.PNG)
+![LERD10](/README/PERD/10.PNG)
+![LERD11](/README/PERD/11.PNG)
+![LERD12](/README/PERD/12.PNG)
+![LERD13](/README/PERD/13.PNG)
+
 
 ### 클래스 다이어그램
+![Class1](/README/class1.png)
+![Class2](/README/class2.png)
 
 ### ERD 다이어그램
+![ERD0](/README/erd%20diagram/image.png)
+![ERD1](/README/erd%20diagram/image(1).png)
+![ERD2](/README/erd%20diagram/image%20(2).png)
+![ERD3](/README/erd%20diagram/image%20(3).png)
 
 ### 시퀀스 다이어그램
+![sequence product pay delivery](/README/sequence/project2%20product%20pay%20delivery.png)
+![sequence qna](/README/sequence/project2%20Qna.png)
+![sequence member](/README/sequence/project2member.png)
+![sequence notice](/README/sequence/project2Notice.png)
+![sequence fileupload](/README/sequence/project2Fileupload.png)
 
 
 ---

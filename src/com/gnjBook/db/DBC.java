@@ -6,9 +6,9 @@ public class DBC {
   private String DRIVER;
   private String DNS = "localhost:";
   private String PORT;
-  private String DB = "gnjBook";
-  private String USER = "root";
-  private String PASS = "1234";
+  private String DB = "team42";
+  private String USER = "team4";
+  private String PASS = "chunjae44";
   private String URL;
   Connection conn = null;
   PreparedStatement pstmt = null;

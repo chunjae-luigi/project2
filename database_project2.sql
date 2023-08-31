@@ -1,5 +1,5 @@
-CREATE DATABASE gnjBook;
-USE gnjBook;
+CREATE DATABASE team42;
+USE team42;
 
 -- member
 CREATE TABLE MEMBER(

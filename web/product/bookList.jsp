@@ -53,10 +53,10 @@
                                 <span href="#">도서 목록 <i class="fas fa-sort-down" style="vertical-align: 0.125em!important;"></i></span>
                                 <div class="drop">
                                     <ul class="list pl0">
-                                        <li><a class="dropSub" href="${rootPath }/CateList.do?category=*">전체</a></li>
-                                        <li><a class="dropSub" href="${rootPath }/CateList.do?category=A">초등</a></li>
-                                        <li><a class="dropSub" href="${rootPath }/CateList.do?category=B">중등</a></li>
-                                        <li><a class="dropSub" href="${rootPath }/CateList.do?category=C">고등</a></li>
+                                        <li><a class="dropSub" href="${rootPath }/BookList.do?category=*">전체</a></li>
+                                        <li><a class="dropSub" href="${rootPath }/BookList.do?category=A">초등</a></li>
+                                        <li><a class="dropSub" href="${rootPath }/BookList.do?category=B">중등</a></li>
+                                        <li><a class="dropSub" href="${rootPath }/BookList.do?category=C">고등</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -91,29 +91,6 @@
             </div>
         </div>
     </section>
-    <%--
-    <div class="container contents text-center">
-        <div class="d-flex align-content-start flex-wrap">
-        <c:forEach var="book" items="${bookList}" varStatus="status">
-            <div class="card" style="width: 18rem; margin: 10px;">
-                <a href="${rootPath}/BookGet.do?proNo=${book.proNo }">
-                <img class="card-img-top" src="${rootPath}/storage/${book.img }" alt="${book.title }" width="100"/>
-                </a>
-                <div class="card-body">
-                    <h5 class="card-title">${book.title}</h5>
-                    <p class="card-text">${book.price} 원</p>
-                </div>
-            </div>
-        </c:forEach>
-        </div>
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-    </div>--%>
     <%@ include file="../footer.jsp" %>
     <%@ include file="../commonsub.jsp" %>
 </body>
