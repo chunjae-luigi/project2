@@ -17,9 +17,8 @@
         #tb1 { width:960px; margin:40px auto; }
         #tb1 th { background-color: #111; color:#fff; }
         .item1 { width:10%; }
-        .item2 { width:70%; }
-        .item3 { width:10%; }
-        .item4 { width:10%; }
+        .item2 { width:30%; }
+        .item3 { width:60%; }
         #page-nation1 { width: 960px; margin:20px auto; }
     </style>
 </head>
@@ -31,7 +30,7 @@
         <h2 class="title">카테고리 목록</h2>
         <div class="container">
             <div class="box_wrap">
-                <form action="${rootPath}/Deletecate.do" method="post">
+                <form action="${rootPath}/Deletecate.do" method="post" onsubmit="return deleteTrue()">
                     <table class="table table-secondary" id="tb1">
                         <thead>
                         <tr>
@@ -44,7 +43,7 @@
                         <c:forEach var="cate" items="${cateList }" varStatus="status">
                             <tr>
                                 <td class="item1">
-                                    <input type="checkbox" name="categoryId" id="categoryId" value="${cate.categoryId }">
+                                    <input type="checkbox" class="isDelete" name="categoryId" value="${cate.categoryId }">
                                 </td>
                                 <td class="item2">
                                     <span title="${cate.categoryId}">${cate.categoryId}</span>
@@ -61,18 +60,11 @@
                         </c:if>
                         </tbody>
                     </table>
+                    <a href="${rootPath}/CategoryAdd.do" class="btn btn-primary">카테고리 추가</a>
                     <c:if test="${!empty cateList}">
-                        <div class="container">
-                            <input type="submit" value="선택삭제" class="btn btn-danger">
-                        </div>
+                        <input type="submit" value="선택삭제" class="btn btn-danger">
                     </c:if>
                 </form>
-                <form action="${rootPath}/CategoryAdd.do" method="post">
-                    <div class="container">
-                        <input type="submit" value="추가하기" class="btn btn-primary">
-                    </div>
-                </form>
-
             </div>
         </div>
     </div>
@@ -87,4 +79,23 @@
             $("tbody").append("<tr><td colspan='3' class='text-center'>해당 목록이 존재하지 않습니다.</td></tr>")
         }
     })
+</script>
+
+<script>
+    function deleteTrue(){
+        var isdelete = confirm("정말 삭제하시겠습니까?");
+        console.log($(".isDelete[checked='true']").length);
+
+        if(isdelete==true){
+            var len = $(".isDelete[checked='true']").length;
+            if(len>0){
+                return true;
+            } else{
+                alert("삭제할 상품이 없습니다.");
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 </script>

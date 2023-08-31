@@ -23,35 +23,38 @@ import java.util.List;
 
 @WebServlet("/PayProduct.do")
 public class PayProductCtrl extends HttpServlet {
-  @Override
-  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    int amount = Integer.parseInt(request.getParameter("amount"));
-    int proNo = Integer.parseInt(request.getParameter("proNo"));
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(); // 세션 생성
+        String sid = (String) session.getAttribute("session_id");
+        if(sid != null){
+            int amount = Integer.parseInt(request.getParameter("amount"));
+            int proNo = Integer.parseInt(request.getParameter("proNo"));
 
-    ProductDAO dao = new ProductDAO();
-    Product product = dao.getProduct(proNo);
+            ProductDAO dao = new ProductDAO();
+            Product product = dao.getProduct(proNo);
 
-    int instockamount =  dao.getAmount(proNo);
+            int instockamount =  dao.getAmount(proNo);
 
-    System.out.println(instockamount+" "+amount);
-    if(instockamount<amount){
-      response.setCharacterEncoding("UTF-8");
-      response.setContentType("text/html; charset=UTF-8");
-      PrintWriter out = response.getWriter();
+            System.out.println(instockamount+" "+amount);
+            if(instockamount<amount){
+                response.setCharacterEncoding("UTF-8");
+                response.setContentType("text/html; charset=UTF-8");
+                PrintWriter out = response.getWriter();
 
-      out.println("<script>alert('재고 수량이 부족하여 결제할 수 없습니다. 죄송합니다.');history.go(-1);</script>");
-    } else{
-      request.setAttribute("amount", amount);
-      request.setAttribute("product", product);
+                out.println("<script>alert('재고 수량이 부족하여 결제할 수 없습니다. 죄송합니다.');history.go(-1);</script>");
+            } else{
+                request.setAttribute("amount", amount);
+                request.setAttribute("product", product);
 
-      MemberDAO memberDAO = new MemberDAO();
-      HttpSession session = request.getSession(); // 세션 생성
-      Member member = memberDAO.getMember((String) session.getAttribute("session_id"));
+                MemberDAO memberDAO = new MemberDAO();
+                Member member = memberDAO.getMember((String) session.getAttribute("session_id"));
 
-      request.setAttribute("mem", member);
+                request.setAttribute("mem", member);
 
-      RequestDispatcher view = request.getRequestDispatcher("/pay/productPay.jsp");
-      view.forward(request,response);
+                RequestDispatcher view = request.getRequestDispatcher("/pay/productPay.jsp");
+                view.forward(request,response);
+            }
+        }
     }
-  }
 }
