@@ -28,11 +28,28 @@
 
 ---
 ## 📝프로젝트 설계
-### 개념적 설계
+### 개념적 설계(UCD)
+![UCD](/readme/pro02%20UCD.png)
 
 ### 논리적 설계
+![logicerd](/README/logicalerd.png)
+
 
 ### 물리적 설계
+![LERD01](/readme/PERD/01.png)
+![LERD02](/readme/PERD/02.png)
+![LERD03](/readme/PERD/03.png)
+![LERD04](/readme/PERD/04.png)
+![LERD05](/readme/PERD/05.png)
+![LERD06](/readme/PERD/06.png)
+![LERD07](/readme/PERD/07.png)
+![LERD08](/readme/PERD/08.png)
+![LERD09](/readme/PERD/09.png)
+![LERD10](/readme/PERD/10.png)
+![LERD11](/readme/PERD/11.png)
+![LERD12](/readme/PERD/12.png)
+![LERD13](/readme/PERD/13.png)
+![LERD14](/readme/PERD/14.png)
 
 ### 클래스 다이어그램
 ![Class1](/readme/class1.png)
@@ -50,7 +67,6 @@
 ![sequence member](/readme/sequence/project2member.png)
 ![sequence notice](/readme/sequence/project2Notice.png)
 ![sequence fileupload](/readme/sequence/project2Fileupload.png)
-
 
 
 ---
