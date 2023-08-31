@@ -32,7 +32,7 @@
 ![UCD](/readme/pro02%20UCD.png)
 
 ### 논리적 설계
-![logicerd](/README/logicalerd.png)
+![logicerd](/readme/logicalerd.png)
 
 
 ### 물리적 설계
