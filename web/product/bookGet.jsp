@@ -41,7 +41,7 @@
     <div class="container contents text-left">
         <div class="row">
             <div class="col-4 product_detail_top img_area">
-                <img class="card-img-top" src="${rootPath}/storage/${product.img }" alt="${product.title }" width="100"/>
+                <img class="card-img-top" src="${product.img }" alt="${product.title }" width="100"/>
             </div>
             <div class="col-8 product_detail_top detail_area">
                 <form action="" method="post">
@@ -100,9 +100,11 @@
             </li>
         </ul>
         <div class="content" style="">
-            <video height="300" width="500" controls >
-                <source src="${rootPath}/storage/${product.video }" type="video/mp4">
-            </video>
+            <c:if test="${!empty product.video }">
+                <video height="300" width="500" controls >
+                    <source src="${rootPath}/storage/${product.video }" type="video/mp4">
+                </video>
+            </c:if>
             ${product.content}
         </div>
         <hr>
