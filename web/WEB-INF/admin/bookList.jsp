@@ -62,7 +62,7 @@
                 </tbody>
             </table>
             <a class="btn btn-primary" href="${rootPath }/BookAdd.do" role="button">교재 추가</a>
-            <input class="btn btn-primary" type="submit" value="회원 삭제">
+            <input class="btn btn-primary" type="submit" value="교재 삭제">
             <nav aria-label="Page navigation example" id="page-nation1">
                 <ul class="pagination">
                     <li class="page-item"><a class="page-link" href="#">Previous</a></li>

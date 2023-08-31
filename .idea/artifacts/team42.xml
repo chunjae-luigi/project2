@@ -1,11 +1,11 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="project2">
-    <output-path>$PROJECT_DIR$/out/artifacts/project2</output-path>
+  <artifact type="exploded-war" name="team42">
+    <output-path>$PROJECT_DIR$/out/artifacts/team42_war</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="lib">
           <element id="archive" name="project2.jar">
-            <element id="module-output" name="project2" />
+            <element id="module-output" name="team42" />
           </element>
           <element id="library" level="project" name="cos" />
           <element id="library" level="project" name="apache.tomcat.servlet.api" />
@@ -20,7 +20,7 @@
           <element id="library" level="project" name="mariadb.jdbc.java.client" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="project2/web/Web" />
+      <element id="javaee-facet-resources" facet="team42/web/Web" />
     </root>
   </artifact>
 </component>
