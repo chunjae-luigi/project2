@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    <%@ include file="../../common.jsp" %>
+    <%@ include file="../../adminCommon.jsp" %>
     <style>
 
     </style>
 </head>
 <body>
-<%@ include file="../../header.jsp" %>
+<%@ include file="../../adminHeader.jsp" %>
 <div style="display: flex; min-height: 80vh;">
     <%@include file="adminBoardList.jsp"%>
     <div class="container contents text-center">
@@ -58,7 +58,7 @@
                 <div class="col-4"><input type="date" class="form-control" id="birth" name="birth" value="1999-01-01" value="${member.birth}"></div>
             </div>
             <div class="row">
-                <div class="col-2"><label for="address" class="form-label">주소</label></div>
+                <div class="col-2"><label for="address1" class="form-label">주소</label></div>
                 <div class="col-4"><input type="text" class="form-control" id="address1" name="address" value="${member.address}"></div>
                 <div class="col-4"><input type="text" class="form-control" id="postcode" name="postcode" placeholder="우편번호" value="${member.postcode}"></div>
                 <div class="col-2"><button type="button" class="btn btn-primary mb-3" onclick="findAddr()">우편번호 검색</button></div>
@@ -68,7 +68,7 @@
             </form>
     </div>
 </div>
-<%@ include file="../../footer.jsp" %>
+<%@ include file="../../adminFooter.jsp" %>
 </body>
 </html>
 

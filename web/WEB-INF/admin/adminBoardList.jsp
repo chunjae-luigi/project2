@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<c:set var="rootPath" value="<%=request.getContextPath() %>" />
 
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px">
     <span class="fs-4">관리자페이지</span>
@@ -20,6 +20,16 @@
         <li class="nav-item">
             <a id="admin-book-nav" href="${rootPath}/BookListAdmin.do" class="nav-link text-white">
                 교재 관리
+            </a>
+        </li>
+        <li class="nav-item">
+            <a id="admin-cate-nav" href="${rootPath}/CategoryList.do" class="nav-link text-white">
+                카테고리 관리
+            </a>
+        </li>
+        <li class="nav-item">
+            <a id="admin-file-nav" href="${rootPath}/FileboardListAdmin.do" class="nav-link text-white">
+                학습자료 관리
             </a>
         </li>
         <li class="nav-item">
@@ -47,6 +57,14 @@
         $(nav).addClass("active");
     } else if(link.includes("Delivery")){
         nav = $("#admin-delivery-nav");
+        $(nav).attr("aria-current", "page");
+        $(nav).addClass("active");
+    } else if(link.includes("Category")){
+        nav = $("#admin-cate-nav");
+        $(nav).attr("aria-current", "page");
+        $(nav).addClass("active");
+    } else if(link.includes("File")){
+        nav = $("#admin-file-nav");
         $(nav).attr("aria-current", "page");
         $(nav).addClass("active");
     }

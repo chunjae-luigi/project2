@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -9,11 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항 페이지</title>
-    <%@ include file="../../common.jsp"%>
+    <%@ include file="../../adminCommon.jsp"%>
 </head>
 
 <body>
-<%@ include file="../../header.jsp"%>
+<%@ include file="../../adminHeader.jsp"%>
 <div style="display: flex; min-height: 80vh;">
     <%@include file="adminBoardList.jsp"%>
     <div class="container" style="margin-top: 20px;">
@@ -37,6 +36,6 @@
     </div>
 
 </div>
-<%@ include file="../../footer.jsp" %>
+<%@ include file="../../adminFooter.jsp" %>
 </body>
 </html>
