@@ -55,6 +55,7 @@ public class ProductDAO {
     return productList;
   }
 
+
   public List<Product> getProductList(){
     conn = db.connect();
     List<Product> productList = new ArrayList<>();
@@ -97,7 +98,7 @@ public class ProductDAO {
       pstmt.setInt(1, proNo);
       rs = pstmt.executeQuery();
 
-      if(rs.next()){
+      while(rs.next()){
         String regdate = sdf.format(rs.getDate("regdate"));
         product = new Product(
                 rs.getInt("proNo"),
@@ -190,7 +191,7 @@ public class ProductDAO {
     conn = db.connect();
     int cnt = 0;
 
-    String sql = "update product set categoryId=?, price=?, title=?, author=?, content=?, img=?, video=? where proNo=?";
+    String sql = "update product set categoryId=?, price=?, title=?, author=?, content=? where proNo=?";
     try {
       pstmt = conn.prepareStatement(sql);
       pstmt.setString(1, product.getCategoryId());
@@ -198,9 +199,7 @@ public class ProductDAO {
       pstmt.setString(3, product.getTitle());
       pstmt.setString(4, product.getAuthor());
       pstmt.setString(5, product.getContent());
-      pstmt.setString(6, product.getImg());
-      pstmt.setString(7, product.getVideo());
-      pstmt.setInt(8, product.getProNo());
+      pstmt.setInt(6, product.getProNo());
 
       cnt = pstmt.executeUpdate();
     } catch (Exception e) {

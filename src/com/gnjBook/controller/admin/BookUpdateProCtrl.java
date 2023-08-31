@@ -44,41 +44,9 @@ public class BookUpdateProCtrl extends HttpServlet {
                   uppro.setContent(mr.getParameter("content"));
                   uppro.setProNo(Integer.parseInt(mr.getParameter("proNo")));
 
-                  File upfile = null;
-                  Enumeration files = mr.getFileNames();
 
-                  int idx = 1;
-                  String item;
-                  String oriFile = "";
-                  String fileName = "";
-
-                  while(files.hasMoreElements()) {
-                      item = (String) files.nextElement();
-                      oriFile = mr.getOriginalFileName(item); //실제 첨부된 파일경로와 이름
-                      fileName = mr.getFilesystemName(item);  //파일이름만 추출
-
-
-                      if(fileName!=null) {
-                          upfile = mr.getFile(item); //실제 업로드
-                          if (upfile.exists()) {
-                              long filesize = upfile.length();
-                              if (idx == 1) {
-                                  uppro.setImg(upfile.getName());
-                              } else if (idx == 2) {
-                                  uppro.setVideo(upfile.getName());
-                              }
-                              msg = "파일 업로드 성공";
-                              System.out.println("파일 업로드 성공");
-                          } else {
-                              msg = "파일 업로드 실패";
-                              System.out.println("파일 업로드 실패");
-                          }
-                      }
-                      idx++;
-                  }
-
-                  ProductDAO dao = new ProductDAO();
-                  int cnt = dao.updateProduct(uppro);
+                    ProductDAO dao = new ProductDAO();
+                    int cnt = dao.updateProduct(uppro);
 
                   PrintWriter out = response.getWriter();
 
