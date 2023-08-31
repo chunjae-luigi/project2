@@ -27,6 +27,7 @@
                 <!-- Site Logo -->
                 <div class="logo text-center">
                     <a href="${rootPath }/">
+                        <img src="${rootPath }/images/common/icon_48.png" alt="그로우앤조이북">
                         그로우앤조이북
                     </a>
                 </div>
