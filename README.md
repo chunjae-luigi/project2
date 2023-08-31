@@ -35,10 +35,22 @@
 ### 물리적 설계
 
 ### 클래스 다이어그램
+![Class1](/readme/class1.png)
+![Class2](/readme/class2.png)
 
 ### ERD 다이어그램
+![ERD0](/readme/erd%20diagram/image.png)
+![ERD1](/readme/erd%20diagram/image (1).png)
+![ERD2](/readme/erd%20diagram/image (2).png)
+![ERD3](/readme/erd%20diagram/image (3).png)
 
 ### 시퀀스 다이어그램
+![sequence product pay delivery](/readme/sequence/project2%20product%20pay%20delivery.png)
+![sequence qna](/readme/sequence/project2%20Qna.png)
+![sequence member](/readme/sequence/project2member.png)
+![sequence notice](/readme/sequence/project2Notice.png)
+![sequence fileupload](/readme/sequence/project2Fileupload.png)
+
 
 
 ---
