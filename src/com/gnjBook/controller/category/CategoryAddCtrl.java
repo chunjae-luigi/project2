@@ -15,13 +15,20 @@ public class CategoryAddCtrl extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String msg = "관리자의 상품 등록 폼이 로딩되었습니다.";
 
-        request.setAttribute("msg", msg);
+        HttpSession session = request.getSession();
+        String sid = (String) session.getAttribute("session_id");
 
-        CategoryDAO dao = new CategoryDAO();
-        List<Category> cateList = dao.getCategoryList();
+        if(sid != null && sid.equals("admin")) {
+            request.setAttribute("msg", msg);
 
-        request.setAttribute("cateList", cateList);
-        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/categoryAdd.jsp");
-        view.forward(request, response);
+            CategoryDAO dao = new CategoryDAO();
+            List<Category> cateList = dao.getCategoryList();
+
+            request.setAttribute("cateList", cateList);
+            RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/categoryAdd.jsp");
+            view.forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath()+"/");
+        }
     }
 }

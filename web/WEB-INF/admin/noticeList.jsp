@@ -8,11 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항 목록</title>
-    <%@ include file="../../common.jsp"%>
+    <%@ include file="../../adminCommon.jsp"%>
 </head>
 
 <body>
-<%@ include file="../../header.jsp"%>
+<%@ include file="../../adminHeader.jsp"%>
 <div style="display: flex; min-height: 80vh;">
     <%@include file="adminBoardList.jsp"%>
     <div class="container" style="margin-top: 20px;">
@@ -32,9 +32,10 @@
                 <tr>
                     <td class="item1">${status.count}</td>
                     <td class="item2">
-                        <a  class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="${rootPath }/NoticeGetAdmin.do?no=${notice.no}" style="display:inline-block; width:100%;>${notice.title}</a>
+                        <a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover item3" href="${rootPath }/NoticeGetAdmin.do?no=${notice.no}" style="display:inline-block; width:100%;>${notice.title}</a>
                     </td>
-                    <td class="item3">${notice.resdate}</td>
+                                <td class=">${notice.title}</a></td>
+                    <td>${notice.resdate}</td>
                     <td class="item4">${notice.visited}</td>
                 </tr>
                 </c:forEach>
@@ -53,6 +54,6 @@
         </div>
     </div>
 </div>
-<%@ include file="../../footer.jsp" %>
+<%@ include file="../../adminFooter.jsp" %>
 </body>
 </html>

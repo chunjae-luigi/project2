@@ -10,20 +10,26 @@
     <%@ include file="../common.jsp"%>
 </head>
 
-<body>
-<%@ include file="../header.jsp"%>
-<div class="container contents">
-    <h2 class="page_title text-center">Q & A 상세보기</h2>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb justify-content-end">
-            <li class="breadcrumb-item"><a href="${rootPath }">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Community</a></li>
-            <li class="breadcrumb-item active" aria-current="page">QnA</li>
-        </ol>
-    </nav>
-    <table class="table">
+<body id="body">
+    <%@ include file="../header.jsp"%>
+    <section class="page-header" style="margin-top:0!important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name">Q & A 상세보기</h1>
+                        <ol class="breadcrumb">
+                            <li><a href="${rootPath }/">Home</a></li>
+                            <li class="active">QnA</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container contents">
+        <table class="table">
         <thead>
-
         <tr>
             <th class="item2">제목</th>
             <th class="item3">작성일</th>
@@ -31,19 +37,19 @@
         </tr>
         </thead>
         <tbody>
-        <c:set var="qna" value="${qna}"/>
-        <tr>
-            <td class="item2">${qna.title}</td>
-            <td class="item3">${qna.regdate}</td>
-            <td class="item4">${qna.visited}</td>
-        </tr>
-        <tr>
-            <td colspan="3">
-                ${qna.content}
-            </td>
-        </tr>
-    </tbody>
-    </table>
+            <c:set var="qna" value="${qna}"/>
+            <tr>
+                <td class="item2">${qna.title}</td>
+                <td class="item3">${qna.regdate}</td>
+                <td class="item4">${qna.visited}</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    ${qna.content}
+                </td>
+            </tr>
+        </tbody>
+        </table>
         <div class="btn-group">
             <a class="btn btn-primary" href="${rootPath }/QnaList.do" role="button">글 목록</a>
             <a class="btn btn-primary" href="${rootPath }/QnaUpdate.do?no=${qna.qno}" role="button">글 수정</a>
@@ -59,5 +65,6 @@
         </div>
     </div>
     <%@ include file="../footer.jsp" %>
+    <%@ include file="/commonsub.jsp"%>
 </body>
 </html>

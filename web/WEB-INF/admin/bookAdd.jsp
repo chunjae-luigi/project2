@@ -10,10 +10,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>파일 업로드</title>
-    <jsp:include page="../../common.jsp" />
+    <jsp:include page="../../adminCommon.jsp" />
 </head>
 <body>
-<%@include file="../../header.jsp"%>
+<%@include file="../../adminHeader.jsp"%>
 <div style="display: flex; min-height: 80vh;">
     <%@include file="adminBoardList.jsp"%>
     <div class="container" style="margin-top: 20px;">
@@ -58,6 +58,6 @@
             </form>
 
 </div>
-<%@ include file="../../footer.jsp" %>
+<%@ include file="../../adminFooter.jsp" %>
 </body>
 </html>
