@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>메인 페이지</title>
+    <title>소개</title>
     <%@ include file="/common.jsp"%>
     <style>
         .intro p {text-indent: 2em; line-height: 2em; display:inline-block; word-break: keep-all;}
@@ -16,19 +16,24 @@
     </style>
 </head>
 
-<body>
+<body id="body">
 <%@ include file="/header.jsp"%>
-
+<section class="page-header" style="margin-top:0!important;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content">
+                    <h1 class="page-name">Grow&Joy Book 소개</h1>
+                    <ol class="breadcrumb">
+                        <li><a href="${rootPath }/">Home</a></li>
+                        <li class="active">소개</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <div class="container contents text-center">
-    <h2 class="page_title text-center">쌤쌤 소개</h2>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb justify-content-end">
-            <li class="breadcrumb-item"><a href="${rootPath }">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">소개</li>
-        </ol>
-    </nav>
-    <%--  브래드크럼 END  --%>
-
     <div class="intro text-start" style="margin-top: 20px;">
         <h3 class="intro_tit">함께, 똑같이 나아가는 교육, 쌤쌤</h3>
         <div class="row" style="align-items: center;">

@@ -13,21 +13,26 @@ import java.io.IOException;
 public class CategoryAddProCtrl extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("프로가 문제야");
+        HttpSession session = request.getSession();
+        String sid = (String) session.getAttribute("session_id");
+
         request.setCharacterEncoding("UTF-8");
         String cno = request.getParameter("categoryId");
         String cname = request.getParameter("categoryName");
 
-
-        Category cate = new Category();
-        cate.setCategoryId(cno);
-        cate.setCategoryName(cname);
-        CategoryDAO dao = new CategoryDAO();
-        int cnt = dao.addCategory(cate);
-        if (cnt > 0) {
-            response.sendRedirect(request.getContextPath() + "/CategoryList.do");
+        if(sid != null && sid.equals("admin")) {
+            Category cate = new Category();
+            cate.setCategoryId(cno);
+            cate.setCategoryName(cname);
+            CategoryDAO dao = new CategoryDAO();
+            int cnt = dao.addCategory(cate);
+            if (cnt > 0) {
+                response.sendRedirect(request.getContextPath() + "/CategoryList.do");
+            } else {
+                response.sendRedirect(request.getContextPath() + "/WEB-INF/admin/adminBoardList.jsp");
+            }
         } else {
-            response.sendRedirect(request.getContextPath() + "/WEB-INF/admin/adminBoardList.jsp");
+            response.sendRedirect(request.getContextPath()+"/");
         }
     }
 }

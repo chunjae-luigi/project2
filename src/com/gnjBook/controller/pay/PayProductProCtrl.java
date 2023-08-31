@@ -22,7 +22,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/PayProductPro.do") // 사용자가 보는 이름
+@WebServlet("/PayProductPro.do")
 public class PayProductProCtrl extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

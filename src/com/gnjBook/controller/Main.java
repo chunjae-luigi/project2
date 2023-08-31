@@ -19,8 +19,6 @@ public class Main extends HttpServlet {
 
         request.setAttribute("proList", proList);
 
-
-        //RequestDispatcher view = request.getRequestDispatcher(request.getContextPath()+"/index.jsp");
         RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/index.jsp");
         view.forward(request, response);
     }

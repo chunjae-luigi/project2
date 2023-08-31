@@ -26,7 +26,7 @@ public class LoginCtrl extends HttpServlet {
             session.setAttribute("session_id", id);
             String path = request.getContextPath();
 
-            response.sendRedirect(path+"/index.jsp");
+            response.sendRedirect(path+"/");
         } else{
             System.out.println("아이디 또는 비밀번호가 일치하지 않습니다.");
 

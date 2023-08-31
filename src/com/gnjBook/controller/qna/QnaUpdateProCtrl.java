@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/QnaUpdatePro.do") // 사용자가 보는 이름
+@WebServlet("/QnaUpdatePro.do")
 public class QnaUpdateProCtrl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
