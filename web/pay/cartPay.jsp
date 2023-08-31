@@ -12,126 +12,134 @@
     <script src="https://code.jquery.com/jquery-latest.js"></script>
 </head>
 
-<body>
-<%@ include file="../header.jsp"%>
-<div class="container contents">
-    <h2 class="page_title text-center">장바구니 결제</h2>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb justify-content-end">
-            <li class="breadcrumb-item"><a href="${rootPath }">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">장바구니 결제</li>
-        </ol>
-    </nav>
-
-    <div class="container">
-        <div class="box_wrap">
-            <form action="${rootPath }/PayCartPro.do" method="post" class="form_row" onsubmit="return payCheck(this)">
-            <table class="table" id="tb1">
-                <thead>
-                <tr>
-                    <th>번호</th>
-                    <th>상품 이름</th>
-                    <th>상품 가격</th>
-                    <th>개수</th>
-                    <th>총계</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="cartVO" items="${cartVOList}" varStatus="status">
-                <tr>
-                    <td>${status.count}</td>
-                    <td>
-                        <input type="checkbox" name="cartCheck" value="${cartVO.cart.cartNo}" hidden="true" checked>
-                            ${cartVO.product.title}
-                    </td>
-                    <td>${cartVO.product.price}</td>
-                    <td>${cartVO.cart.amount}</td>
-                    <td class="product_price">${cartVO.product.price*cartVO.cart.amount}</td>
-                </tr>
-                </c:forEach>
-                </tbody>
-                <tfoot>
+<body id="body">
+    <%@ include file="../header.jsp"%>
+    <section class="page-header" style="margin-top:0!important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name">장바구니 결제</h1>
+                        <ol class="breadcrumb">
+                            <li><a href="${rootPath }/">Home</a></li>
+                            <li class="active">장바구니 결제</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container contents">
+        <div class="container">
+            <div class="box_wrap">
+                <form action="${rootPath }/PayCartPro.do" method="post" class="form_row" onsubmit="return payCheck(this)">
+                <table class="table" id="tb1">
+                    <thead>
                     <tr>
-                        <td colspan="2" class="text-center">총계</td>
-                        <td colspan="3" id="total"></td>
+                        <th>번호</th>
+                        <th>상품 이름</th>
+                        <th>상품 가격</th>
+                        <th>개수</th>
+                        <th>총계</th>
                     </tr>
-                </tfoot>
-            </table>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="cartVO" items="${cartVOList}" varStatus="status">
+                    <tr>
+                        <td>${status.count}</td>
+                        <td>
+                            <input type="checkbox" name="cartCheck" value="${cartVO.cart.cartNo}" hidden="true" checked>
+                                ${cartVO.product.title}
+                        </td>
+                        <td>${cartVO.product.price}</td>
+                        <td>${cartVO.cart.amount}</td>
+                        <td class="product_price">${cartVO.product.price*cartVO.cart.amount}</td>
+                    </tr>
+                    </c:forEach>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2" class="text-center">총계</td>
+                            <td colspan="3" id="total"></td>
+                        </tr>
+                    </tfoot>
+                </table>
 
-                <h3>주문자 정보</h3>
-                <div class="row">
-                    <div class="col-2"><label for="mem_name" class="form-label">이름</label></div>
-                    <div class="col-8"><input type="text" class="form-control" id="mem_name" name="mem_name" readonly value="${mem.name}"></div>
-                </div>
-                <div class="row">
-                    <div class="col-2"><label for="email" class="form-label">이메일</label></div>
-                    <div class="col-4"><input type="email" class="form-control" id="email" name="email" readonly value="${mem.email}"></div>
-                    <div class="col-2"><label for="mem_tel" class="form-label">전화번호</label></div>
-                    <div class="col-4"><input type="tel" class="form-control" id="mem_tel" name="mem_tel" readonly value="${mem.tel}"></div>
-                </div>
-                <div class="row">
-                    <div class="col-2"><label for="mem_address" class="form-label">주소</label></div>
-                    <div class="col-6"><input type="text" class="form-control" id="mem_address" name="mem_address" readonly value="${mem.address}"></div>
-                    <div class="col-4"><input type="text" class="form-control" id="mem_postcode" name="mem_postcode" readonly value="${mem.postcode}"></div>
-                </div>
-
-                <hr>
-                <h3>배송 정보</h3>
-                <%--  Delivery의 name, tel, address  --%>
-                <div class="row">
-                    <div class="col-2"><label for="name" class="form-label">수신인 이름</label></div>
-                    <div class="col-4"><input type="text" class="form-control" id="name" name="name" required></div>
-                    <div class="col-2"><label for="tel" class="form-label">수신인 전화번호</label></div>
-                    <div class="col-4"><input type="text" class="form-control" id="tel" name="tel" required></div>
-                </div>
-                <div class="row">
-                    <div class="col-2"><label for="address1" class="form-label">배송 주소</label></div>
-                    <div class="col-4"><input type="text" class="form-control" id="address1" name="address1" required></div>
-                    <div class="col-4"><input type="text" class="form-control" id="postcode" name="postcode" placeholder="우편번호" required></div>
-                    <div class="col-2"><button type="button" class="btn btn-primary mb-3" onclick="findAddr()">우편번호 검색</button></div>
-                </div>
-                <div class="row">
-                    <div class="col-2"><label for="address2" class="form-label">상세 주소</label></div>
-                    <div class="col-8"><input type="text" class="form-control" id="address2" name="address2" required></div>
-                    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-                </div>
-
-                <hr>
-                <h3>결제 정보</h3>
-                <%--  Payment의 method, pcom, paccount --%>
-                <div class="row">
-                    <div class="col-2"><label for="method" class="form-label">결제 수단</label></div>
-                    <div class="col-4">
-                        <select name="method" id="method" class="form-select">
-                            <option value="신용카드">신용카드</option>
-                            <option value="체크카드">체크카드</option>
-                            <option value="계좌이체">계좌이체</option>
-                        </select>
+                    <h3>주문자 정보</h3>
+                    <div class="row">
+                        <div class="col-2"><label for="mem_name" class="form-label">이름</label></div>
+                        <div class="col-8"><input type="text" class="form-control" id="mem_name" name="mem_name" readonly value="${mem.name}"></div>
                     </div>
-                    <div class="col-2"><label for="pcom" class="form-label">결제 회사</label></div>
-                    <div class="col-4">
-                        <select name="pcom" id="pcom" class="form-select">
-                            <option value="선택안함">선택안함</option>
-                        </select>
+                    <div class="row">
+                        <div class="col-2"><label for="email" class="form-label">이메일</label></div>
+                        <div class="col-4"><input type="email" class="form-control" id="email" name="email" readonly value="${mem.email}"></div>
+                        <div class="col-2"><label for="mem_tel" class="form-label">전화번호</label></div>
+                        <div class="col-4"><input type="tel" class="form-control" id="mem_tel" name="mem_tel" readonly value="${mem.tel}"></div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-2"><label for="paccount" class="form-label">결제 번호</label></div>
-                    <div class="col-6"><input type="text" class="form-control" id="paccount" name="paccount" required></div>
-                    <div class="col-2">
-                        <input type="button" id="pay" value="결제하기" class="btn btn-primary">
+                    <div class="row">
+                        <div class="col-2"><label for="mem_address" class="form-label">주소</label></div>
+                        <div class="col-6"><input type="text" class="form-control" id="mem_address" name="mem_address" readonly value="${mem.address}"></div>
+                        <div class="col-4"><input type="text" class="form-control" id="mem_postcode" name="mem_postcode" readonly value="${mem.postcode}"></div>
                     </div>
-                </div>
-                <%--  일단은 pay했다고 치기  --%>
-                <input type="hidden" name="payCk" id="payCk" value="yes">
-                <input type="submit" id="buy" value="구매" class="btn btn-primary">
-                <a href="${rootPath }/ProList.do" class="btn btn-primary">제품 목록</a>
-            </form>
 
+                    <hr>
+                    <h3>배송 정보</h3>
+                    <%--  Delivery의 name, tel, address  --%>
+                    <div class="row">
+                        <div class="col-2"><label for="name" class="form-label">수신인 이름</label></div>
+                        <div class="col-4"><input type="text" class="form-control" id="name" name="name" required></div>
+                        <div class="col-2"><label for="tel" class="form-label">수신인 전화번호</label></div>
+                        <div class="col-4"><input type="text" class="form-control" id="tel" name="tel" required></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2"><label for="address1" class="form-label">배송 주소</label></div>
+                        <div class="col-4"><input type="text" class="form-control" id="address1" name="address1" required></div>
+                        <div class="col-4"><input type="text" class="form-control" id="postcode" name="postcode" placeholder="우편번호" required></div>
+                        <div class="col-2"><button type="button" class="btn btn-primary mb-3" onclick="findAddr()">우편번호 검색</button></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2"><label for="address2" class="form-label">상세 주소</label></div>
+                        <div class="col-8"><input type="text" class="form-control" id="address2" name="address2" required></div>
+                        <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+                    </div>
+
+                    <hr>
+                    <h3>결제 정보</h3>
+                    <%--  Payment의 method, pcom, paccount --%>
+                    <div class="row">
+                        <div class="col-2"><label for="method" class="form-label">결제 수단</label></div>
+                        <div class="col-4">
+                            <select name="method" id="method" class="form-select">
+                                <option value="신용카드">신용카드</option>
+                                <option value="체크카드">체크카드</option>
+                                <option value="계좌이체">계좌이체</option>
+                            </select>
+                        </div>
+                        <div class="col-2"><label for="pcom" class="form-label">결제 회사</label></div>
+                        <div class="col-4">
+                            <select name="pcom" id="pcom" class="form-select">
+                                <option value="선택안함">선택안함</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2"><label for="paccount" class="form-label">결제 번호</label></div>
+                        <div class="col-6"><input type="text" class="form-control" id="paccount" name="paccount" required></div>
+                        <div class="col-2">
+                            <input type="button" id="pay" value="결제하기" class="btn btn-primary">
+                        </div>
+                    </div>
+                    <%--  일단은 pay했다고 치기  --%>
+                    <input type="hidden" name="payCk" id="payCk" value="yes">
+                    <input type="submit" id="buy" value="구매" class="btn btn-primary">
+                    <a href="${rootPath }/ProList.do" class="btn btn-primary">제품 목록</a>
+                </form>
+
+            </div>
         </div>
     </div>
-</div>
-<%@ include file="../footer.jsp" %>
+    <%@ include file="../footer.jsp" %>
+    <%@ include file="../commonsub.jsp" %>
 </body>
 </html>
 

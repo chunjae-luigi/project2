@@ -66,8 +66,7 @@
                                 <div class="col-lg-6 col-md-6 mb-sm-3">
                                     <ul>
                                         <li><a href="${rootPath}/product/introduce.jsp">회사소개</a></li>
-                                        <li><a href="${rootPath}/product/introduce.jsp">회사소개</a></li>
-                                        <li><a href="${rootPath}/product/introduce.jsp">회사소개</a></li>
+                                        <li><a href="${rootPath}/product/map.jsp">오시는길</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -80,9 +79,9 @@
                                 <div class="col-lg-6 col-md-6 mb-sm-3">
                                     <ul>
                                         <li><a href="${rootPath }/BookList.do?category=*">전체</a></li>
-                                        <li><a href="${rootPath }/BookList.do?category=*">초등</a></li>
-                                        <li><a href="${rootPath }/BookList.do?category=*">중등</a></li>
-                                        <li><a href="${rootPath }/BookList.do?category=*">고등</a></li>
+                                        <li><a href="${rootPath }/BookList.do?category=A">초등</a></li>
+                                        <li><a href="${rootPath }/BookList.do?category=B">중등</a></li>
+                                        <li><a href="${rootPath }/BookList.do?category=C">고등</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -95,8 +94,8 @@
                                 <div class="col-lg-6 col-md-6 mb-sm-3">
                                     <ul>
                                         <li><a href="${rootPath}/NoticeList.do">공지사항</a></li>
-                                        <li><a href="${rootPath}/">묻고답하기</a></li>
-                                        <li><a class="dropdown-item" href="${rootPath }/FileboardList.do">학습자료실</a></li>
+                                        <li><a href="${rootPath}/QnaList.do">묻고답하기</a></li>
+                                        <li><a href="${rootPath }/FileboardList.do">학습자료실</a></li>
                                     </ul>
                                 </div>
                             </div>

@@ -12,21 +12,28 @@ import java.io.PrintWriter;
 public class BookDeleteCtrl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int proNo = Integer.parseInt(request.getParameter("no"));
-
         String msg = "상품 정보를 삭제합니다.";
         ServletContext application = request.getServletContext();
         String home = application.getContextPath();
 
-        ProductDAO dao = new ProductDAO();
-        int cnt = dao.deleteProduct(proNo);
-        PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
+        String sid = (String) session.getAttribute("session_id");
 
-        if(cnt > 0) {
-            response.sendRedirect(home + "/BookListAdmin.do");
-        }else{
-            out.println("<script>history.go(-1);</script>");
+        int proNo = Integer.parseInt(request.getParameter("no"));
 
+        if(sid != null && sid.equals("admin")) {
+
+            ProductDAO dao = new ProductDAO();
+            int cnt = dao.deleteProduct(proNo);
+            PrintWriter out = response.getWriter();
+
+            if(cnt > 0) {
+                response.sendRedirect(home + "/BookListAdmin.do");
+            }else{
+                out.println("<script>history.go(-1);</script>");
+            }
+        } else {
+            response.sendRedirect(request.getContextPath()+"/");
         }
     }
 }

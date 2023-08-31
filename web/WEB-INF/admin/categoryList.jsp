@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>교재 목록</title>
-    <%@ include file="../../common.jsp"%>
+    <%@ include file="../../adminCommon.jsp"%>
     <c:set var="path" value="<%=request.getContextPath() %>" />
     <style>
         .dropdown-toggle::after { transition: transform 0.15s linear;}
@@ -24,7 +24,7 @@
     </style>
 </head>
 <body>
-<%@ include file="../../header.jsp"%>
+<%@ include file="../../adminHeader.jsp"%>
 <div style="display: flex; min-height: 80vh;">
     <%@include file="adminBoardList.jsp"%>
     <div class="container" style="margin-top: 20px;">
@@ -77,6 +77,6 @@
         </div>
     </div>
  </div>
-    <%@ include file="../../footer.jsp" %>
+    <%@ include file="../../adminFooter.jsp" %>
 </body>
 </html>

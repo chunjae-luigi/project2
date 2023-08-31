@@ -3,67 +3,74 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>장바구니 목록</title>
     <%@ include file="../common.jsp"%>
     <!-- 부트스트랩 링크 추가 -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <%--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">--%>
 </head>
 
-<body>
-<%@ include file="../header.jsp"%>
-<div class="container contents">
-    <h2 class="page_title text-center">장바구니</h2>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb justify-content-end">
-            <li class="breadcrumb-item"><a href="${rootPath }">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">장바구니</li>
-        </ol>
-    </nav>
-
-    <div class="container">
-        <div class="box_wrap">
-            <form action="${rootPath}/CartDelete.do" method="post">
-                <table class="table table-bordered" id="tb1">
-                    <thead class="thead-light">
-                    <tr>
-                        <th></th>
-                        <th>번호</th>
-                        <th>상품 이름</th>
-                        <th>표지 사진</th>
-                        <th>상품 가격</th>
-                        <th>개수</th>
-                        <th>총계</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="cartVO" items="${cartVOList}" varStatus="status">
-                        <tr>
-                            <td><input type="checkbox" name="cartCheck" value="${cartVO.cart.cartNo}"></td>
-                            <td>${status.count}</td>
-                            <td>${cartVO.product.title}</td>
-                            <td><img src="${rootPath}/storage/${cartVO.cart.imgsrc1}" style="max-width: 50px; max-height: 50px;" alt="대표 이미지"></td>
-                            <td>${cartVO.product.price}</td>
-                            <td>${cartVO.cart.amount}</td>
-                            <td>${cartVO.product.price*cartVO.cart.amount}</td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
-                <div class="btn-group">
-                    <input class="btn btn-danger" value="장바구니 삭제" type="submit">
+<body id="body">
+    <%@ include file="../header.jsp"%>
+    <section class="page-header" style="margin-top:0!important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name">장바구니</h1>
+                        <ol class="breadcrumb">
+                            <li><a href="${rootPath }/">Home</a></li>
+                            <li class="active">장바구니</li>
+                        </ol>
+                    </div>
                 </div>
-            </form>
-            <div class="btn-group">
-                <button class="btn btn-primary" onclick="payButton()">장바구니 결제</button>
+            </div>
+        </div>
+    </section>
+    <div class="container contents text-center">
+        <div class="d-flex align-content-start flex-wrap">
+            <div class="box_wrap">
+                <form action="${rootPath}/CartDelete.do" method="post">
+                    <table class="table table-bordered" id="tb1">
+                        <thead class="thead-light">
+                        <tr>
+                            <th></th>
+                            <th>번호</th>
+                            <th>상품 이름</th>
+                            <th>표지 사진</th>
+                            <th>상품 가격</th>
+                            <th>개수</th>
+                            <th>총계</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="cartVO" items="${cartVOList}" varStatus="status">
+                            <tr>
+                                <td><input type="checkbox" name="cartCheck" value="${cartVO.cart.cartNo}"></td>
+                                <td>${status.count}</td>
+                                <td>${cartVO.product.title}</td>
+                                <td><img src="${rootPath}/storage/${cartVO.cart.img}" style="max-width: 50px; max-height: 50px;" alt="대표 이미지"></td>
+                                <td>${cartVO.product.price}</td>
+                                <td>${cartVO.cart.amount}</td>
+                                <td>${cartVO.product.price*cartVO.cart.amount}</td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                    <div class="btn-group">
+                        <input class="btn btn-danger" value="장바구니 삭제" type="submit">
+                    </div>
+                </form>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="payButton()">장바구니 결제</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<%@ include file="../footer.jsp" %>
+    <%@ include file="../footer.jsp" %>
+    <%@ include file="../commonsub.jsp" %>
 </body>
 </html>
 

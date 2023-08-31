@@ -12,69 +12,60 @@
 </head>
 
 <body id="body">
-<%@ include file="../header.jsp"%>
-<section class="page-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="content">
-                    <h1 class="page-name">공지사항</h1>
-                    <ol class="breadcrumb">
-                        <li><a href="${rootPath }/">Home</a></li>
-                        <li class="active">Community</li>
-                    </ol>
+    <%@ include file="../header.jsp"%>
+    <section class="page-header" style="margin-top:0!important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name">공지사항</h1>
+                        <ol class="breadcrumb">
+                            <li><a href="${rootPath }/">Home</a></li>
+                            <li class="active">공지사항</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-<div class="container contents">
-    <h2 class="page_title text-center">공지사항</h2>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb justify-content-end">
-            <li class="breadcrumb-item"><a href="${rootPath }">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Community</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Notice</li>
-        </ol>
-    </nav>
-    <div class="container">
-        <div class="box_wrap">
-            <table class="table table-secondary" id="tb1">
-                <thead>
-                <tr>
-                    <th class="item1">번호</th>
-                    <th class="item2">제목</th>
-                    <th class="item3">작성일</th>
-                    <th class="item4">조회수</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="notice" items="${noticeList}" varStatus="status">
-                <tr>
-                    <td class="item1">${status.count}</td>
-                    <td class="item2">
-                        <a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="${rootPath }/Notice.do?no=${notice.no}" style="display:inline-block; width:100%;">${notice.title}</a>
-                    </td>
-                    <td class="item3">${notice.resdate}</td>
-                    <td class="item4">${notice.visited}</td>
-                </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-            <nav aria-label="Page navigation example" id="page-nation1">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
+    </section>
+    <div class="container contents">
+        <div class="container">
+            <div class="box_wrap">
+                <table class="table table-secondary" id="tb1">
+                    <thead>
+                    <tr>
+                        <th class="item1">번호</th>
+                        <th class="item2">제목</th>
+                        <th class="item3">작성일</th>
+                        <th class="item4">조회수</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="notice" items="${noticeList}" varStatus="status">
+                    <tr>
+                        <td class="item1">${status.count}</td>
+                        <td class="item2">
+                            <a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="${rootPath }/Notice.do?no=${notice.no}" style="display:inline-block; width:100%;">${notice.title}</a>
+                        </td>
+                        <td class="item3">${notice.resdate}</td>
+                        <td class="item4">${notice.visited}</td>
+                    </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+                <nav aria-label="Page navigation example" id="page-nation1">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
-</div>
-<%@ include file="../footer.jsp" %>
-<%@ include file="/commonsub.jsp"%>
+    <%@ include file="../footer.jsp" %>
+    <%@ include file="/commonsub.jsp"%>
 </body>
 </html>

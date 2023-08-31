@@ -19,7 +19,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/PayCartPro.do") // 사용자가 보는 이름
+@WebServlet("/PayCartPro.do")
 public class PayCartProCtrl extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
