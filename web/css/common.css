@@ -42,3 +42,6 @@
 
 .top-header .logo > a {font-family:'SBAggro', serif !important;font-size:30px;}
 .top-header .logo img {width:40px;height:40px;margin-right:20px;}
+
+.product-item {height:280px;margin-bottom:100px;}
+.product-thumb {height:170px;overflow:hidden;}

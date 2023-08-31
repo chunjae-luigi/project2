@@ -10,12 +10,14 @@ import com.gnjBook.model.ProductDAO;
 import com.gnjBook.model.ReviewDAO;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -23,6 +25,7 @@ import java.util.List;
 public class BookGetCtrl extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    ServletContext application = request.getServletContext();
     request.setAttribute("msg", "교재 상세페이지를 출력합니다.");
     int proNo = Integer.parseInt(request.getParameter("proNo"));
 
@@ -31,6 +34,20 @@ public class BookGetCtrl extends HttpServlet {
 
     ProductDAO dao = new ProductDAO();
     Product product = dao.getProduct(proNo);
+
+    File isfile = new File( application.getRealPath("/storage/") + product.getImg());
+    if(!isfile.exists()) {
+      product.setImg(request.getContextPath() + "/images/noimage.jpg");
+    } else {
+      product.setImg(request.getContextPath() + "/storage/" + product.getImg());
+    }
+
+    File isVideo = new File( application.getRealPath("/storage/") + product.getVideo());
+    if(!isVideo.exists()) {
+      product.setVideo("");
+    } else {
+      product.setVideo(request.getContextPath() + "/storage/" + product.getVideo());
+    }
 
     CategoryDAO cdao = new CategoryDAO();
     Category category = cdao.getCategory(product.getCategoryId());

@@ -19,7 +19,7 @@
     <div class="container" style="margin-top: 20px;">
         <div class="row">
             <div class="col-4" style="width: 500px">
-                <img class="card-img-top" src="${rootPath}/storage/${product.img }" alt="${product.title }" width="100"/>
+                <img class="card-img-top" src="${product.img }" alt="${product.title }" width="100"/>
             </div>
             <div class="col-8" style="width: 640px">
                 <table class="table" >
@@ -57,12 +57,13 @@
             </div>
         </div>
         <div class="content" style="margin-top: 24px; padding: 24px; border: 1px solid black; ">
-                <video width="600" height="400" controls autoplay>
-                    <source src="${rootPath}/storage/${product.video }" type="video/mp4"></video>
+            <c:if test="${!empty product.video }">
+                <video height="600" width="400" controls >
+                    <source src="${rootPath}/storage/${product.video }" type="video/mp4">
+                </video>
+            </c:if>
             <br>
             ${product.content}
-
-
         </div>
         <a class="btn btn-primary" href="${rootPath }/BookListAdmin.do" role="button">글 목록</a>
         <a class="btn btn-primary" href="${rootPath }/Instock.do?no=${product.proNo}" role="button">상품 입고</a>

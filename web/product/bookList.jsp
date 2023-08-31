@@ -13,7 +13,7 @@
         .show.dropdown .dropdown-toggle::after {transform: translateY(3px);}
         .dropdown-menu {margin-top: 0;}
         .page-header .breadcrumb li {position:relative;}
-        .product-item {height:400px;margin-bottom:100px;}
+        .product-item {height:200px;margin-bottom:100px;}
         .drop-container {
             &:hover .drop {
                 display: block;
@@ -60,6 +60,12 @@
                                     </ul>
                                 </div>
                             </li>
+                            <c:choose>
+                                <c:when test="${category eq '*' }"><li class="active">전체</li></c:when>
+                                <c:when test="${category eq 'A' }"><li class="active">초등</li></c:when>
+                                <c:when test="${category eq 'B' }"><li class="active">중등</li></c:when>
+                                <c:when test="${category eq 'C' }"><li class="active">고등</li></c:when>
+                            </c:choose>
                         </ol>
                     </div>
                 </div>
@@ -75,10 +81,10 @@
                     <div class="col-md-3">
                         <div class="product-item">
                             <div class="product-thumb">
-                                <img class="img-responsive" src="${rootPath }/storage/${book.img }" alt="${book.title }" />
+                                <img class="img-responsive" src="${book.img }" alt="${book.title }" />
                             </div>
                             <div class="product-content">
-                                <h4><a href="product-single.html">${book.title }</a></h4>
+                                <h4>${book.title }</h4>
                                 <p class="price">${book.price } 원</p>
                             </div>
                         </div>
