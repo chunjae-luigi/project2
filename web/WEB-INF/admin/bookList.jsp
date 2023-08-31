@@ -26,13 +26,11 @@
             <a class="nav-link dropdown-toggle" href="${rootPath }/BookListAdmin.do" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 카테고리</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="${rootPath }/CateListAdmin.do?category=A">초등 교과서</a></li>
-                <li><a class="dropdown-item" href="${rootPath }/CateListAdmin.do?category=B">중등 참고서</a></li>
-                <li><a class="dropdown-item" href="${rootPath }/CateListAdmin.do?category=E">초등 참고서</a></li>
-                <li><a class="dropdown-item" href="${rootPath }/CateListAdmin.do?category=M">초등 기타</a></li>
-                <li><a class="dropdown-item" href="${rootPath }/CateListAdmin.do?category=I">초등 기타</a></li>
+                <li><a class="dropdown-item" href="${rootPath }/CateList.do?category=A">초등 교과서</a></li>
+                <li><a class="dropdown-item" href="${rootPath }/CateList.do?category=B">중등 교과서</a></li>
+                <li><a class="dropdown-item" href="${rootPath }/CateList.do?category=C">고등 교과서</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="${rootPath }/BookListAdmin.do?category=*">전체</a></li>
+                <li><a class="dropdown-item" href="${rootPath }/BookList.do?category=*">전체</a></li>
             </ul>
         </ui>
         <div class="container">

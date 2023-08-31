@@ -18,11 +18,11 @@
     <%@include file="adminBoardList.jsp"%>
     <div class="container" style="margin-top: 20px;">
         <div class="row">
-            <div class="col-4" style="width: 600px">
+            <div class="col-4" style="width: 500px">
                 <img class="card-img-top" src="${rootPath}/storage/${product.img }" alt="${product.title }" width="100"/>
             </div>
-            <div class="col-8" style="width: 350px">
-                <table class="table">
+            <div class="col-8" style="width: 640px">
+                <table class="table" >
                     <thead>
                     <tr>
                         <td colspan="2"><h2>${product.title }</h2></td>
@@ -32,6 +32,10 @@
                     <tr>
                         <th scope="row">카테고리</th>
                         <td>${category.categoryName} </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">저자</th>
+                        <td>${product.author} </td>
                     </tr>
                     <tr>
                         <th scope="row">저자</th>
@@ -53,10 +57,11 @@
             </div>
         </div>
         <div class="content" style="margin-top: 24px; padding: 24px; border: 1px solid black; ">
-                <video height="300" width="500" controls >
+                <video width="600" height="400" controls autoplay>
                     <source src="${rootPath}/storage/${product.video }" type="video/mp4"></video>
             <br>
             ${product.content}
+
 
         </div>
         <a class="btn btn-primary" href="${rootPath }/BookListAdmin.do" role="button">글 목록</a>
