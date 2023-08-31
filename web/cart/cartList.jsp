@@ -51,7 +51,7 @@
                                 <td><input type="checkbox" name="cartCheck" value="${cartVO.cart.cartNo}"></td>
                                 <td>${status.count}</td>
                                 <td>${cartVO.product.title}</td>
-                                <td><img src="${rootPath}/storage/${cartVO.cart.img}" style="max-width: 50px; max-height: 50px;" alt="대표 이미지"></td>
+                                <td><img src="${rootPath}/storage/${cartVO.product.img}" style="max-width: 50px; max-height: 50px;" alt="대표 이미지"></td>
                                 <td>${cartVO.product.price}</td>
                                 <td>${cartVO.cart.amount}</td>
                                 <td>${cartVO.product.price*cartVO.cart.amount}</td>
@@ -114,4 +114,13 @@
             form.submit();
         }
     }
+</script>
+
+
+<script>
+    $(document).ready(function(){
+        if($("tbody tr").length==0){
+            $("tbody").append("<tr><td colspan='7' class='text-center'>해당 목록이 존재하지 않습니다.</td></tr>")
+        }
+    })
 </script>

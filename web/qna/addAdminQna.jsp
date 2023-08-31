@@ -42,11 +42,13 @@
                     <label for="content" class="form-label">내용 입력</label>
                     <textarea class="form-control" name="content" id="content" rows="5"></textarea>
                 </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary mb-3">글 등록</button>
+                <div class="col-auto text-right">
+                    <button type="submit" class="btn btn-main btn-medium">글 등록</button>
                 </div>
             </form>
-            <a class="btn btn-primary" href="${rootPath }/QnaList.do" role="button">글 목록</a>
+            <div class="btn-group text-right" style="margin:20px 0;">
+                <a class="btn btn-main btn-medium" href="${rootPath }/QnaList.do" role="button">글 목록</a>
+            </div>
         </div>
     </div>
     <%@ include file="../footer.jsp" %>

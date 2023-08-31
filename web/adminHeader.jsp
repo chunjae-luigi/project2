@@ -27,7 +27,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="${rootPath}/introduce.jsp">쌤쌤 소개</a>
+                            <a class="nav-link" href="${rootPath}/introduce.jsp">그로우앤조이북</a>
                         </li>
                     </ul>
                     <ul class="nav justify-content-end">

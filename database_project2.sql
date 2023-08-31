@@ -19,7 +19,7 @@ PRIMARY KEY (id)
 );
 
 -- 이미 생성한 테이블에서 member column 추가
-ALTER TABLE member ADD state BOOLEAN DEFAULT TRUE;
+-- ALTER TABLE member ADD state BOOLEAN DEFAULT TRUE;
 
 -- qna
 CREATE TABLE qna(
@@ -77,7 +77,6 @@ create table product(
 );
 -- ALTER table product CHANGE thumbnail img VARCHAR(5000) DEFAULT 0;
 -- ALTER TABLE product ADD video VARCHAR(5000) DEFAULT 0;
--- ALTER table product CHANGE description author VARCHAR(100) DEFAULT 0;
 -- ALTER table product CHANGE description author VARCHAR(100) DEFAULT 0;
 
 -- 도서 상품 추가 테이블 생성 - 사용안함

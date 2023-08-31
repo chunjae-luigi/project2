@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <a href="${path }/">쌤쌤소개</a>
+                <a href="${path }/">그로우앤조이북소개</a>
                 <h1>404</h1>
                 <h2>Page Not Found</h2>
                 <a href="${path }/" class="btn btn-main"><i class="fas fa-arrow-left"></i> 홈페이지로 이동</a>
