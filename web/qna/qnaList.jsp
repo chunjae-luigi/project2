@@ -59,7 +59,7 @@
             </tbody>
         </table>
             <c:if test="${!empty sid}">
-                <a class="btn btn-primary" href="${rootPath }/QnaAdd.do" role="button">글쓰기</a>
+                <a class="btn btn-main btn-medium" href="${rootPath }/QnaAdd.do" role="button">글쓰기</a>
             </c:if>
 
             <nav aria-label="Page navigation example" id="page-nation1">
