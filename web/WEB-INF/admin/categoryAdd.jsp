@@ -9,8 +9,6 @@
     <title>카테고리 등록</title>
     <c:set var="path" value="<%=request.getContextPath() %>" />
     <%@ include file="../../common.jsp"%>
-    <!-- 부트스트랩 CSS 링크 추가 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 <%@ include file="../../header.jsp"%>

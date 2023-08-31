@@ -62,7 +62,7 @@
                 </tbody>
             </table>
             <a class="btn btn-primary" href="${rootPath }/BookAdd.do" role="button">교재 추가</a>
-            <input class="btn btn-primary" type="submit" value="교재 삭제">
+            <input class="btn btn-danger" type="submit" value="교재 삭제">
             <nav aria-label="Page navigation example" id="page-nation1">
                 <ul class="pagination">
                     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -79,12 +79,13 @@
 <%@ include file="../../footer.jsp" %>
 </body>
 </html>
+
 <script>
     function deleteTrue(){
         var isdelete = confirm("정말 삭제하시겠습니까?");
-        console.log(isdelete);
+        console.log($(".isDelete[checked='true']"));
         if(isdelete==true){
-            var len = $(".isDelete [checked='true']").length;
+            var len = $(".isDelete[checked='true']").length;
             if(len>0){
                 return true;
             } else{
