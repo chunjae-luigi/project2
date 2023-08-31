@@ -29,44 +29,44 @@
 ---
 ## 📝프로젝트 설계
 ### 개념적 설계(UCD)
-![UCD](/readme/pro02%20UCD.png)
+![UCD](/README/pro02%20UCD.png)
 
 ### 논리적 설계
-![logicerd](/readme/logicalerd.png)
+![logicerd](/README/logicalerd.png)
 
 
 ### 물리적 설계
-![LERD01](/readme/PERD/01.png)
-![LERD02](/readme/PERD/02.png)
-![LERD03](/readme/PERD/03.png)
-![LERD04](/readme/PERD/04.png)
-![LERD05](/readme/PERD/05.png)
-![LERD06](/readme/PERD/06.png)
-![LERD07](/readme/PERD/07.png)
-![LERD08](/readme/PERD/08.png)
-![LERD09](/readme/PERD/09.png)
-![LERD10](/readme/PERD/10.png)
-![LERD11](/readme/PERD/11.png)
-![LERD12](/readme/PERD/12.png)
-![LERD13](/readme/PERD/13.png)
-![LERD14](/readme/PERD/14.png)
+![LERD01](/README/PERD/01.png)
+![LERD02](/README/PERD/02.png)
+![LERD03](/README/PERD/03.png)
+![LERD04](/README/PERD/04.png)
+![LERD05](/README/PERD/05.png)
+![LERD06](/README/PERD/06.png)
+![LERD07](/README/PERD/07.png)
+![LERD08](/README/PERD/08.png)
+![LERD09](/README/PERD/09.png)
+![LERD10](/README/PERD/10.png)
+![LERD11](/README/PERD/11.png)
+![LERD12](/README/PERD/12.png)
+![LERD13](/README/PERD/13.png)
+![LERD14](/README/PERD/14.png)
 
 ### 클래스 다이어그램
-![Class1](/readme/class1.png)
-![Class2](/readme/class2.png)
+![Class1](/README/class1.png)
+![Class2](/README/class2.png)
 
 ### ERD 다이어그램
-![ERD0](/readme/erd%20diagram/image.png)
-![ERD1](/readme/erd%20diagram/image(1).png)
-![ERD2](/readme/erd%20diagram/image%20(2).png)
-![ERD3](/readme/erd%20diagram/image%20(3).png)
+![ERD0](/README/erd%20diagram/image.png)
+![ERD1](/README/erd%20diagram/image(1).png)
+![ERD2](/README/erd%20diagram/image%20(2).png)
+![ERD3](/README/erd%20diagram/image%20(3).png)
 
 ### 시퀀스 다이어그램
-![sequence product pay delivery](/readme/sequence/project2%20product%20pay%20delivery.png)
-![sequence qna](/readme/sequence/project2%20Qna.png)
-![sequence member](/readme/sequence/project2member.png)
-![sequence notice](/readme/sequence/project2Notice.png)
-![sequence fileupload](/readme/sequence/project2Fileupload.png)
+![sequence product pay delivery](/README/sequence/project2%20product%20pay%20delivery.png)
+![sequence qna](/README/sequence/project2%20Qna.png)
+![sequence member](/README/sequence/project2member.png)
+![sequence notice](/README/sequence/project2Notice.png)
+![sequence fileupload](/README/sequence/project2Fileupload.png)
 
 
 ---
