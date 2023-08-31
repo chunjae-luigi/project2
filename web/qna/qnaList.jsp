@@ -77,3 +77,11 @@
     <%@ include file="/commonsub.jsp"%>
 </body>
 </html>
+
+<script>
+    $(document).ready(function(){
+        if($("tbody tr").length==0){
+            $("tbody").append("<tr><td colspan='5' class='text-center'>해당 목록이 존재하지 않습니다.</td></tr>")
+        }
+    })
+</script>

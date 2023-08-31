@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="block text-center">
-                    <a class="logo" href="${rootPath}/">쌤쌤소개</a>
+                    <a class="logo" href="${rootPath}/">그로우앤조이북소개</a>
                     <h2 class="text-center">회원약관</h2>
                     <div>
                         <div class="form-group text-area mt-20">
