@@ -101,4 +101,20 @@ public class Product {
   public String getVideo() { return video; }
 
   public void setVideo(String video) {this.video = video; }
+
+  @Override
+  public String toString() {
+    return "Product{" +
+            "proNo=" + proNo +
+            ", categoryId='" + categoryId + '\'' +
+            ", procategory='" + procategory + '\'' +
+            ", price=" + price +
+            ", title='" + title + '\'' +
+            ", author='" + author + '\'' +
+            ", content='" + content + '\'' +
+            ", img='" + img + '\'' +
+            ", regdate='" + regdate + '\'' +
+            ", video='" + video + '\'' +
+            '}';
+  }
 }
