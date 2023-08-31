@@ -8,12 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>카테고리 등록</title>
     <c:set var="path" value="<%=request.getContextPath() %>" />
-    <%@ include file="../../adminCommon.jsp"%>
+    <%@ include file="../../common.jsp"%>
     <!-- 부트스트랩 CSS 링크 추가 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<%@ include file="../../adminHeader.jsp"%>
+<%@ include file="../../header.jsp"%>
 <div style="display: flex; min-height: 80vh;">
     <%@include file="adminBoardList.jsp"%>
     <div class="container mt-5">
@@ -39,7 +39,7 @@
         </div>
     </div>
 </div>
-<%@ include file="../../adminFooter.jsp" %>
+<%@ include file="../../footer.jsp" %>
 </body>
 </html>
 <!-- 부트스트랩 JS 및 jQuery 추가 -->

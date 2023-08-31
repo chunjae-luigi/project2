@@ -57,7 +57,6 @@
                     <h5 class="card-title">${book.title}</h5>
                     <p class="card-text">${book.price} 원</p>
                 </div>
-
             </div>
         </c:forEach>
         </div>
@@ -73,3 +72,12 @@
     <%@ include file="../commonsub.jsp" %>
 </body>
 </html>
+
+<script>
+    $(document).ready(function(){
+        if($(".card").length===0){
+            $(".d-flex.align-content-start.flex-wrap").append("<div class='text-center align-center' style='margin-top: 50px; height: 30vh;'>해당 목록이 존재하지 않습니다.</div>");
+        }
+    })
+</script>
+

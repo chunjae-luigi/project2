@@ -27,7 +27,7 @@
                 <!-- Site Logo -->
                 <div class="logo text-center">
                     <a href="${rootPath }/">
-                        쌤쌤소개
+                        그로우앤조이북
                     </a>
                 </div>
             </div>
@@ -60,7 +60,7 @@
             <div id="navbar" class="navbar-collapse collapse text-center">
                 <ul class="nav navbar-nav">
                     <li class="dropdown dropdown-slide">
-                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">쌤쌤 소개 <i class="fas fa-sort-down" style="vertical-align: 0.125em!important;"></i></a>
+                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">그로우앤조이북 소개 <i class="fas fa-sort-down" style="vertical-align: 0.125em!important;"></i></a>
                         <div class="dropdown-menu">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 mb-sm-3">

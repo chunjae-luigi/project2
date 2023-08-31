@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="block text-center">
-                    <a class="logo" href="${rootPath}/">쌤쌤소개</a>
+                    <a class="logo" href="${rootPath}/">그로우앤조이북소개</a>
                     <h2 class="text-center">회원가입</h2>
                     <form class="text-left clearfix form_row" action="${rootPath}/JoinPro.do" method="post" onsubmit="return inform(this)">
                         <div class="form-group">

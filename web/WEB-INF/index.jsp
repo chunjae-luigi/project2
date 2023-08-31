@@ -122,7 +122,7 @@
                     <form action="" method="post">
                         <div class="product-item">
                             <div class="product-thumb">
-                                <img class="img-responsive" src="${rootPath }/storage/${pro.img }" alt="${pro.title }" />
+                                <img class="img-responsive" src="${rootPath }/storage/${pro.img }" alt="${pro.title }">
                                 <div class="preview-meta">
                                     <ul>
                                         <li><a href="${rootPath }/BookGet.do?proNo=${pro.proNo }" class="list_search"></a></li>

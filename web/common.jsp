@@ -34,6 +34,15 @@
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/54/2/intl/ko_ALL/common.js"></script>
 <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/54/2/intl/ko_ALL/util.js"></script></head>
+
+<script>
+
+    $(document).ready(function(){
+        $("img").attr("onerror", "this.onerror=null; this.src='${rootPath}/images/noimage.jpg'");
+    });
+//     이미지 로딩 안 될 시 대체 이미지 띄우기
+</script>
+
 <%--
 
 <style>

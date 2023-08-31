@@ -8,10 +8,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>학습 자료실 업로드</title>
-    <jsp:include page="../../adminCommon.jsp" />
+    <jsp:include page="../../common.jsp" />
 </head>
 <body>
-    <%@ include file="../../adminHeader.jsp"%>
+    <%@ include file="../../header.jsp"%>
     <div style="display: flex; min-height: 80vh;">
         <%@include file="adminBoardList.jsp"%>
         <div class="container mt-5">
@@ -55,6 +55,6 @@
             </div>
         </div>
     </div>
-    <%@ include file="../../adminFooter.jsp" %>
+    <%@ include file="../../footer.jsp" %>
 </body>
 </html>
