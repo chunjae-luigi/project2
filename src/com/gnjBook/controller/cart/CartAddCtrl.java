@@ -18,6 +18,8 @@ public class CartAddCtrl extends HttpServlet {
     HttpSession session = request.getSession(); // 세션 생성
     String id = (String) session.getAttribute("session_id");
 
+    System.out.println("더하기");
+
     CartDAO dao = new CartDAO();
     Cart cart = new Cart();
     cart.setMemId(id);

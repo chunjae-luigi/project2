@@ -50,17 +50,14 @@
             </tr>
         </tbody>
         </table>
-        <div class="btn-group">
-            <a class="btn btn-primary" href="${rootPath }/QnaList.do" role="button">글 목록</a>
-            <a class="btn btn-primary" href="${rootPath }/QnaUpdate.do?no=${qna.qno}" role="button">글 수정</a>
-            <a class="btn btn-primary" href="${rootPath }/QnaDelete.do?no=${qna.qno}" role="button">글 삭제</a>
-        </div>
-        <div class="btn-group">
-            <c:if test="${qna.getLev() eq 0 }"></c:if>
-            <c:if test="${member.author eq sid }">
+        <div class="btn-group text-right" style="margin:20px 0;">
+            <a class="btn btn-main btn-medium" href="${rootPath }/QnaList.do" role="button">글 목록</a>
+            <c:if test="${qna.author eq sid }">
+                <a class="btn btn-main btn-medium" href="${rootPath }/QnaUpdate.do?no=${qna.qno}" role="button">글 수정</a>
+                <a class="btn btn-main btn-medium" href="${rootPath }/QnaDelete.do?no=${qna.qno}" role="button">글 삭제</a>
             </c:if>
             <c:if test="${sid eq 'admin' }">
-                <a class="btn btn-primary" href="${rootPath }/QnaAddAdmin.do?lev=1&par=${qna.qno}" role="button">답변하기</a>
+                <a class="btn btn-main btn-medium" href="${rootPath }/QnaAddAdmin.do?lev=1&par=${qna.qno}" role="button">답변하기</a>
             </c:if>
         </div>
     </div>

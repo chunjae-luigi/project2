@@ -3,37 +3,69 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="rootPath" value="<%=request.getContextPath() %>" />
 
-<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px">
+<style>
+    .nav-pills-admin .nav-link-side {
+        background: 0 0;
+        border: 0;
+        border-radius: 0.25rem;
+    }
+
+    .nav-link-side {
+        display: block;
+        padding: 0.5rem 1rem;
+        color: #0d6efd;
+        text-decoration: none;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    }
+
+    .nav-pills-admin>li {
+        float: none;
+    }
+
+    .bg-dark-admin {
+        background-color: rgb(33,37,41);
+        --bs-bg-opacity: 1;
+    }
+
+    .text-white{color: white}
+
+    .p-3 {
+        padding: 1rem!important;
+    }
+
+</style>
+
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark-admin" style="width: 280px">
     <span class="fs-4">관리자페이지</span>
     <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
+    <ul class="nav nav-pills-admin flex-column mb-auto">
         <li class="nav-item">
-            <a id="admin-member-nav" href="${rootPath}/MemberListAdmin.do" class="nav-link text-white">
+            <a id="admin-member-nav" href="${rootPath}/MemberListAdmin.do" class="nav-link-side text-white">
                 회원 관리
             </a>
         </li>
         <li class="nav-item">
-            <a id="admin-notice-nav" href="${rootPath}/NoticeListAdmin.do" class="nav-link text-white">
+            <a id="admin-notice-nav" href="${rootPath}/NoticeListAdmin.do" class="nav-link-side text-white">
                 공지사항 관리
             </a>
         </li>
         <li class="nav-item">
-            <a id="admin-book-nav" href="${rootPath}/BookListAdmin.do" class="nav-link text-white">
+            <a id="admin-book-nav" href="${rootPath}/BookListAdmin.do" class="nav-link-side text-white">
                 교재 관리
             </a>
         </li>
         <li class="nav-item">
-            <a id="admin-cate-nav" href="${rootPath}/CategoryList.do" class="nav-link text-white">
+            <a id="admin-cate-nav" href="${rootPath}/CategoryList.do" class="nav-link-side text-white">
                 카테고리 관리
             </a>
         </li>
         <li class="nav-item">
-            <a id="admin-file-nav" href="${rootPath}/FileboardListAdmin.do" class="nav-link text-white">
+            <a id="admin-file-nav" href="${rootPath}/FileboardListAdmin.do" class="nav-link-side text-white">
                 학습자료 관리
             </a>
         </li>
         <li class="nav-item">
-            <a id="admin-delivery-nav" href="${rootPath}/DeliveryListAdmin.do" class="nav-link text-white">
+            <a id="admin-delivery-nav" href="${rootPath}/DeliveryListAdmin.do" class="nav-link-side text-white">
                 배송 관리
             </a>
         </li>

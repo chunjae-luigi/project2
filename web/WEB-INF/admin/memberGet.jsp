@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    <%@ include file="../../adminCommon.jsp" %>
+    <%@ include file="../../common.jsp" %>
     <style>
 
     </style>
 </head>
 <body>
-<%@ include file="../../adminHeader.jsp" %>
+<%@ include file="../../header.jsp" %>
 <div style="display: flex; min-height: 80vh;">
     <%@include file="adminBoardList.jsp"%>
     <div class="container contents text-center">
@@ -62,6 +62,6 @@
         </div>
     </div>
 </div>
-<%@ include file="../../adminFooter.jsp" %>
+<%@ include file="../../footer.jsp" %>
 </body>
 </html>
