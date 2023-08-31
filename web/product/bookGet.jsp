@@ -74,8 +74,15 @@
                     </tr>
                     <tr>
                         <td colspan="2" class="text-center">
-                            <input class="btn btn-main btn-medium" type="submit" value="장바구니 추가" onclick="addCart()">
-                            <input type="hidden" name="proNo" value="${product.proNo}">
+                            <c:choose>
+                                <c:when test="${!empty sid}">
+                                    <input class="btn btn-main btn-medium" type="submit" value="장바구니 추가" onclick="addCart()">
+                                    <input type="hidden" name="proNo" value="${product.proNo}">
+                                </c:when>
+                                <c:otherwise>
+                                    <button class="btn btn-main btn-medium" type="button" onclick="location.href='${rootPath}/member/login.jsp'">장바구니</button>
+                                </c:otherwise>
+                            </c:choose>
                             <input class="btn btn-main btn-medium" type="submit" value="결제하기" onclick="payProduct()">
                         </td>
                     </tr>
