@@ -62,15 +62,7 @@
                 <a class="btn btn-main btn-medium" href="${rootPath }/QnaAdd.do" role="button">글쓰기</a>
             </c:if>
 
-            <nav aria-label="Page navigation example" id="page-nation1">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
+
         </div>
     </div>
     <%@ include file="../footer.jsp" %>

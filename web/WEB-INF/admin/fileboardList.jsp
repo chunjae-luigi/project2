@@ -41,15 +41,7 @@
            </tbody>
        </table>
     <a class="btn btn-primary" href="${rootPath }/FileboardAdd.do" role="button">자료 추가</a>
-    <nav aria-label="Page navigation example" id="page-nation1">
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-    </nav>
+
     </form>
 </div></div></div>
 <%@ include file="../../footer.jsp" %>
