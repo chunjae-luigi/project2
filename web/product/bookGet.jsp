@@ -101,8 +101,8 @@
         </ul>
         <div class="content" style="">
             <c:if test="${!empty product.video }">
-                <video height="300" width="500" controls >
-                    <source src="${rootPath}/storage/${product.video }" type="video/mp4">
+                <video height="300" width="500" controls autoplay>
+                    <source src="${product.video }" type="video/mp4">
                 </video>
             </c:if>
             ${product.content}
