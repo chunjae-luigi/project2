@@ -60,7 +60,7 @@
                         <a href="${rootPath }/storage/${fileboard.filename2 }" download ><i class="fas fa-file" style="color: #54c066;"></i> ${fileboard.filename2 }</a>
                     </c:if>
                     <c:if test="${!empty fileboard.filename3 }">
-                        <a href="${rootPath }/storage/${fileboard.filename3 }" download ><i class="fas fa-file" style="color: #54c066;"></i> ${fileboard.filename }</a>
+                        <a href="${rootPath }/storage/${fileboard.filename3 }" download ><i class="fas fa-file" style="color: #54c066;"></i> ${fileboard.filename3 }</a>
                     </c:if>
                 </td>
             </tr>
