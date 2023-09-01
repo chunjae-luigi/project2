@@ -8,8 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>장바구니 목록</title>
     <%@ include file="../common.jsp"%>
-    <!-- 부트스트랩 링크 추가 -->
-    <%--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">--%>
+
 </head>
 
 <body id="body">
@@ -59,6 +58,11 @@
                         </c:forEach>
                         </tbody>
                     </table>
+                    <script>
+                        $(document).ready( function () {
+                            $('#myTable').DataTable({});
+                        });
+                    </script>
                     <div class="btn-group">
                         <input class="btn btn-danger" value="장바구니 삭제" type="submit">
                     </div>

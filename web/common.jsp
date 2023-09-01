@@ -72,6 +72,7 @@
 <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/54/2/intl/ko_ALL/common.js"></script>
 <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/54/2/intl/ko_ALL/util.js"></script></head>
 
+
 <script>
 
     <!-- 이미지 로딩 안 될 시 대체 이미지 띄우기 -->
@@ -84,6 +85,9 @@
     document.ondragstart = function() { return false; }
     document.onselectstart = function() { return false; }
 </script>
+
+<link rel="stylesheet" href="${rootPath}/css/jquery.dataTables.css">
+<script src="${rootPath}/js/jquery.dataTables.js"></script>
 
 <%--
 
