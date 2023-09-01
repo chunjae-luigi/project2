@@ -57,9 +57,9 @@
 
 ### ERD 다이어그램
 ![ERD0](/README/erd%20diagram/image.png)
-![ERD1](/README/erd%20diagram/image (1).png)
-![ERD2](/README/erd%20diagram/image (2).png)
-![ERD3](/README/erd%20diagram/image (3).png)
+![ERD1](/README/erd%20diagram/image(1).png)
+![ERD2](/README/erd%20diagram/image%20(2).png)
+![ERD3](/README/erd%20diagram/image%20(3).png)
 
 ### 시퀀스 다이어그램
 ![sequence product pay delivery](/README/sequence/project2%20product%20pay%20delivery.png)
