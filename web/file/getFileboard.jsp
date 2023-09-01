@@ -54,17 +54,13 @@
             <tr>
                 <td colspan="3">
                     <c:if test="${!empty fileboard.filename1 }">
-                        <img src="${rootPath }/storage/${fileboard.filename1 }" alt="${fileboard.filename1 }" width="100"/>
-                        <a href="${rootPath }/storage/${fileboard.filename1 }" download ><i class="fa-solid fa-file"></i>${fileboard.filename1 }</a> <br>
+                        <a href="${rootPath }/storage/${fileboard.filename1 }" download ><i class="fas fa-file" style="color: #54c066;"></i> ${fileboard.filename1 }</a>
                     </c:if>
                     <c:if test="${!empty fileboard.filename2 }">
-                        <i class="fa-solid fa-file"></i>
-                        <a href="${rootPath }/storage/${fileboard.filename2 }" download >${fileboard.filename2 }</a><br>
+                        <a href="${rootPath }/storage/${fileboard.filename2 }" download ><i class="fas fa-file" style="color: #54c066;"></i> ${fileboard.filename2 }</a>
                     </c:if>
                     <c:if test="${!empty fileboard.filename3 }">
-                        <img src="${rootPath }/storage/${fileboard.filename3 }" alt="${fileboard.filename3 }" width="100"/>
-                        <a href="${rootPath }/storage/${fileboard.filename3 }" download >${fileboard.filename3 }</a><br>
-
+                        <a href="${rootPath }/storage/${fileboard.filename3 }" download ><i class="fas fa-file" style="color: #54c066;"></i> ${fileboard.filename }</a>
                     </c:if>
                 </td>
             </tr>

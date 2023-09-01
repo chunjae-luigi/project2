@@ -9,9 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>메인 페이지</title>
     <%@ include file="/common.jsp"%>
-    <style>
-        .product-item {height:400px;margin-bottom:100px;}
-    </style>
 </head>
 
 <body id="body">
@@ -96,10 +93,10 @@
                     <div class="col-md-3">
                         <div class="product-item">
                             <div class="product-thumb">
-                                <img class="img-responsive" src="${rootPath }/storage/${pro.img }" alt="${pro.title }" />
+                                <img class="img-responsive" src="${pro.img }" alt="${pro.title }" />
                             </div>
                             <div class="product-content">
-                                <h4><a href="product-single.html">${pro.title }</a></h4>
+                                <h4>${pro.title }</h4>
                                 <p class="price">${pro.price } 원</p>
                             </div>
                         </div>
